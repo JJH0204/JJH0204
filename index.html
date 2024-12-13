@@ -1,11 +1,112 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ko">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="refresh" content="0;url=./html/main.html">
-        <title>Loding...</title>
-    </head>
-    <body>
-        <p>Loding...</p>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Jaeho's Portfolio </title>
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
+    <script src="./js/script.js" defer></script>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Jaeho's Portfolio</h1>
+            <p class="current-category">Welcome</p>
+            <nav>
+                <ul>
+                    <li><a href="#intro">Introduction</a></li>
+                    <li><a href="#career">Career</a></li>
+                    <li><a href="#tech-stack">Tech Stack</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="intro" class="intro">
+            <div class="container">
+                <h2>Introduction</h2>
+                <div class="profile-content">
+                    <img src="./assets/profile.jpg" alt="Profile Photo" class="profile-img">
+                    <div class="intro-text">
+                        <p>Hi, I'm MoneyCode_Hoje, a passionate web developer based in South Korea.</p>
+                        <p>I specialize in creating responsive and user-friendly web applications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="career" class="career">
+            <div class="container">
+                <h2>Career</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <h3>Current Position</h3>
+                        <p>Web Developer at Company Name (2023 - Present)</p>
+                        <ul>
+                            <li>Key achievement 1</li>
+                            <li>Key achievement 2</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="tech-stack" class="tech-stack">
+            <div class="container">
+                <h2>Tech Stack</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>Frontend</h3>
+                        <ul>
+                            <li><i class="fab fa-html5"></i> HTML5</li>
+                            <li><i class="fab fa-css3-alt"></i> CSS3</li>
+                            <li><i class="fab fa-js"></i> JavaScript</li>
+                        </ul>
+                    </div>
+                    <div class="skill-category">
+                        <h3>Backend</h3>
+                        <ul>
+                            <li><i class="fab fa-node-js"></i> Node.js</li>
+                            <li><i class="fas fa-database"></i> SQL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="projects" class="project-status">
+            <div class="container">
+                <h2>Project Status</h2>
+                <div class="projects-grid">
+                    <article class="project-card">
+                        <img src="./assets/project1.jpg" alt="Project 1">
+                        <h3>Project Title 1</h3>
+                        <p>Project description goes here</p>
+                        <div class="project-links">
+                            <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
+                            <a href="#" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Contact</h2>
+                <div class="contact-info">
+                    <p><i class="fas fa-envelope"></i> Email: your.email@example.com</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-github"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 MoneyCode_Hoje. All rights reserved.</p>
+    </footer>
+</body>
 </html>
