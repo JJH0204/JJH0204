@@ -1,40 +1,41 @@
-# 정재호의 포트폴리오
+# Portfolio Website
 
-안녕하세요! 웹 개발자 정재호의 포트폴리오 사이트입니다.
+개인 포트폴리오 웹사이트입니다.
 
-## 주요 기능
-
-- 부드러운 전환 효과가 있는 풀페이지 스크롤
-- 모든 기기에 대응하는 반응형 디자인
-- 상호작용이 가능한 UI 요소
-- 모던하고 깔끔한 디자인
-
-## 사용 기술
+## 기술 스택
 
 - HTML5
 - CSS3
-- JavaScript
-- GSAP (애니메이션)
-- Font Awesome (아이콘)
+- JavaScript (Vanilla)
 
-## 설치 방법
+## 배포
 
-1. 이 저장소를 클론합니다
-2. `index.html`을 브라우저에서 엽니다
-3. 또는 다음 주소에서 라이브 사이트를 방문하세요: https://[your-username].github.io/Self-PR-Webblog/
+이 웹사이트는 GitHub Pages를 통해 배포됩니다.
+배포된 사이트는 다음 URL에서 확인할 수 있습니다: https://[your-username].github.io/Portfolio/
 
-## 개발 가이드
+## 로컬 개발
 
-사이트 수정 방법:
+1. 저장소 클론:
+```bash
+git clone https://github.com/[your-username]/Portfolio.git
+```
 
-1. `index.html`에서 HTML 내용을 수정합니다
-2. `css/style.css`에서 스타일을 수정합니다
-3. `js/script.js`에서 기능을 수정합니다
+2. 웹 브라우저에서 index.html 열기
 
-## 연락처
+## 구조
 
-문의사항이 있으시면 [your.email@example.com]로 연락해 주세요.
+```
+Portfolio/
+├── assets/         # 이미지 및 기타 리소스
+├── css/           # 스타일시트
+├── js/            # JavaScript 파일
+├── markdown/      # 마크다운 문서
+└── index.html     # 메인 페이지
+```
 
-## 라이선스
+## 업데이트
 
- 2024 정재호. All rights reserved.
+포트폴리오 내용을 업데이트하려면 다음 파일들을 수정하세요:
+- `js/script.js`: portfolioData 객체 내의 데이터 수정
+- `assets/`: 이미지 파일 업데이트
+- `css/styles.css`: 스타일 수정

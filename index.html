@@ -3,113 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Jaeho's Portfolio">
-    <meta name="keywords" content="portfolio">
-    <meta name="author" content="Jung Jaeho">
-    <title>Jaeho's Portfolio</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>정재호의 포트폴리오</title>
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.0/gsap.min.js"></script>
-    <script src="js/script.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
 </head>
 <body>
-    <header>
-        <div class="header-content">
-            <h1>Jaeho's Portfolio</h1>
-            <p class="current-category">Welcome</p>
-            <nav>
-                <ul>
-                    <li><a href="#intro">Introduction</a></li>
-                    <li><a href="#career">Career</a></li>
-                    <li><a href="#tech-stack">Tech Stack</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-            </nav>
+    <div class="cursor"></div>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">JH</div>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#career">Career</a></li>
+                <li><a href="#tech-stack">Tech Stack</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
         </div>
-    </header>
-    <main>
-        <section id="intro" class="intro">
-            <div class="container">
-                <h2>Introduction</h2>
-                <div class="profile-content">
-                    <img src="assets/profile-placeholder.jpg" alt="Profile Photo" class="profile-img">
-                    <div class="intro-text">
-                        <p>Hi, I'm Jaeho Jung, a passionate web developer based in South Korea.</p>
-                        <p>I specialize in creating responsive and user-friendly web applications.</p>
-                    </div>
+    </nav>
+
+    <section id="introduction" class="full-section">
+        <div class="container">
+            <div class="welcome-text">
+                <!-- Content will be dynamically inserted by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="full-section">
+        <div class="container">
+            <div class="profile-info">
+                <div class="info-grid">
+                    <!-- Content will be dynamically inserted by JavaScript -->
                 </div>
             </div>
-        </section>
-        <section id="career" class="career">
-            <div class="container">
-                <h2>Career</h2>
+            <div class="education-timeline">
+                <h3>Education</h3>
                 <div class="timeline">
-                    <div class="timeline-item">
-                        <h3>Current Position</h3>
-                        <p>Web Developer at Company Name (2023 - Present)</p>
-                        <ul>
-                            <li>Key achievement 1</li>
-                            <li>Key achievement 2</li>
-                        </ul>
-                    </div>
+                    <!-- Content will be dynamically inserted by JavaScript -->
                 </div>
             </div>
-        </section>
-        <section id="tech-stack" class="tech-stack">
-            <div class="container">
-                <h2>Tech Stack</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Frontend</h3>
-                        <ul>
-                            <li><i class="fab fa-html5"></i> HTML5</li>
-                            <li><i class="fab fa-css3-alt"></i> CSS3</li>
-                            <li><i class="fab fa-js"></i> JavaScript</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Backend</h3>
-                        <ul>
-                            <li><i class="fab fa-node-js"></i> Node.js</li>
-                            <li><i class="fas fa-database"></i> SQL</li>
-                        </ul>
-                    </div>
-                </div>
+        </div>
+    </section>
+
+    <section id="career" class="full-section">
+        <div class="container">
+            <h2 class="section-title">Career Journey</h2>
+            <div class="career-timeline">
+                <!-- Content will be dynamically inserted by JavaScript -->
             </div>
-        </section>
-        <section id="projects" class="projects">
-            <div class="container">
-                <h2>Projects</h2>
-                <div class="projects-grid">
-                    <article class="project-card">
-                        <img src="assets/project-placeholder.jpg" alt="Project 1">
-                        <h3>Project Title 1</h3>
-                        <p>Project description goes here</p>
-                        <div class="project-links">
-                            <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                            <a href="#" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                        </div>
-                    </article>
-                </div>
+        </div>
+    </section>
+
+    <section id="tech-stack" class="full-section">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-showcase">
+                <!-- Content will be dynamically inserted by JavaScript -->
             </div>
-        </section>
-        <section id="contact" class="contact">
-            <div class="container">
-                <h2>Contact</h2>
-                <div class="contact-info">
-                    <p><i class="fas fa-envelope"></i> Email: your.email@example.com</p>
-                    <div class="social-links">
-                        <a href="https://github.com/yourusername"><i class="fab fa-github"></i></a>
-                        <a href="https://linkedin.com/in/yourusername"><i class="fab fa-linkedin"></i></a>
-                        <a href="https://twitter.com/yourusername"><i class="fab fa-twitter"></i></a>
-                    </div>
-                </div>
+        </div>
+    </section>
+
+    <section id="projects" class="full-section">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-showcase">
+                <!-- Content will be dynamically inserted by JavaScript -->
             </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2024 Jung Jaeho. All rights reserved.</p>
-    </footer>
+        </div>
+    </section>
+
+    <script src="js/script.js"></script>
 </body>
 </html>
