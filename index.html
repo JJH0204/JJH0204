@@ -4,77 +4,693 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>정재호의 포트폴리오</title>
-    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --primary-color: #277342;
+            --secondary-color: #4ED97F;
+            --dark-color: #174025;
+            --light-color: #F2F2F2;
+            --text-color: #0D0D0D;
+            --card-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(39, 115, 66, 0.95);
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 0;
+            background-color: rgba(39, 115, 66, 0.98);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--light-color);
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.1);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        nav ul li a {
+            color: var(--light-color);
+            text-decoration: none;
+            font-weight: 500;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary-color);
+            transition: width 0.3s ease;
+        }
+
+        nav ul li a:hover::after {
+            width: 100%;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 0;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .section-title.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        /* Introduction */
+        #introduction {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
+            position: relative;
+        }
+
+        #introduction::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
+        }
+
+        .welcome-text {
+            position: relative;
+            z-index: 1;
+        }
+
+        .welcome-text h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1rem;
+            color: var(--light-color);
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            opacity: 0;
+            transform: translateY(-30px);
+            animation: fadeInDown 1s ease forwards;
+        }
+
+        .welcome-text .subtitle {
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards 0.5s;
+        }
+
+        /* Profile Image */
+        .profile-image {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            margin: 0 auto 2rem;
+            overflow: hidden;
+            border: 4px solid var(--secondary-color);
+            box-shadow: 0 0 20px rgba(0,0,0,0.2);
+            opacity: 0;
+            transform: scale(0.8);
+            animation: scaleIn 1s ease forwards 0.3s;
+        }
+
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Skills */
+        .skills-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .skills-showcase.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+
+        .skill-category::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        }
+
+        .skill-icon {
+            width: 50px;
+            height: 50px;
+            margin: 0 auto 1rem;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .skill-category:hover .skill-icon {
+            transform: rotate(360deg);
+        }
+
+        /* Projects */
+        .project-category {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .project-category.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .project-category:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Custom Cursor - Disabled
+        .cursor {
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--primary-color);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.2s ease;
+            backdrop-filter: invert(1);
+        }
+
+        .cursor.hover {
+            transform: scale(1.5);
+            background-color: rgba(39, 115, 66, 0.1);
+            backdrop-filter: none;
+        }
+        */
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .welcome-text h1 {
+                font-size: 3rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
 </head>
 <body>
-    <div class="cursor"></div>
-    <nav>
-        <div class="nav-container">
-            <div class="logo">JH</div>
-            <ul>
-                <li><a href="#introduction">Introduction</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#career">Career</a></li>
-                <li><a href="#tech-stack">Tech Stack</a></li>
-                <li><a href="#projects">Projects</a></li>
-            </ul>
-        </div>
-    </nav>
+    <!-- <div class="cursor"></div> -->
+    <div id="app"></div>
 
-    <section id="introduction" class="full-section">
-        <div class="container">
-            <div class="welcome-text">
-                <!-- Content will be dynamically inserted by JavaScript -->
-            </div>
-        </div>
-    </section>
+    <script>
+        // Portfolio Data
+        const portfolioData = {
+            introduction: {
+                name: "정재호",
+                birth: "1999.02.04",
+                military: "2017.10.23 - 2019.07.01 (최전방 수호병, 병장 전역)"
+            },
+            education: [
+                "SBS 게임 아카데미 게임 기획자/프로그래머 양성과정 수료 (2019.07.03 - 2020.02.18)",
+                "Korea IT Academy DevSecOps를 활용한 클라우드 보안 전문가 양성과정 수료 (2024.08.21 - 2025.02.21)"
+            ],
+            skills: {
+                programming: {
+                    title: "Programming Languages",
+                    items: [
+                        { name: "Python", icon: "assets/python.svg" },
+                        { name: "C", icon: "assets/C.svg" },
+                        { name: "C++", icon: "assets/CPP.svg" },
+                        { name: "C#", icon: "assets/CSharp.svg" }
+                    ]
+                },
+                devops: {
+                    title: "DevOps Tools",
+                    items: [
+                        { name: "Docker", icon: "assets/Docker.png" },
+                        { name: "Kubernetes", icon: "assets/Kubernetes.svg" },
+                        { name: "Git", icon: "assets/git.png" },
+                        { name: "GitHub", icon: "assets/github.png" }
+                    ]
+                },
+                dataScience: {
+                    title: "Data Science",
+                    items: [
+                        { name: "NumPy", icon: "assets/NumPy_logo_2020.svg.png" },
+                        { name: "Pandas", icon: "assets/Pandas_logo.svg" },
+                        { name: "Selenium", icon: "assets/python_selenium.png" }
+                    ]
+                },
+                gamedev: {
+                    title: "Game Development",
+                    items: [
+                        { name: "Unity", icon: "assets/Unity_2021.svg.png" }
+                    ]
+                }
+            },
+            projects: {
+                company: [
+                    {
+                        name: "테일즈런너",
+                        company: "Rhaon Entertainment",
+                        logo: "assets/Rhaon.png",
+                        details: [
+                            "2020 겨울 방학 이벤트 맵 2종 기획",
+                            "2021 설 신규 BM 기획",
+                            "2021 상반기 이벤트 기획",
+                            "2021 여름방학 이벤트 맵 기획",
+                            "2021 겨울방학 이벤트 메인 기획",
+                            "2022 여름방학 이벤트 메인 기획",
+                            "2022 겨울방학 이벤트 메인 기획",
+                            "2022 겨울방학 이벤트 맵 기획",
+                            "2023 신규 컨텐츠 기획"
+                        ]
+                    }
+                ],
+                team: [
+                    {
+                        name: "팀 방화벽",
+                        details: [
+                            "Linux 시스템 점검 스크립트",
+                            "정보보안 실습용 CTF '프로젝트 Ignite'",
+                            "정보보안 학습용 wargame 웹 서비스 '프로젝트 Flame'"
+                        ]
+                    }
+                ],
+                personal: [
+                    "2D 모바일 게임 개발 (진행중)",
+                    "개인 포트폴리오 페이지 구현 (진행중)",
+                    "학점은행제 컴퓨터공학 학사 취득"
+                ]
+            }
+        };
 
-    <section id="about" class="full-section">
-        <div class="container">
-            <div class="profile-info">
-                <div class="info-grid">
-                    <!-- Content will be dynamically inserted by JavaScript -->
+        // Initialize DOM structure
+        function initializeDOMStructure() {
+            const app = document.getElementById('app');
+            
+            // Create navigation
+            const nav = document.createElement('nav');
+            nav.innerHTML = `
+                <div class="nav-container">
+                    <a href="#introduction" class="logo">JH</a>
+                    <ul>
+                        <li><a href="#introduction">Introduction</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                    </ul>
                 </div>
-            </div>
-            <div class="education-timeline">
-                <h3>Education</h3>
-                <div class="timeline">
-                    <!-- Content will be dynamically inserted by JavaScript -->
+            `;
+            
+            // Create main sections
+            const sections = [
+                {
+                    id: 'introduction',
+                    content: `
+                        <div class="container">
+                            <div class="profile-image">
+                                <img src="assets/Profile.JPG" alt="정재호 프로필">
+                            </div>
+                            <div class="welcome-text">
+                                <h1>안녕하세요,<br>저는 ${portfolioData.introduction.name}입니다</h1>
+                                <p class="subtitle">Game Planner & Developer</p>
+                            </div>
+                        </div>
+                    `
+                },
+                {
+                    id: 'about',
+                    content: `
+                        <div class="container">
+                            <h2 class="section-title">About Me</h2>
+                            <div class="profile-info">
+                                <div class="info-grid">
+                                    <div class="info-item">
+                                        <i class="fas fa-calendar"></i>
+                                        <span>${portfolioData.introduction.birth} (만 26세)</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-flag"></i>
+                                        <span>${portfolioData.introduction.military.split('(')[0]}</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <i class="fas fa-star"></i>
+                                        <span>${portfolioData.introduction.military.split('(')[1].replace(')', '')}</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="education-timeline">
+                                <h3>Education</h3>
+                                <div class="timeline">
+                                    ${portfolioData.education.map(edu => {
+                                        const [title, period] = edu.split(' (');
+                                        return `
+                                            <div class="timeline-item">
+                                                <div class="timeline-dot"></div>
+                                                <div class="timeline-content">
+                                                    <h4>${title}</h4>
+                                                    <span class="date">${period.replace(')', '')}</span>
+                                                </div>
+                                            </div>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    `
+                },
+                {
+                    id: 'skills',
+                    content: `
+                        <div class="container">
+                            <h2 class="section-title">Technical Skills</h2>
+                            <div class="skills-showcase">
+                                ${Object.entries(portfolioData.skills).map(([category, data]) => `
+                                    <div class="skill-category" data-category="${category}">
+                                        <h3>${data.title}</h3>
+                                        <div class="skills-grid">
+                                            ${data.items.map(item => `
+                                                <div class="skill-item">
+                                                    <div class="skill-icon">
+                                                        <img src="${item.icon}" alt="${item.name}">
+                                                    </div>
+                                                    <span>${item.name}</span>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    `
+                },
+                {
+                    id: 'projects',
+                    content: `
+                        <div class="container">
+                            <h2 class="section-title">Projects</h2>
+                            <div class="projects-showcase">
+                                <div class="project-category">
+                                    <h3>Company Projects</h3>
+                                    ${portfolioData.projects.company.map(project => `
+                                        <div class="project-item">
+                                            <div class="project-header">
+                                                <img src="${project.logo}" alt="${project.company}" class="company-logo">
+                                                <h4>${project.name}</h4>
+                                            </div>
+                                            <ul>
+                                                ${project.details.map(detail => `<li>${detail}</li>`).join('')}
+                                            </ul>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                <div class="project-category">
+                                    <h3>Team Projects</h3>
+                                    ${renderProjects(portfolioData.projects.team)}
+                                </div>
+                                <div class="project-category">
+                                    <h3>Personal Projects</h3>
+                                    <ul>
+                                        ${portfolioData.projects.personal.map(project => `<li>${project}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    `
+                }
+            ];
+
+            // Add navigation to DOM
+            app.appendChild(nav);
+
+            // Create and add sections to DOM
+            sections.forEach(sectionData => {
+                const section = document.createElement('section');
+                section.id = sectionData.id;
+                section.className = 'full-section';
+                section.innerHTML = sectionData.content;
+                app.appendChild(section);
+            });
+        }
+
+        // Helper function to render projects
+        function renderProjects(projects) {
+            return projects.map(project => `
+                <div class="project-item">
+                    <h4>${project.name}</h4>
+                    <ul>
+                        ${project.details.map(detail => `<li>${detail}</li>`).join('')}
+                    </ul>
                 </div>
-            </div>
-        </div>
-    </section>
+            `).join('');
+        }
 
-    <section id="career" class="full-section">
-        <div class="container">
-            <h2 class="section-title">Career Journey</h2>
-            <div class="career-timeline">
-                <!-- Content will be dynamically inserted by JavaScript -->
-            </div>
-        </div>
-    </section>
+        // Scroll animation
+        function handleScroll() {
+            const nav = document.querySelector('nav');
+            const scrollPosition = window.scrollY;
 
-    <section id="tech-stack" class="full-section">
-        <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
-            <div class="skills-showcase">
-                <!-- Content will be dynamically inserted by JavaScript -->
-            </div>
-        </div>
-    </section>
+            // Nav bar animation
+            if (scrollPosition > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
 
-    <section id="projects" class="full-section">
-        <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
-            <div class="projects-showcase">
-                <!-- Content will be dynamically inserted by JavaScript -->
-            </div>
-        </div>
-    </section>
+            // Reveal animations for sections
+            document.querySelectorAll('.container, .section-title, .skills-showcase, .project-category').forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
 
-    <script src="js/script.js"></script>
+                if (elementTop < windowHeight * 0.8) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Custom cursor - Disabled
+        /*
+        function initializeCursor() {
+            const cursor = document.querySelector('.cursor');
+            let mouseX = 0;
+            let mouseY = 0;
+            let cursorX = 0;
+            let cursorY = 0;
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            function animateCursor() {
+                const ease = 0.1;
+                cursorX += (mouseX - cursorX) * ease;
+                cursorY += (mouseY - cursorY) * ease;
+                cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
+                requestAnimationFrame(animateCursor);
+            }
+
+            animateCursor();
+
+            // Hover effects
+            document.querySelectorAll('a, button, .skill-category, .project-item').forEach(element => {
+                element.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                element.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+        }
+        */
+
+        // Smooth scroll
+        function initializeSmoothScroll() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
+        }
+
+        // Initialize when DOM is loaded
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM Content Loaded');
+            initializeDOMStructure();
+            // initializeCursor(); // Disabled
+            initializeSmoothScroll();
+            handleScroll(); // Initial check for visible elements
+            window.addEventListener('scroll', handleScroll);
+        });
+    </script>
 </body>
 </html>
