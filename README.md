@@ -93,11 +93,6 @@
       <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white">
     </a>
   </div>
-  <div style="margin-top: 10px;">
-    <a href="https://hits.seeyoufarm.com">
-      <img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2FJJH0204&count_bg=%23282d33&title_bg=%23282d33&icon=github.svg&icon_color=%23FFFFFF&title=Visitors&edge_flat=false"/>
-    </a>
-  </div>
 </div>
 
 <div style="text-align: left;">
