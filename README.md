@@ -35,7 +35,7 @@
 <div style="font-weight: 600; font-size: 13px; color: #282d33;"> 💻 Programming & Scripting </div>
 <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=C&logoColor=white">
 <img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=C%2B%2B&logoColor=white">
-<img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=csharp&logoColor=white">
+<img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=C%23&logoColor=white">
 <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
 <img src="https://img.shields.io/badge/Javascript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white">
 <img src="https://img.shields.io/badge/Bash-4EAA25?style=for-the-badge&logo=GNU Bash&logoColor=white">
@@ -47,11 +47,6 @@
 <img src="https://img.shields.io/badge/PHP-777BB4?style=for-the-badge&logo=PHP&logoColor=white">
 <img src="https://img.shields.io/badge/Apache-D22128?style=for-the-badge&logo=Apache&logoColor=white">
 <img src="https://img.shields.io/badge/GitHub Pages-222222?style=for-the-badge&logo=GitHub Pages&logoColor=white">
-<br/><br/>
-<!-- Data Science -->
-<div style="font-weight: 600; font-size: 13px; color: #282d33;"> 📊 Data Science </div>
-<img src="https://img.shields.io/badge/pandas-150458?style=for-the-badge&logo=pandas&logoColor=white">
-<img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=NumPy&logoColor=white">
 <br/><br/>
 <!-- DevOps & Cloud -->
 <div style="font-weight: 600; font-size: 13px; color: #282d33;"> 🚀 DevOps & Cloud </div>
@@ -67,15 +62,12 @@
 <img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white">
 <img src="https://img.shields.io/badge/Unity-000000?style=for-the-badge&logo=Unity&logoColor=white">
 <img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=Linux&logoColor=white">
+<img src="https://img.shields.io/badge/MacOS-000000?style=for-the-badge&logo=Apple&logoColor=white">
 <br/><br/>
 <!-- Databases -->
 <div style="font-weight: 600; font-size: 13px; color: #282d33;"> 💾 Databases </div>
 <img src="https://img.shields.io/badge/MariaDB-003545?style=for-the-badge&logo=MariaDB&logoColor=white">
 <img src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white">
-<br/><br/>
-<!-- Testing & Automation -->
-<div style="font-weight: 600; font-size: 13px; color: #282d33;"> 🔄 Testing & Automation </div>
-<img src="https://img.shields.io/badge/Selenium-43B02A?style=for-the-badge&logo=Selenium&logoColor=white">
 <br/><br/>
 <!-- Productivity & AI -->
 <div style="font-weight: 600; font-size: 13px; color: #282d33;"> 🤖 Productivity & AI </div>
