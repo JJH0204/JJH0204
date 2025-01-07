@@ -5,844 +5,307 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>정재호의 포트폴리오</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
-    <style>
-        :root {
-            --primary-color: #277342;
-            --secondary-color: #4ED97F;
-            --dark-color: #174025;
-            --light-color: #F2F2F2;
-            --text-color: #0D0D0D;
-            --card-bg: rgba(255, 255, 255, 0.95);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Pretendard', 'Apple SD Gothic Neo', sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--light-color);
-            overflow-x: hidden;
-        }
-
-        /* Navigation */
-        nav {
-            background-color: rgba(39, 115, 66, 0.95);
-            padding: 1rem 0;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
-        }
-
-        nav.scrolled {
-            padding: 0.5rem 0;
-            background-color: rgba(39, 115, 66, 0.98);
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .logo {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--light-color);
-            text-decoration: none;
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover {
-            transform: scale(1.1);
-        }
-
-        nav ul {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        nav ul li a {
-            color: var(--light-color);
-            text-decoration: none;
-            font-weight: 500;
-            position: relative;
-            padding: 0.5rem 0;
-        }
-
-        nav ul li a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--secondary-color);
-            transition: width 0.3s ease;
-        }
-
-        nav ul li a:hover::after {
-            width: 100%;
-        }
-
-        /* Section styles */
-        section {
-            padding: 80px 0;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-            width: 100%;
-        }
-
-        .section-title {
-            font-size: 2.5rem;
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 3rem;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100px;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-            border-radius: 2px;
-        }
-
-        /* About section styles */
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            text-align: center;
-            line-height: 1.8;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: var(--text-color);
-            opacity: 0.9;
-        }
-
-        .profile-info {
-            margin-bottom: 3rem;
-        }
-
-        @media (max-width: 768px) {
-            .section-title {
-                font-size: 2rem;
-                margin-bottom: 2rem;
-            }
-
-            .about-content p {
-                font-size: 1rem;
-                padding: 0 1rem;
-            }
-
-            section {
-                padding: 60px 0;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section-title {
-                font-size: 1.8rem;
-                margin-bottom: 1.5rem;
-            }
-
-            .container {
-                padding: 1rem;
-            }
-
-            section {
-                padding: 40px 0;
-            }
-        }
-
-        /* Introduction */
-        #introduction {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            background: linear-gradient(135deg, var(--dark-color), var(--primary-color));
-            position: relative;
-        }
-
-        #introduction::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: radial-gradient(circle at center, transparent 0%, rgba(0,0,0,0.3) 100%);
-        }
-
-        .welcome-text {
-            position: relative;
-            z-index: 1;
-        }
-
-        .welcome-text h1 {
-            font-size: 4.5rem;
-            margin-bottom: 1rem;
-            color: var(--light-color);
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-            opacity: 0;
-            transform: translateY(-30px);
-            animation: fadeInDown 1s ease forwards;
-        }
-
-        .welcome-text .subtitle {
-            font-size: 1.8rem;
-            color: var(--secondary-color);
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 1s ease forwards 0.5s;
-        }
-
-        /* Profile Image */
-        .profile-image {
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            margin: 0 auto 2rem;
-            overflow: hidden;
-            border: 4px solid var(--secondary-color);
-            box-shadow: 0 0 20px rgba(0,0,0,0.2);
-            opacity: 0;
-            transform: scale(0.8);
-            animation: scaleIn 1s ease forwards 0.3s;
-        }
-
-        .profile-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .profile-image:hover img {
-            transform: scale(1.1);
-        }
-
-        /* Animations */
-        @keyframes fadeInDown {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes scaleIn {
-            to {
-                opacity: 1;
-                transform: scale(1);
-            }
-        }
-
-        /* Skills */
-        .skills-showcase {
-            margin-top: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .skills-showcase.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .skills-bubble-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            padding: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .skills-bubble-container.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .skill-bubble {
-            position: relative;
-            transform: scale(calc(0.5 + var(--size) * 0.5));
-            transition: all 0.3s ease;
-            cursor: pointer;
-            opacity: 0;
-            animation: fadeIn 0.5s ease forwards;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: scale(0);
-            }
-            to {
-                opacity: 1;
-                transform: scale(calc(0.5 + var(--size) * 0.5));
-            }
-        }
-
-        .skill-bubble:hover {
-            transform: scale(calc((0.5 + var(--size) * 0.5) * 1.1));
-        }
-
-        .skill-category {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
-        }
-
-        .skill-category.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .skill-category h3 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            font-size: 1.4rem;
-            text-align: center;
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-            gap: 1.5rem;
-            padding: 0 1rem;
-        }
-
-        .skill-item {
-            background: var(--card-bg);
-            padding: 1rem;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .skill-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .skill-icon {
-            width: 50px;
-            height: 50px;
-            margin: 0 auto 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .skill-icon img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
-
-        .skill-item span {
-            display: block;
-            font-size: 0.9rem;
-            color: var(--text-color);
-        }
-
-        @media (max-width: 768px) {
-            .skills-grid {
-                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
-                gap: 1rem;
-            }
-
-            .skill-category h3 {
-                font-size: 1.2rem;
-            }
-
-            .skill-icon {
-                width: 40px;
-                height: 40px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .skills-grid {
-                grid-template-columns: repeat(2, 1fr);
-                padding: 0 0.5rem;
-            }
-
-            .skill-item {
-                padding: 0.8rem;
-            }
-
-            .skill-item span {
-                font-size: 0.8rem;
-            }
-        }
-
-        /* Skills Bubble Style */
-        .skills-bubble-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 2rem;
-            justify-content: center;
-            padding: 2rem;
-        }
-
-        .skill-bubble {
-            position: relative;
-            transform: scale(calc(0.5 + var(--size) * 0.5));
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .skill-bubble:hover {
-            transform: scale(calc((0.5 + var(--size) * 0.5) * 1.1));
-        }
-
-        .skill-level {
-            position: absolute;
-            top: -25px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: var(--primary-color);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 10px;
-            font-size: 0.8rem;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-
-        .skill-bubble:hover .skill-level {
-            opacity: 1;
-        }
-
-        .skill-category {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-        }
-
-        .skill-category h3 {
-            color: var(--primary-color);
-            text-align: center;
-            margin-bottom: 1rem;
-            font-size: 1.4rem;
-        }
-
-        /* Projects */
-        .project-category {
-            background: var(--card-bg);
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease;
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-
-        .project-category.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .project-category:hover {
-            transform: translateY(-5px);
-        }
-
-        /* About Me Section Styles */
-        .about-content {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
-            text-align: center;
-            line-height: 1.8;
-        }
-
-        .about-content p {
-            font-size: 1.1rem;
-            margin-bottom: 1rem;
-            color: var(--text-color);
-        }
-
-        .interests-section, .goals-section {
-            margin-top: 3rem;
-            padding: 0 20px;
-        }
-
-        .interests-grid, .goals-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 2rem;
-            max-width: 1000px;
-            margin: 2rem auto;
-        }
-
-        .interest-item, .goal-item {
-            background: rgba(255, 255, 255, 0.05);
-            padding: 2rem;
-            border-radius: 15px;
-            text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            border: 1px solid rgba(78, 217, 127, 0.2);
-        }
-
-        .interest-item:hover, .goal-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(78, 217, 127, 0.1);
-        }
-
-        .interest-item i, .goal-item i {
-            font-size: 2.5rem;
-            color: var(--secondary-color);
-            margin-bottom: 1rem;
-        }
-
-        .interest-item p, .goal-item p {
-            font-size: 1rem;
-            line-height: 1.6;
-            margin: 0;
-        }
-
-        /* 반응형 미디어 쿼리 */
-        @media (max-width: 768px) {
-            .interests-grid, .goals-grid {
-                grid-template-columns: 1fr;
-                gap: 1.5rem;
-                padding: 0 1rem;
-            }
-
-            .about-content {
-                padding: 10px;
-            }
-
-            .interest-item, .goal-item {
-                padding: 1.5rem;
-            }
-
-            .interest-item i, .goal-item i {
-                font-size: 2rem;
-            }
-
-            .interest-item p, .goal-item p {
-                font-size: 0.9rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .section-title {
-                font-size: 1.8rem;
-            }
-
-            .interests-section h3, .goals-section h3 {
-                font-size: 1.4rem;
-            }
-
-            .about-content p {
-                font-size: 1rem;
-            }
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-
-            nav ul {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .welcome-text h1 {
-                font-size: 3rem;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .profile-image {
-                width: 150px;
-                height: 150px;
-            }
-        }
-    </style>
+    <script src="js/main.js" defer></script>
 </head>
 <body>
-    <!-- <div class="cursor"></div> -->
-    <div id="app"></div>
+    <nav>
+        <div class="nav-container">
+            <a href="#introduction" class="logo">JH</a>
+            <ul>
+                <li><a href="#introduction">Introduction</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+            </ul>
+        </div>
+    </nav>
 
-    <script>
-        // Portfolio Data
-        const portfolioData = {
-            introduction: {
-                name: "정재호",
-                birth: "1999.02.04",
-                military: "2017.10.23 - 2019.07.01 (최전방 수호병, 병장 전역)"
-            },
-            education: [
-                "SBS 게임 아카데미 게임 기획자/프로그래머 양성과정 수료 (2019.07.03 - 2020.02.18)",
-                "Korea IT Academy DevSecOps를 활용한 클라우드 보안 전문가 양성과정 수료 (2024.08.21 - 2025.02.21)"
-            ],
-            skills: {
-                programming: {
-                    title: "Programming Languages",
-                    items: [
-                        { name: "Python", badge: "https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white" },
-                        { name: "C", badge: "https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=C&logoColor=white" },
-                        { name: "C++", badge: "https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=C%2B%2B&logoColor=white" },
-                        { name: "C#", badge: "https://img.shields.io/badge/CSharp-239120?style=for-the-badge&logo=CSharp&logoColor=white" }
-                    ]
-                },
-                devops: {
-                    title: "DevOps & Tools",
-                    items: [
-                        { name: "Docker", badge: "https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white" },
-                        { name: "Kubernetes", badge: "https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=Kubernetes&logoColor=white" },
-                        { name: "Git", badge: "https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white" },
-                        { name: "MySQL", badge: "https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white" }
-                    ]
-                },
-                productivity: {
-                    title: "Productivity & AI",
-                    items: [
-                        { name: "Microsoft365", badge: "https://img.shields.io/badge/Microsoft365-B7472A?style=for-the-badge&logo=Microsoft365&logoColor=white" }
-                    ]
-                }
-            },
-            projects: {
-                company: [
-                    {
-                        name: "테일즈런너",
-                        company: "Rhaon Entertainment",
-                        logo: "assets/Rhaon.png",
-                        details: [
-                            "2020 겨울 방학 이벤트 맵 2종 기획",
-                            "2021 설 신규 BM 기획",
-                            "2021 상반기 이벤트 기획",
-                            "2021 여름방학 이벤트 맵 기획",
-                            "2021 겨울방학 이벤트 메인 기획",
-                            "2022 여름방학 이벤트 메인 기획",
-                            "2022 겨울방학 이벤트 메인 기획",
-                            "2022 겨울방학 이벤트 맵 기획",
-                            "2023 신규 컨텐츠 기획"
-                        ]
-                    }
-                ],
-                team: [
-                    {
-                        name: "팀 방화벽",
-                        details: [
-                            "Linux 시스템 점검 스크립트",
-                            "정보보안 실습용 CTF '프로젝트 Ignite'",
-                            "정보보안 학습용 wargame 웹 서비스 '프로젝트 Flame'"
-                        ]
-                    }
-                ],
-                personal: [
-                    "2D 모바일 게임 개발 (진행중)",
-                    "개인 포트폴리오 페이지 구현 (진행중)",
-                    "학점은행제 컴퓨터공학 학사 취득"
-                ]
-            }
-        };
-
-        // Initialize DOM structure
-        function initializeDOMStructure() {
-            const app = document.getElementById('app');
-            app.innerHTML = ''; // Clear existing content
-            
-            // Create navigation
-            const nav = document.createElement('nav');
-            nav.innerHTML = `
-                <div class="nav-container">
-                    <a href="#introduction" class="logo">JH</a>
-                    <ul>
-                        <li><a href="#introduction">Introduction</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#skills">Skills</a></li>
-                        <li><a href="#projects">Projects</a></li>
-                    </ul>
+    <main>
+        <section id="introduction">
+            <div class="container">
+                <div class="profile-image">
+                    <img src="assets/Profile.JPG" alt="정재호 프로필">
                 </div>
-            `;
-            app.appendChild(nav);
-            
-            // Create main sections
-            const mainContent = document.createElement('main');
-            mainContent.innerHTML = `
-                <section id="introduction">
-                    <div class="container">
-                        <div class="profile-image">
-                            <img src="assets/Profile.JPG" alt="정재호 프로필">
+                <div class="welcome-text">
+                    <h1>안녕하세요,<br>엔지니어 정재호입니다</h1>
+                    <p class="subtitle">Planner & Developer & Engineer</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container">
+                <h2 class="section-title">🙌 About Me</h2>
+                <div class="profile-info">
+                    <div class="about-content">
+                        <p>웹 개발, 컴퓨터 공학, 정보보안, 게임 개발에 깊은 관심을 가지고 있는 개발자입니다.</p>
+                        <p>꾸준한 자기개발과 다양한 프로젝트 경험을 통해 탄탄한 내실을 다지고,</p>
+                        <p>이를 바탕으로 전문성을 키워가는 것을 목표로 하고 있습니다.</p>
+                        <p>새로운 기술과 지식을 배우며 성장해 나가고, 이를 통해 개인과 조직의 발전에 기여하고자 합니다.</p>
+                    </div>
+                </div>
+                <div class="interests-section">
+                    <h2 class="section-title">🔍 관심 분야</h2>
+                    <div class="interests-grid">
+                        <div class="interest-item">
+                            <i class="fas fa-shield-alt"></i>
+                            <p>정보보안: 보안의 기초부터 실전까지 차근차근 학습 중</p>
                         </div>
-                        <div class="welcome-text">
-                            <h1>안녕하세요,<br>엔지니어 ${portfolioData.introduction.name}입니다</h1>
-                            <p class="subtitle">Planner & Developer & Engineer</p>
+                        <div class="interest-item">
+                            <i class="fas fa-gamepad"></i>
+                            <p>게임 개발: 게임 엔진과 게임 로직에 대해 공부하며 작은 프로젝트 진행 중</p>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-laptop-code"></i>
+                            <p>컴퓨터 공학: 기초 이론부터 심화 과정까지 꾸준히 공부 중</p>
+                        </div>
+                        <div class="interest-item">
+                            <i class="fas fa-globe"></i>
+                            <p>웹 개발: 프론트엔드/백엔드 기술 스택 학습 중</p>
                         </div>
                     </div>
-                </section>
+                </div>
+                <div class="vision-section">
+                    <h2 class="section-title">🎯 Vision & Goals</h2>
+                    <div class="vision-grid">
+                        <div class="vision-item">
+                            <h2>📚 Core Competency Development</h2>
+                            <ul>
+                                <li>알고리즘과 자료구조 마스터하기 - LeetCode 주 3문제 이상 풀이</li>
+                                <li>C++/Python 고급 기능 학습 및 실무 프로젝트 적용</li>
+                                <li>클린 코드 원칙을 적용한 리팩토링 연습</li>
+                            </ul>
+                        </div>
+                        <div class="vision-item">
+                            <h2>🤝 Project Experience</h2>
+                            <ul>
+                                <li>오픈소스 프로젝트 기여 - GitHub 주간 3회 이상 커밋</li>
+                                <li>개인 프로젝트 포트폴리오 구축 - 분기별 1개 프로젝트 완성</li>
+                                <li>팀 프로젝트 참여로 협업 능력 향상</li>
+                            </ul>
+                        </div>
+                        <div class="vision-item">
+                            <h2>🌱 Technical Expertise</h2>
+                            <ul>
+                                <li>DevOps/Cloud 자격증 취득 - AWS/Docker 실무 활용</li>
+                                <li>CI/CD 파이프라인 구축 및 자동화 도구 개발</li>
+                                <li>마이크로서비스 아키텍처 설계 및 구현</li>
+                            </ul>
+                        </div>
+                        <div class="vision-item">
+                            <h2>💡 Problem Solving</h2>
+                            <ul>
+                                <li>시스템 설계 패턴 학습 및 적용 사례 구축</li>
+                                <li>성능 최적화 및 디버깅 도구 활용 능력 향상</li>
+                                <li>코드 리뷰를 통한 품질 향상 및 피드백 교환</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-                <section id="about">
-                    <div class="container">
-                        <h2 class="section-title">🙌 About Me</h2>
-                        <div class="profile-info">
-                            <div class="about-content">
-                                <p>웹 개발, 컴퓨터 공학, 정보보안, 게임 개발에 깊은 관심을 가지고 있는 개발자입니다.</p>
-                                <p>꾸준한 자기개발과 다양한 프로젝트 경험을 통해 탄탄한 내실을 다지고,</p>
-                                <p>이를 바탕으로 전문성을 키워가는 것을 목표로 하고 있습니다.</p>
-                                <p> 새로운 기술과 지식을 배우며 성장해 나가고, 이를 통해 개인과 조직의 발전에 기여하고자 합니다.</p>
+        <section id="skills">
+            <div class="container">
+                <h2 class="section-title">🛠️ Technical Skills</h2>
+                <div class="skills-showcase">
+                    <div class="skill-category">
+                        <h2>💻 Programming & Scripting</h2>
+                        <div class="chart-container">
+                            <canvas id="programmingChart"></canvas>
+                        </div>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h2>🌐 Web Development</h2>
+                        <div class="chart-container">
+                            <canvas id="webdevChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h2>🚀 DevOps & Cloud</h2>
+                        <div class="chart-container">
+                            <canvas id="devopsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h2>🔧 Development Environments</h2>
+                        <div class="chart-container">
+                            <canvas id="environmentsChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h2>💾 Databases</h2>
+                        <div class="chart-container">
+                            <canvas id="databasesChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projects">
+            <div class="container">
+                <h2 class="section-title">💼 Projects</h2>
+                
+                <div class="project-category">
+                    <h2>회사 프로젝트</h2>
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>2020년 겨울방학 이벤트</h4>
+                                <span class="project-date">2020</span>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">신규 맵 2종 레벨 기획</p>
+                                <div class="project-links">
+                                    <button class="video-btn" data-video-id="_uDS3Pyeuns">
+                                        <i class="fab fa-youtube"></i>
+                                        버려진 자들의 도시
+                                    </button>
+                                    <button class="video-btn" data-video-id="3pX95U3ZqDM">
+                                        <i class="fab fa-youtube"></i>
+                                        재회의 동굴
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <div class="interests-section">
-                            <h3>🔍 관심 분야</h3>
-                            <div class="interests-grid">
-                                <div class="interest-item">
-                                    <i class="fas fa-shield-alt"></i>
-                                    <p>정보보안: 보안의 기초부터 실전까지 차근차근 학습 중</p>
+                        
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>2021년 설 뽑기 콘텐츠</h4>
+                                <span class="project-date">2021</span>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">시스템 기획</p>
+                                <div class="project-links">
+                                    <button class="video-btn" data-video-id="r7NetgLpEy4">
+                                        <i class="fab fa-youtube"></i>
+                                        커스텀 카드팩
+                                    </button>
                                 </div>
-                                <div class="interest-item">
-                                    <i class="fas fa-gamepad"></i>
-                                    <p>게임 개발: 게임 엔진과 게임 로직에 대해 공부하며 작은 프로젝트 진행 중</p>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>2021년 여름방학 이벤트</h4>
+                                <span class="project-date">2021</span>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">신규 시스템 RnD</p>
+                                <div class="project-links">
+                                    <button class="video-btn" data-video-id="-g4H6WVIU1o">
+                                        <i class="fab fa-youtube"></i>
+                                        첨벙첨벙 파도타기
+                                    </button>
                                 </div>
-                                <div class="interest-item">
-                                    <i class="fas fa-laptop-code"></i>
-                                    <p>컴퓨터 공학: 기초 이론부터 심화 과정까지 꾸준히 공부 중</p>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>2021년 겨울방학 이벤트</h4>
+                                <span class="project-date">2021</span>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">콘텐츠, 시스템 기획</p>
+                                <div class="project-links">
+                                    <button class="video-btn" data-video-id="4m24gwdharM">
+                                        <i class="fab fa-youtube"></i>
+                                        이클립스 이벤트
+                                    </button>
                                 </div>
-                                <div class="interest-item">
-                                    <i class="fas fa-globe"></i>
-                                    <p>웹 개발: 프론트엔드/백엔드 기술 스택 학습 중</p>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>2022년 여름방학 이벤트</h4>
+                                <span class="project-date">2022</span>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">컨셉, 콘텐츠, 시스템 기획</p>
+                                <div class="project-links">
+                                    <button class="video-btn" data-video-id="wHbrQOMWxik">
+                                        <i class="fab fa-youtube"></i>
+                                        저승컴퍼니 이벤트
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>2022년 겨울방학 이벤트</h4>
+                                <span class="project-date">2022</span>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">콘텐츠, 시스템 기획<br>레이드 맵 기획</p>
+                                <div class="project-links">
+                                    <button class="video-btn" data-video-id="A-TqEemiITY">
+                                        <i class="fab fa-youtube"></i>
+                                        차원관리국 이벤트
+                                    </button>
+                                    <button class="video-btn" data-video-id="E5hWMDdoxxs">
+                                        <i class="fab fa-youtube"></i>
+                                        디멘션 인커전
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>2023년 렌즈 커스터마이징</h4>
+                                <span class="project-date">2023</span>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">신규 시스템 RnD</p>
+                                <div class="project-links">
+                                    <button class="video-btn" data-video-id="fJMle9qpgTE">
+                                        <i class="fab fa-youtube"></i>
+                                        렌즈 커스터마이징
+                                    </button>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </section>
-
-                <section id="skills">
-                    <div class="container">
-                        <h2 class="section-title">🛠️ Technical Skills</h2>
-                        <div class="skills-showcase">
-                            <div class="skill-category">
-                                <h3>Programming & Scripting</h3>
-                                <div class="skills-bubble-container">
-                                    ${Object.entries(portfolioData.skills.programming.items).map(([key, item]) => `
-                                        <div class="skill-bubble" style="--size: ${0.9 - key * 0.05};">
-                                            <img src="${item.badge}" alt="${item.name}">
-                                            <span class="skill-level">${Math.round((0.9 - key * 0.05) * 100)}%</span>
-                                        </div>
-                                    `).join('')}
-                                </div>
+                </div>
+                
+                <div class="project-category">
+                    <h2>개인 프로젝트</h2>
+                    <div class="project-grid">
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>Coming Soon</h4>
+                                <span class="project-date"></span>
                             </div>
-                            
-                            <div class="skill-category">
-                                <h3>DevOps & Cloud</h3>
-                                <div class="skills-bubble-container">
-                                    ${Object.entries(portfolioData.skills.devops.items).map(([key, item]) => `
-                                        <div class="skill-bubble" style="--size: ${0.85 - key * 0.05};">
-                                            <img src="${item.badge}" alt="${item.name}">
-                                            <span class="skill-level">${Math.round((0.85 - key * 0.05) * 100)}%</span>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-
-                            <div class="skill-category">
-                                <h3>Development Tools</h3>
-                                <div class="skills-bubble-container">
-                                    ${Object.entries(portfolioData.skills.productivity.items).map(([key, item]) => `
-                                        <div class="skill-bubble" style="--size: ${0.8 - key * 0.05};">
-                                            <img src="${item.badge}" alt="${item.name}">
-                                            <span class="skill-level">${Math.round((0.8 - key * 0.05) * 100)}%</span>
-                                        </div>
-                                    `).join('')}
-                                </div>
+                            <div class="project-content">
+                                <p class="project-description">개인 프로젝트 준비 중...</p>
                             </div>
                         </div>
                     </div>
-                </section>
-            `;
-            app.appendChild(mainContent);
-        }
-
-        // Initialize when DOM is loaded
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM Content Loaded');
-            initializeDOMStructure();
-            
-            // 모든 컨테이너를 즉시 표시
-            document.querySelectorAll('.container, .skills-showcase, .skill-category').forEach(element => {
-                element.style.opacity = '1';
-                element.style.transform = 'translateY(0)';
-            });
-            
-            // 스크롤 이벤트 리스너 추가
-            window.addEventListener('scroll', handleScroll);
-        });
-
-        // 스타일 초기화를 위한 즉시 실행 함수
-        (function() {
-            // 모든 컨테이너를 즉시 표시
-            document.querySelectorAll('.container').forEach(container => {
-                container.style.opacity = '1';
-                container.style.transform = 'translateY(0)';
-            });
-
-            // 스킬 쇼케이스 섹션을 즉시 표시
-            document.querySelectorAll('.skills-showcase').forEach(showcase => {
-                showcase.style.opacity = '1';
-                showcase.style.transform = 'translateY(0)';
-            });
-        })();
-    </script>
+                </div>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="video-container">
+                <iframe id="videoFrame" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
