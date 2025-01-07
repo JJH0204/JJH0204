@@ -7,7 +7,7 @@
   안녕하세요! 👋 KRJaeh0입니다
 
   제 GitHub 프로필에 오신 것을 환영합니다!  
-  저는 웹 개발, 컴퓨터 공학, 정보보안, 게임 개발에 깊은 관심을 가지고 있는 개발자입니다.  
+  저는 **정보보안**, **게임 개발**, **컴퓨터 공학**, **웹 개발**에 깊은 관심을 가지고 있는 개발자입니다.  
   단계적인 성장을 통해 탄탄한 기초를 쌓아가는 것을 목표로 하고 있습니다.
 
   <div style="font-weight: 600; font-size: 14px; text-align: left; color: #282d33;"> 🔍 관심 분야 </div>
@@ -81,13 +81,19 @@
 </div>
 
 <div style="text-align: left;">
+  <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🔗 Portfolio </h2>
+  <div style="margin: 0; text-align: left;">
+    <a href="https://jjh0204.github.io/JJH0204/">
+      <img src="https://img.shields.io/badge/Portfolio-222222?style=for-the-badge&logo=GitHub Pages&logoColor=white">
+    </a>
+  </div>
+</div>
+
+<div style="text-align: left;">
   <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🧑‍💻 Contact me </h2>
   <div style="margin-top: 10px;">
     <a href="mailto:jaeho6627@kakao.com">
       <img src="https://img.shields.io/badge/Kakao-FFCD00?style=for-the-badge&logo=KakaoTalk&logoColor=black">
-    </a>
-    <a href="https://jjh0204.github.io/JJH0204/">
-      <img src="https://img.shields.io/badge/Portfolio-222222?style=for-the-badge&logo=GitHub Pages&logoColor=white">
     </a>
     <a href="https://discord.com/users/369064974087356416">
       <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white">
