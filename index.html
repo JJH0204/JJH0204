@@ -31,20 +31,6 @@
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .container.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
         /* Navigation */
         nav {
             background-color: rgba(39, 115, 66, 0.95);
@@ -112,39 +98,91 @@
             width: 100%;
         }
 
-        /* Sections */
+        /* Section styles */
         section {
             padding: 80px 0;
             min-height: 100vh;
-            position: relative;
-            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            width: 100%;
         }
 
         .section-title {
             font-size: 2.5rem;
             color: var(--primary-color);
-            margin-bottom: 2rem;
             text-align: center;
+            margin-bottom: 3rem;
             position: relative;
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .section-title.visible {
-            opacity: 1;
-            transform: translateY(0);
+            padding-bottom: 1rem;
         }
 
         .section-title::after {
             content: '';
             position: absolute;
-            bottom: -10px;
+            bottom: 0;
             left: 50%;
             transform: translateX(-50%);
-            width: 50px;
-            height: 3px;
-            background-color: var(--secondary-color);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            border-radius: 2px;
+        }
+
+        /* About section styles */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            line-height: 1.8;
+        }
+
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
+            opacity: 0.9;
+        }
+
+        .profile-info {
+            margin-bottom: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .about-content p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 1.5rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            section {
+                padding: 40px 0;
+            }
         }
 
         /* Introduction */
@@ -240,9 +278,7 @@
 
         /* Skills */
         .skills-showcase {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
+            margin-top: 2rem;
             opacity: 0;
             transform: translateY(20px);
             transition: opacity 0.6s ease, transform 0.6s ease;
@@ -253,46 +289,193 @@
             transform: translateY(0);
         }
 
+        .skills-bubble-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            padding: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .skills-bubble-container.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-bubble {
+            position: relative;
+            transform: scale(calc(0.5 + var(--size) * 0.5));
+            transition: all 0.3s ease;
+            cursor: pointer;
+            opacity: 0;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0);
+            }
+            to {
+                opacity: 1;
+                transform: scale(calc(0.5 + var(--size) * 0.5));
+            }
+        }
+
+        .skill-bubble:hover {
+            transform: scale(calc((0.5 + var(--size) * 0.5) * 1.1));
+        }
+
         .skill-category {
             background: var(--card-bg);
             padding: 2rem;
             border-radius: 15px;
             box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+
+        .skill-category.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 1.4rem;
+            text-align: center;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1.5rem;
+            padding: 0 1rem;
+        }
+
+        .skill-item {
+            background: var(--card-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
 
-        .skill-category:hover {
+        .skill-item:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-        }
-
-        .skill-category::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
         }
 
         .skill-icon {
             width: 50px;
             height: 50px;
             margin: 0 auto 1rem;
-            transition: transform 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .skill-icon img {
-            width: 100%;
-            height: 100%;
+            max-width: 100%;
+            max-height: 100%;
             object-fit: contain;
         }
 
-        .skill-category:hover .skill-icon {
-            transform: rotate(360deg);
+        .skill-item span {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-color);
+        }
+
+        @media (max-width: 768px) {
+            .skills-grid {
+                grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+                gap: 1rem;
+            }
+
+            .skill-category h3 {
+                font-size: 1.2rem;
+            }
+
+            .skill-icon {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 0 0.5rem;
+            }
+
+            .skill-item {
+                padding: 0.8rem;
+            }
+
+            .skill-item span {
+                font-size: 0.8rem;
+            }
+        }
+
+        /* Skills Bubble Style */
+        .skills-bubble-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .skill-bubble {
+            position: relative;
+            transform: scale(calc(0.5 + var(--size) * 0.5));
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .skill-bubble:hover {
+            transform: scale(calc((0.5 + var(--size) * 0.5) * 1.1));
+        }
+
+        .skill-level {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .skill-bubble:hover .skill-level {
+            opacity: 1;
+        }
+
+        .skill-category {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .skill-category h3 {
+            color: var(--primary-color);
+            text-align: center;
+            margin-bottom: 1rem;
+            font-size: 1.4rem;
         }
 
         /* Projects */
@@ -316,25 +499,98 @@
             transform: translateY(-5px);
         }
 
-        /* Custom Cursor - Disabled
-        .cursor {
-            width: 20px;
-            height: 20px;
-            border: 2px solid var(--primary-color);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transition: transform 0.2s ease;
-            backdrop-filter: invert(1);
+        /* About Me Section Styles */
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+            line-height: 1.8;
         }
 
-        .cursor.hover {
-            transform: scale(1.5);
-            background-color: rgba(39, 115, 66, 0.1);
-            backdrop-filter: none;
+        .about-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            color: var(--text-color);
         }
-        */
+
+        .interests-section, .goals-section {
+            margin-top: 3rem;
+            padding: 0 20px;
+        }
+
+        .interests-grid, .goals-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 2rem auto;
+        }
+
+        .interest-item, .goal-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(78, 217, 127, 0.2);
+        }
+
+        .interest-item:hover, .goal-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(78, 217, 127, 0.1);
+        }
+
+        .interest-item i, .goal-item i {
+            font-size: 2.5rem;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .interest-item p, .goal-item p {
+            font-size: 1rem;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        /* 반응형 미디어 쿼리 */
+        @media (max-width: 768px) {
+            .interests-grid, .goals-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+
+            .about-content {
+                padding: 10px;
+            }
+
+            .interest-item, .goal-item {
+                padding: 1.5rem;
+            }
+
+            .interest-item i, .goal-item i {
+                font-size: 2rem;
+            }
+
+            .interest-item p, .goal-item p {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .interests-section h3, .goals-section h3 {
+                font-size: 1.4rem;
+            }
+
+            .about-content p {
+                font-size: 1rem;
+            }
+        }
 
         /* Responsive Design */
         @media (max-width: 768px) {
@@ -383,33 +639,25 @@
                 programming: {
                     title: "Programming Languages",
                     items: [
-                        { name: "Python", icon: "assets/python.svg" },
-                        { name: "C", icon: "assets/C.svg" },
-                        { name: "C++", icon: "assets/CPP.svg" },
-                        { name: "C#", icon: "assets/CSharp.svg" }
+                        { name: "Python", badge: "https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white" },
+                        { name: "C", badge: "https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=C&logoColor=white" },
+                        { name: "C++", badge: "https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=C%2B%2B&logoColor=white" },
+                        { name: "C#", badge: "https://img.shields.io/badge/CSharp-239120?style=for-the-badge&logo=CSharp&logoColor=white" }
                     ]
                 },
                 devops: {
-                    title: "DevOps Tools",
+                    title: "DevOps & Tools",
                     items: [
-                        { name: "Docker", icon: "assets/Docker.png" },
-                        { name: "Kubernetes", icon: "assets/Kubernetes.svg" },
-                        { name: "Git", icon: "assets/git.png" },
-                        { name: "GitHub", icon: "assets/github.png" }
+                        { name: "Docker", badge: "https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=Docker&logoColor=white" },
+                        { name: "Kubernetes", badge: "https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=Kubernetes&logoColor=white" },
+                        { name: "Git", badge: "https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white" },
+                        { name: "MySQL", badge: "https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=MySQL&logoColor=white" }
                     ]
                 },
-                dataScience: {
-                    title: "Data Science",
+                productivity: {
+                    title: "Productivity & AI",
                     items: [
-                        { name: "NumPy", icon: "assets/NumPy_logo_2020.svg.png" },
-                        { name: "Pandas", icon: "assets/Pandas_logo.svg" },
-                        { name: "Selenium", icon: "assets/python_selenium.png" }
-                    ]
-                },
-                gamedev: {
-                    title: "Game Development",
-                    items: [
-                        { name: "Unity", icon: "assets/Unity_2021.svg.png" }
+                        { name: "Microsoft365", badge: "https://img.shields.io/badge/Microsoft365-B7472A?style=for-the-badge&logo=Microsoft365&logoColor=white" }
                     ]
                 }
             },
@@ -453,6 +701,7 @@
         // Initialize DOM structure
         function initializeDOMStructure() {
             const app = document.getElementById('app');
+            app.innerHTML = ''; // Clear existing content
             
             // Create navigation
             const nav = document.createElement('nav');
@@ -467,230 +716,133 @@
                     </ul>
                 </div>
             `;
+            app.appendChild(nav);
             
             // Create main sections
-            const sections = [
-                {
-                    id: 'introduction',
-                    content: `
-                        <div class="container">
-                            <div class="profile-image">
-                                <img src="assets/Profile.JPG" alt="정재호 프로필">
-                            </div>
-                            <div class="welcome-text">
-                                <h1>안녕하세요,<br>저는 ${portfolioData.introduction.name}입니다</h1>
-                                <p class="subtitle">Game Planner & Developer</p>
+            const mainContent = document.createElement('main');
+            mainContent.innerHTML = `
+                <section id="introduction">
+                    <div class="container">
+                        <div class="profile-image">
+                            <img src="assets/Profile.JPG" alt="정재호 프로필">
+                        </div>
+                        <div class="welcome-text">
+                            <h1>안녕하세요,<br>엔지니어 ${portfolioData.introduction.name}입니다</h1>
+                            <p class="subtitle">Planner & Developer & Engineer</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="about">
+                    <div class="container">
+                        <h2 class="section-title">🙌 About Me</h2>
+                        <div class="profile-info">
+                            <div class="about-content">
+                                <p>웹 개발, 컴퓨터 공학, 정보보안, 게임 개발에 깊은 관심을 가지고 있는 개발자입니다.</p>
+                                <p>꾸준한 자기개발과 다양한 프로젝트 경험을 통해 탄탄한 내실을 다지고,</p>
+                                <p>이를 바탕으로 전문성을 키워가는 것을 목표로 하고 있습니다.</p>
+                                <p> 새로운 기술과 지식을 배우며 성장해 나가고, 이를 통해 개인과 조직의 발전에 기여하고자 합니다.</p>
                             </div>
                         </div>
-                    `
-                },
-                {
-                    id: 'about',
-                    content: `
-                        <div class="container">
-                            <h2 class="section-title">About Me</h2>
-                            <div class="profile-info">
-                                <div class="info-grid">
-                                    <div class="info-item">
-                                        <i class="fas fa-calendar"></i>
-                                        <span>${portfolioData.introduction.birth} (만 26세)</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <i class="fas fa-flag"></i>
-                                        <span>${portfolioData.introduction.military.split('(')[0]}</span>
-                                    </div>
-                                    <div class="info-item">
-                                        <i class="fas fa-star"></i>
-                                        <span>${portfolioData.introduction.military.split('(')[1].replace(')', '')}</span>
-                                    </div>
+                        <div class="interests-section">
+                            <h3>🔍 관심 분야</h3>
+                            <div class="interests-grid">
+                                <div class="interest-item">
+                                    <i class="fas fa-shield-alt"></i>
+                                    <p>정보보안: 보안의 기초부터 실전까지 차근차근 학습 중</p>
                                 </div>
-                            </div>
-                            <div class="education-timeline">
-                                <h3>Education</h3>
-                                <div class="timeline">
-                                    ${portfolioData.education.map(edu => {
-                                        const [title, period] = edu.split(' (');
-                                        return `
-                                            <div class="timeline-item">
-                                                <div class="timeline-dot"></div>
-                                                <div class="timeline-content">
-                                                    <h4>${title}</h4>
-                                                    <span class="date">${period.replace(')', '')}</span>
-                                                </div>
-                                            </div>
-                                        `;
-                                    }).join('')}
+                                <div class="interest-item">
+                                    <i class="fas fa-gamepad"></i>
+                                    <p>게임 개발: 게임 엔진과 게임 로직에 대해 공부하며 작은 프로젝트 진행 중</p>
+                                </div>
+                                <div class="interest-item">
+                                    <i class="fas fa-laptop-code"></i>
+                                    <p>컴퓨터 공학: 기초 이론부터 심화 과정까지 꾸준히 공부 중</p>
+                                </div>
+                                <div class="interest-item">
+                                    <i class="fas fa-globe"></i>
+                                    <p>웹 개발: 프론트엔드/백엔드 기술 스택 학습 중</p>
                                 </div>
                             </div>
                         </div>
-                    `
-                },
-                {
-                    id: 'skills',
-                    content: `
-                        <div class="container">
-                            <h2 class="section-title">Technical Skills</h2>
-                            <div class="skills-showcase">
-                                ${Object.entries(portfolioData.skills).map(([category, data]) => `
-                                    <div class="skill-category" data-category="${category}">
-                                        <h3>${data.title}</h3>
-                                        <div class="skills-grid">
-                                            ${data.items.map(item => `
-                                                <div class="skill-item">
-                                                    <div class="skill-icon">
-                                                        <img src="${item.icon}" alt="${item.name}">
-                                                    </div>
-                                                    <span>${item.name}</span>
-                                                </div>
-                                            `).join('')}
-                                        </div>
-                                    </div>
-                                `).join('')}
-                            </div>
-                        </div>
-                    `
-                },
-                {
-                    id: 'projects',
-                    content: `
-                        <div class="container">
-                            <h2 class="section-title">Projects</h2>
-                            <div class="projects-showcase">
-                                <div class="project-category">
-                                    <h3>Company Projects</h3>
-                                    ${portfolioData.projects.company.map(project => `
-                                        <div class="project-item">
-                                            <div class="project-header">
-                                                <img src="${project.logo}" alt="${project.company}" class="company-logo">
-                                                <h4>${project.name}</h4>
-                                            </div>
-                                            <ul>
-                                                ${project.details.map(detail => `<li>${detail}</li>`).join('')}
-                                            </ul>
+                    </div>
+                </section>
+
+                <section id="skills">
+                    <div class="container">
+                        <h2 class="section-title">🛠️ Technical Skills</h2>
+                        <div class="skills-showcase">
+                            <div class="skill-category">
+                                <h3>Programming & Scripting</h3>
+                                <div class="skills-bubble-container">
+                                    ${Object.entries(portfolioData.skills.programming.items).map(([key, item]) => `
+                                        <div class="skill-bubble" style="--size: ${0.9 - key * 0.05};">
+                                            <img src="${item.badge}" alt="${item.name}">
+                                            <span class="skill-level">${Math.round((0.9 - key * 0.05) * 100)}%</span>
                                         </div>
                                     `).join('')}
                                 </div>
-                                <div class="project-category">
-                                    <h3>Team Projects</h3>
-                                    ${renderProjects(portfolioData.projects.team)}
+                            </div>
+                            
+                            <div class="skill-category">
+                                <h3>DevOps & Cloud</h3>
+                                <div class="skills-bubble-container">
+                                    ${Object.entries(portfolioData.skills.devops.items).map(([key, item]) => `
+                                        <div class="skill-bubble" style="--size: ${0.85 - key * 0.05};">
+                                            <img src="${item.badge}" alt="${item.name}">
+                                            <span class="skill-level">${Math.round((0.85 - key * 0.05) * 100)}%</span>
+                                        </div>
+                                    `).join('')}
                                 </div>
-                                <div class="project-category">
-                                    <h3>Personal Projects</h3>
-                                    <ul>
-                                        ${portfolioData.projects.personal.map(project => `<li>${project}</li>`).join('')}
-                                    </ul>
+                            </div>
+
+                            <div class="skill-category">
+                                <h3>Development Tools</h3>
+                                <div class="skills-bubble-container">
+                                    ${Object.entries(portfolioData.skills.productivity.items).map(([key, item]) => `
+                                        <div class="skill-bubble" style="--size: ${0.8 - key * 0.05};">
+                                            <img src="${item.badge}" alt="${item.name}">
+                                            <span class="skill-level">${Math.round((0.8 - key * 0.05) * 100)}%</span>
+                                        </div>
+                                    `).join('')}
                                 </div>
                             </div>
                         </div>
-                    `
-                }
-            ];
-
-            // Add navigation to DOM
-            app.appendChild(nav);
-
-            // Create and add sections to DOM
-            sections.forEach(sectionData => {
-                const section = document.createElement('section');
-                section.id = sectionData.id;
-                section.className = 'full-section';
-                section.innerHTML = sectionData.content;
-                app.appendChild(section);
-            });
-        }
-
-        // Helper function to render projects
-        function renderProjects(projects) {
-            return projects.map(project => `
-                <div class="project-item">
-                    <h4>${project.name}</h4>
-                    <ul>
-                        ${project.details.map(detail => `<li>${detail}</li>`).join('')}
-                    </ul>
-                </div>
-            `).join('');
-        }
-
-        // Scroll animation
-        function handleScroll() {
-            const nav = document.querySelector('nav');
-            const scrollPosition = window.scrollY;
-
-            // Nav bar animation
-            if (scrollPosition > 50) {
-                nav.classList.add('scrolled');
-            } else {
-                nav.classList.remove('scrolled');
-            }
-
-            // Reveal animations for sections
-            document.querySelectorAll('.container, .section-title, .skills-showcase, .project-category').forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-
-                if (elementTop < windowHeight * 0.8) {
-                    element.classList.add('visible');
-                }
-            });
-        }
-
-        // Custom cursor - Disabled
-        /*
-        function initializeCursor() {
-            const cursor = document.querySelector('.cursor');
-            let mouseX = 0;
-            let mouseY = 0;
-            let cursorX = 0;
-            let cursorY = 0;
-
-            document.addEventListener('mousemove', (e) => {
-                mouseX = e.clientX;
-                mouseY = e.clientY;
-            });
-
-            function animateCursor() {
-                const ease = 0.1;
-                cursorX += (mouseX - cursorX) * ease;
-                cursorY += (mouseY - cursorY) * ease;
-                cursor.style.transform = `translate(${cursorX}px, ${cursorY}px)`;
-                requestAnimationFrame(animateCursor);
-            }
-
-            animateCursor();
-
-            // Hover effects
-            document.querySelectorAll('a, button, .skill-category, .project-item').forEach(element => {
-                element.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-                element.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-            });
-        }
-        */
-
-        // Smooth scroll
-        function initializeSmoothScroll() {
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = document.querySelector(this.getAttribute('href'));
-                    if (target) {
-                        target.scrollIntoView({
-                            behavior: 'smooth',
-                            block: 'start'
-                        });
-                    }
-                });
-            });
+                    </div>
+                </section>
+            `;
+            app.appendChild(mainContent);
         }
 
         // Initialize when DOM is loaded
         document.addEventListener('DOMContentLoaded', () => {
             console.log('DOM Content Loaded');
             initializeDOMStructure();
-            // initializeCursor(); // Disabled
-            initializeSmoothScroll();
-            handleScroll(); // Initial check for visible elements
+            
+            // 모든 컨테이너를 즉시 표시
+            document.querySelectorAll('.container, .skills-showcase, .skill-category').forEach(element => {
+                element.style.opacity = '1';
+                element.style.transform = 'translateY(0)';
+            });
+            
+            // 스크롤 이벤트 리스너 추가
             window.addEventListener('scroll', handleScroll);
         });
+
+        // 스타일 초기화를 위한 즉시 실행 함수
+        (function() {
+            // 모든 컨테이너를 즉시 표시
+            document.querySelectorAll('.container').forEach(container => {
+                container.style.opacity = '1';
+                container.style.transform = 'translateY(0)';
+            });
+
+            // 스킬 쇼케이스 섹션을 즉시 표시
+            document.querySelectorAll('.skills-showcase').forEach(showcase => {
+                showcase.style.opacity = '1';
+                showcase.style.transform = 'translateY(0)';
+            });
+        })();
     </script>
 </body>
 </html>
