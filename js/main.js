@@ -224,7 +224,6 @@ function initializeCharts() {
 
 // 프로젝트 필터링 기능
 function initializeProjectFilters() {
-    // 모든 프로젝트 섹션에 대해 필터링 적용
     document.querySelectorAll('.project-category').forEach(category => {
         const filters = category.querySelector('.project-filters');
         const grid = category.querySelector('.project-grid');
@@ -234,15 +233,6 @@ function initializeProjectFilters() {
         const buttons = filters.querySelectorAll('.filter-btn');
         const cards = grid.querySelectorAll('.project-card');
 
-        // 초기 상태 설정
-        cards.forEach(card => {
-            gsap.set(card, {
-                opacity: 1,
-                scale: 1,
-                display: 'block'
-            });
-        });
-
         buttons.forEach(button => {
             button.addEventListener('click', () => {
                 // 현재 카테고리 내의 버튼만 활성화 상태 변경
@@ -251,33 +241,15 @@ function initializeProjectFilters() {
 
                 const filter = button.getAttribute('data-filter');
 
-                // 카드 필터링 및 애니메이션
+                // 카드 필터링
                 cards.forEach(card => {
                     const tags = Array.from(card.querySelectorAll('.tag'))
                         .map(tag => tag.textContent.trim().slice(1));
 
-                    const matchesFilter = filter === 'all' || tags.includes(filter);
-                    const timeline = gsap.timeline();
-
-                    if (matchesFilter) {
-                        // 보여질 카드 애니메이션
-                        if (card.style.display === 'none') {
-                            gsap.set(card, { display: 'block', opacity: 0, scale: 0.8 });
-                            timeline.to(card, {
-                                opacity: 1,
-                                scale: 1,
-                                duration: 0.4,
-                                ease: 'back.out(1.7)'
-                            });
-                        }
+                    if (filter === 'all' || tags.includes(filter)) {
+                        card.style.display = 'block';
                     } else {
-                        // 숨겨질 카드 애니메이션
-                        timeline.to(card, {
-                            opacity: 0,
-                            scale: 0.8,
-                            duration: 0.3,
-                            ease: 'back.in(1.7)'
-                        }).set(card, { display: 'none' });
+                        card.style.display = 'none';
                     }
                 });
             });
