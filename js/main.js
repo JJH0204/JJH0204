@@ -290,6 +290,153 @@ function initializeVideoModal() {
     }
 }
 
+// GSAP Animations
+gsap.registerPlugin(ScrollTrigger);
+
+// 타임라인 아이템 애니메이션
+const timelineItems = document.querySelectorAll('.timeline-item');
+timelineItems.forEach((item, index) => {
+    gsap.from(item, {
+        scrollTrigger: {
+            trigger: item,
+            start: "top 80%",
+            end: "top 20%",
+            toggleActions: "play none none reverse"
+        },
+        opacity: 0,
+        x: index % 2 === 0 ? -50 : 50,
+        duration: 1,
+        ease: "power2.out"
+    });
+});
+
+// 프로젝트 카드 애니메이션
+const projectCards = document.querySelectorAll('.project-card');
+projectCards.forEach((card, index) => {
+    gsap.from(card, {
+        scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            end: "top 60%",
+            toggleActions: "play none none reverse"
+        },
+        opacity: 0,
+        y: 50,
+        duration: 0.8,
+        delay: index * 0.2,
+        ease: "back.out(1.2)"
+    });
+});
+
+// 필터 버튼 애니메이션
+const filterButtons = document.querySelectorAll('.filter-btn');
+gsap.from(filterButtons, {
+    opacity: 0,
+    y: 20,
+    duration: 0.5,
+    stagger: 0.1,
+    ease: "power2.out",
+    scrollTrigger: {
+        trigger: '.project-filters',
+        start: "top 90%"
+    }
+});
+
+// 스킬 섹션 애니메이션
+const skillItems = document.querySelectorAll('.skill-item');
+skillItems.forEach((item) => {
+    const progress = item.querySelector('.progress-bar');
+    const percentage = progress.getAttribute('data-progress');
+    
+    gsap.from(progress, {
+        scrollTrigger: {
+            trigger: item,
+            start: "top 80%",
+            end: "top 20%",
+            toggleActions: "play none none reverse"
+        },
+        width: "0%",
+        duration: 1.5,
+        ease: "power2.out"
+    });
+    
+    gsap.to(progress, {
+        scrollTrigger: {
+            trigger: item,
+            start: "top 80%"
+        },
+        width: percentage + "%",
+        duration: 1.5,
+        ease: "power2.out"
+    });
+});
+
+// 태그 애니메이션
+const tags = document.querySelectorAll('.tag');
+tags.forEach((tag) => {
+    tag.addEventListener('mouseenter', () => {
+        gsap.to(tag, {
+            scale: 1.1,
+            duration: 0.3,
+            ease: "back.out(1.5)"
+        });
+    });
+    
+    tag.addEventListener('mouseleave', () => {
+        gsap.to(tag, {
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    });
+});
+
+// 페이지 로드 애니메이션
+window.addEventListener('load', () => {
+    const tl = gsap.timeline();
+    
+    tl.from('nav', {
+        y: -100,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    })
+    .from('.section-title', {
+        opacity: 0,
+        y: 30,
+        duration: 0.8,
+        stagger: 0.2,
+        ease: "back.out(1.7)"
+    }, "-=0.5")
+    .from('.timeline-dot', {
+        scale: 0,
+        opacity: 0,
+        duration: 0.5,
+        stagger: 0.1,
+        ease: "back.out(1.7)"
+    }, "-=0.5");
+});
+
+// 비디오 버튼 호버 애니메이션
+const videoButtons = document.querySelectorAll('.video-btn');
+videoButtons.forEach((btn) => {
+    btn.addEventListener('mouseenter', () => {
+        gsap.to(btn, {
+            scale: 1.05,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    });
+    
+    btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, {
+            scale: 1,
+            duration: 0.3,
+            ease: "power2.out"
+        });
+    });
+});
+
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     console.log('DOM Content Loaded');
