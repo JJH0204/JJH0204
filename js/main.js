@@ -54,6 +54,36 @@ const skillsData = {
     }
 };
 
+// Navigation Active State
+function updateActiveNavigation() {
+    const sections = document.querySelectorAll('section[id]');
+    const navLinks = document.querySelectorAll('nav ul li a');
+    
+    // 현재 스크롤 위치
+    const scrollY = window.scrollY;
+    
+    // 각 섹션을 확인하여 현재 보이는 섹션 찾기
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop - 100; // 네비게이션 높이만큼 오프셋
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+        
+        if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+            // 모든 링크에서 active 클래스 제거
+            navLinks.forEach(link => link.classList.remove('active'));
+            
+            // 현재 섹션에 해당하는 링크에 active 클래스 추가
+            document.querySelector(`nav ul li a[href="#${sectionId}"]`)?.classList.add('active');
+        }
+    });
+
+    // 블로그 페이지 체크
+    if (window.location.pathname.includes('/blog')) {
+        navLinks.forEach(link => link.classList.remove('active'));
+        document.querySelector('nav ul li a[href$="/blog"]')?.classList.add('active');
+    }
+}
+
 // Navigation scroll effect
 function handleScroll() {
     const nav = document.querySelector('nav');
@@ -62,6 +92,7 @@ function handleScroll() {
     } else {
         nav.classList.remove('scrolled');
     }
+    updateActiveNavigation();
 }
 
 // Initialize skills section
