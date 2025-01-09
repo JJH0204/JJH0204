@@ -66,7 +66,7 @@ nav ul {
 }
 
 nav ul li a {
-    color: var(--light-color);
+    color: var(--text-color);
     text-decoration: none;
     font-weight: 500;
     position: relative;
@@ -74,24 +74,45 @@ nav ul li a {
     transition: all 0.3s ease;
 }
 
-nav ul li a:hover:not(.active) {
-    color: var(--primary-color);
-}
-
 nav ul li a::after {
     content: '';
     position: absolute;
-    bottom: -2px;
-    left: 16px;
-    width: calc(100% - 32px);
-    height: 2px;
-    background-color: var(--primary-color);
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: linear-gradient(90deg, var(--primary-color) 0%, #ffffff 100%);
     transform: scaleX(0);
-    transition: transform 0.3s ease;
+    transform-origin: right;
+    transition: transform 0.5s ease;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
 }
 
-nav ul li a:hover::after {
+nav ul li a:hover::after,
+nav ul li a.active::after {
     transform: scaleX(1);
+    transform-origin: left;
+}
+
+nav ul li a:hover {
+    color: #ffffff;
+}
+
+nav ul li a.active {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+nav .logo {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--primary-color);
+    text-decoration: none;
+    padding: 8px 16px;
+}
+
+nav .logo:hover {
+    color: #ffffff;
 }
 
 /* Navigation Active State */
