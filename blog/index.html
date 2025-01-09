@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>정재호의 기술 블로그</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="/css/blog.css">
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="/" class="logo">JH</a>
+            <ul>
+                <li><a href="/">Portfolio</a></li>
+                <li><a href="/blog" class="active">Blog</a></li>
+                <li><a href="/#about">About</a></li>
+                <li><a href="/#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="blog-header">
+            <div class="container">
+                <h1>기술 블로그</h1>
+                <p>웹 개발, 클라우드, DevOps에 대한 이야기를 공유합니다</p>
+            </div>
+        </section>
+
+        <section id="blog-categories">
+            <div class="container">
+                <div class="category-filters">
+                    <button class="category-btn active" data-category="all">전체</button>
+                    <button class="category-btn" data-category="web">Web</button>
+                    <button class="category-btn" data-category="cloud">Cloud</button>
+                    <button class="category-btn" data-category="devops">DevOps</button>
+                    <button class="category-btn" data-category="development">Development</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="blog-posts">
+            <div class="container">
+                <div class="posts-grid">
+                    <!-- 블로그 포스트들이 여기에 동적으로 추가됩니다 -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:jjh0204@naver.com">jjh0204@naver.com</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Links</h3>
+                    <ul class="social-links">
+                        <li>
+                            <a href="https://github.com/JJH0204" target="_blank">
+                                <i class="fab fa-github"></i>
+                                GitHub
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 정재호. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/blog.js"></script>
+</body>
+</html>

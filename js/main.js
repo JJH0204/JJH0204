@@ -191,6 +191,39 @@ function initializeCharts() {
     });
 }
 
+// 프로젝트 필터링
+document.querySelectorAll('.project-category').forEach(category => {
+    const filterButtons = category.querySelectorAll('.filter-btn');
+    const projectCards = category.querySelectorAll('.project-card');
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // 현재 카테고리 내의 버튼들만 활성 상태 변경
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const filter = button.dataset.filter;
+
+            projectCards.forEach(card => {
+                if (filter === 'all') {
+                    card.classList.remove('hidden');
+                } else {
+                    const tags = card.querySelectorAll('.tag');
+                    const hasTag = Array.from(tags).some(tag => 
+                        tag.textContent.slice(1) === filter
+                    );
+                    
+                    if (hasTag) {
+                        card.classList.remove('hidden');
+                    } else {
+                        card.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    });
+});
+
 // Video Modal Functionality
 function initializeVideoModal() {
     const modal = document.getElementById('videoModal');
