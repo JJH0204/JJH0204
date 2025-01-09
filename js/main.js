@@ -222,33 +222,41 @@ function initializeCharts() {
     });
 }
 
-// 프로젝트 필터링
-document.querySelectorAll('.project-category').forEach(category => {
-    const filterButtons = category.querySelectorAll('.filter-btn');
-    const projectCards = category.querySelectorAll('.project-card');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // 현재 카테고리 내의 버튼들만 활성 상태 변경
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
-            const filter = button.dataset.filter;
-
+// 프로젝트 필터링 기능
+document.querySelectorAll('.project-filters').forEach(filters => {
+    const projectGrid = filters.closest('.project-category').querySelector('.project-grid');
+    
+    filters.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // 활성 버튼 스타일 변경
+            filters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            const selectedFilter = btn.getAttribute('data-filter');
+            const projectCards = projectGrid.querySelectorAll('.project-card');
+            
             projectCards.forEach(card => {
-                if (filter === 'all') {
-                    card.classList.remove('hidden');
+                const tags = Array.from(card.querySelectorAll('.tag'))
+                    .map(tag => tag.textContent.slice(1)); // '#' 제거
+                
+                if (selectedFilter === 'all' || tags.includes(selectedFilter)) {
+                    // GSAP로 카드 표시 애니메이션
+                    gsap.to(card, {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.4,
+                        display: 'block',
+                        ease: 'back.out(1.7)'
+                    });
                 } else {
-                    const tags = card.querySelectorAll('.tag');
-                    const hasTag = Array.from(tags).some(tag => 
-                        tag.textContent.slice(1) === filter
-                    );
-                    
-                    if (hasTag) {
-                        card.classList.remove('hidden');
-                    } else {
-                        card.classList.add('hidden');
-                    }
+                    // GSAP로 카드 숨김 애니메이션
+                    gsap.to(card, {
+                        opacity: 0,
+                        scale: 0.8,
+                        duration: 0.4,
+                        display: 'none',
+                        ease: 'back.in(1.7)'
+                    });
                 }
             });
         });
@@ -448,44 +456,6 @@ projectCategories.forEach((category) => {
             duration: 0.8,
             delay: index * 0.2,
             ease: "back.out(1.7)"
-        });
-    });
-});
-
-// 필터 기능
-function filterProjects(category, container) {
-    const cards = container.querySelectorAll('.project-card');
-    cards.forEach(card => {
-        const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.slice(1));
-        if (category === 'all' || tags.includes(category)) {
-            gsap.to(card, {
-                opacity: 1,
-                scale: 1,
-                duration: 0.4,
-                display: 'block'
-            });
-        } else {
-            gsap.to(card, {
-                opacity: 0,
-                scale: 0.8,
-                duration: 0.4,
-                display: 'none'
-            });
-        }
-    });
-}
-
-// 필터 버튼 이벤트
-document.querySelectorAll('.project-filters').forEach(filters => {
-    const projectGrid = filters.nextElementSibling;
-    filters.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            // 활성 버튼 스타일 변경
-            filters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            // 프로젝트 필터링
-            filterProjects(btn.dataset.filter, projectGrid);
         });
     });
 });
