@@ -255,40 +255,44 @@ document.querySelectorAll('.project-category').forEach(category => {
     });
 });
 
-// Video Modal Functionality
-function initializeVideoModal() {
-    const modal = document.getElementById('videoModal');
-    const videoFrame = document.getElementById('videoFrame');
-    const closeBtn = document.querySelector('.close-modal');
-    const videoBtns = document.querySelectorAll('.video-btn');
+// 비디오 모달 기능
+const videoModal = document.getElementById('videoModal');
+const videoFrame = document.getElementById('videoFrame');
+const closeModal = document.querySelector('.close-modal');
+const videoButtons = document.querySelectorAll('.video-btn');
 
-    videoBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const videoId = btn.dataset.videoId;
-            videoFrame.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-            modal.classList.add('show');
-            document.body.style.overflow = 'hidden'; // 스크롤 방지
-        });
+videoButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        const videoId = button.getAttribute('data-video-id');
+        videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
+        videoModal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // 모달 열릴 때 스크롤 방지
     });
+});
 
-    closeBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => {
-        if (e.target === modal) closeModal();
-    });
+closeModal.addEventListener('click', () => {
+    videoModal.style.display = 'none';
+    videoFrame.src = ''; // iframe 소스 초기화
+    document.body.style.overflow = ''; // 스크롤 복원
+});
 
-    // ESC 키로 모달 닫기
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && modal.classList.contains('show')) {
-            closeModal();
-        }
-    });
-
-    function closeModal() {
-        modal.classList.remove('show');
+// 모달 외부 클릭 시 닫기
+window.addEventListener('click', (e) => {
+    if (e.target === videoModal) {
+        videoModal.style.display = 'none';
         videoFrame.src = '';
-        document.body.style.overflow = ''; // 스크롤 복원
+        document.body.style.overflow = '';
     }
-}
+});
+
+// ESC 키로 모달 닫기
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && videoModal.style.display === 'block') {
+        videoModal.style.display = 'none';
+        videoFrame.src = '';
+        document.body.style.overflow = '';
+    }
+});
 
 // GSAP Animations
 gsap.registerPlugin(ScrollTrigger);
@@ -492,6 +496,5 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeSkills();
     initializeAnimations();
     initializeCharts();
-    initializeVideoModal();
     window.addEventListener('scroll', handleScroll);
 });
