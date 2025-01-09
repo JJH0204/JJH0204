@@ -391,6 +391,121 @@ tags.forEach((tag) => {
     });
 });
 
+// 프로젝트 섹션 제목 애니메이션
+const projectTitles = document.querySelectorAll('.project-category h2');
+projectTitles.forEach((title) => {
+    // 텍스트를 글자 단위로 분리
+    const text = title.textContent;
+    const chars = text.split('');
+    title.textContent = '';
+    
+    // 각 글자를 span으로 감싸기
+    chars.forEach((char) => {
+        const span = document.createElement('span');
+        span.textContent = char;
+        span.style.display = 'inline-block';
+        title.appendChild(span);
+    });
+
+    // 글자별 애니메이션
+    gsap.from(title.children, {
+        scrollTrigger: {
+            trigger: title,
+            start: "top 80%",
+            end: "top 20%",
+            toggleActions: "play none none reverse"
+        },
+        opacity: 0,
+        scale: 0,
+        y: 100,
+        rotateX: -90,
+        stagger: 0.1,
+        duration: 0.8,
+        ease: "back.out(2)",
+    });
+});
+
+// 프로젝트 카드 애니메이션 강화
+projectCards.forEach((card, index) => {
+    gsap.from(card, {
+        scrollTrigger: {
+            trigger: card,
+            start: "top 90%",
+            end: "top 60%",
+            toggleActions: "play none none reverse"
+        },
+        opacity: 0,
+        scale: 0.8,
+        y: 100,
+        rotation: -5,
+        duration: 1,
+        delay: index * 0.2,
+        ease: "elastic.out(1, 0.5)"
+    });
+});
+
+// 필터 버튼 애니메이션 강화
+filterButtons.forEach((button) => {
+    gsap.from(button, {
+        opacity: 0,
+        scale: 0.5,
+        y: 50,
+        duration: 0.8,
+        stagger: 0.1,
+        ease: "back.out(2)",
+        scrollTrigger: {
+            trigger: '.project-filters',
+            start: "top 90%"
+        }
+    });
+});
+
+// 필터 버튼 호버 효과
+filterButtons.forEach((btn) => {
+    btn.addEventListener('mouseenter', () => {
+        gsap.to(btn, {
+            scale: 1.1,
+            backgroundColor: 'var(--primary-color)',
+            color: 'white',
+            duration: 0.3,
+            ease: "back.out(2)"
+        });
+    });
+    
+    btn.addEventListener('mouseleave', () => {
+        if (!btn.classList.contains('active')) {
+            gsap.to(btn, {
+                scale: 1,
+                backgroundColor: 'transparent',
+                color: 'var(--primary-color)',
+                duration: 0.3,
+                ease: "power2.out"
+            });
+        }
+    });
+});
+
+// 태그 애니메이션 강화
+tags.forEach((tag) => {
+    tag.addEventListener('mouseenter', () => {
+        gsap.to(tag, {
+            scale: 1.2,
+            rotation: 5,
+            duration: 0.4,
+            ease: "back.out(2)"
+        });
+    });
+    
+    tag.addEventListener('mouseleave', () => {
+        gsap.to(tag, {
+            scale: 1,
+            rotation: 0,
+            duration: 0.4,
+            ease: "power2.out"
+        });
+    });
+});
+
 // 페이지 로드 애니메이션
 window.addEventListener('load', () => {
     const tl = gsap.timeline();
