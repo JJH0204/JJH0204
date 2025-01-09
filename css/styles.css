@@ -404,10 +404,12 @@ section {
     border: 2px solid var(--primary-color);
     border-radius: 25px;
     background: transparent;
-    color: var(--primary-color);
+    color: var(--text-color);
     font-weight: 500;
     cursor: pointer;
     transition: all 0.3s ease;
+    opacity: 1;
+    transform: scale(1);
 }
 
 .filter-btn:hover,

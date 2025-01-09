@@ -235,8 +235,6 @@ function initializeProjectFilters() {
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
-            console.log('Filter button clicked:', button.getAttribute('data-filter')); // 디버깅용
-
             // 활성 버튼 변경
             filterButtons.forEach(btn => btn.classList.remove('active'));
             button.classList.add('active');
@@ -246,15 +244,14 @@ function initializeProjectFilters() {
             projectCards.forEach(card => {
                 const tags = Array.from(card.querySelectorAll('.tag'))
                     .map(tag => tag.textContent.trim().slice(1));
-                console.log('Card tags:', tags); // 디버깅용
 
                 if (filter === 'all' || tags.includes(filter)) {
-                    card.style.display = 'block';
                     gsap.to(card, {
                         opacity: 1,
                         scale: 1,
                         duration: 0.4,
-                        ease: 'back.out(1.7)'
+                        ease: 'back.out(1.7)',
+                        display: 'block'
                     });
                 } else {
                     gsap.to(card, {
@@ -262,9 +259,7 @@ function initializeProjectFilters() {
                         scale: 0.8,
                         duration: 0.3,
                         ease: 'back.in(1.7)',
-                        onComplete: () => {
-                            card.style.display = 'none';
-                        }
+                        display: 'none'
                     });
                 }
             });
