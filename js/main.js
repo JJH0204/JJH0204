@@ -224,53 +224,71 @@ function initializeCharts() {
 
 // 프로젝트 필터링 기능
 function initializeProjectFilters() {
-    const filters = document.querySelector('.project-filters');
-    if (!filters) return;
+    // 모든 프로젝트 섹션에 대해 필터링 적용
+    document.querySelectorAll('.project-category').forEach(category => {
+        const filters = category.querySelector('.project-filters');
+        const grid = category.querySelector('.project-grid');
+        
+        if (!filters || !grid) return;
 
-    const projectGrid = document.querySelector('.project-grid');
-    if (!projectGrid) return;
+        const buttons = filters.querySelectorAll('.filter-btn');
+        const cards = grid.querySelectorAll('.project-card');
 
-    const filterButtons = filters.querySelectorAll('.filter-btn');
-    const projectCards = projectGrid.querySelectorAll('.project-card');
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // 활성 버튼 변경
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
-            const filter = button.getAttribute('data-filter');
-            
-            projectCards.forEach(card => {
-                const tags = Array.from(card.querySelectorAll('.tag'))
-                    .map(tag => tag.textContent.trim().slice(1));
-
-                if (filter === 'all' || tags.includes(filter)) {
-                    gsap.to(card, {
-                        opacity: 1,
-                        scale: 1,
-                        duration: 0.4,
-                        ease: 'back.out(1.7)',
-                        display: 'block'
-                    });
-                } else {
-                    gsap.to(card, {
-                        opacity: 0,
-                        scale: 0.8,
-                        duration: 0.3,
-                        ease: 'back.in(1.7)',
-                        display: 'none'
-                    });
-                }
+        // 초기 상태 설정
+        cards.forEach(card => {
+            gsap.set(card, {
+                opacity: 1,
+                scale: 1,
+                display: 'block'
             });
         });
-    });
 
-    // 페이지 로드 시 '전체' 필터 활성화
-    const allFilter = filters.querySelector('[data-filter="all"]');
-    if (allFilter) {
-        allFilter.click();
-    }
+        buttons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 현재 카테고리 내의 버튼만 활성화 상태 변경
+                buttons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                // 카드 필터링 및 애니메이션
+                cards.forEach(card => {
+                    const tags = Array.from(card.querySelectorAll('.tag'))
+                        .map(tag => tag.textContent.trim().slice(1));
+
+                    const matchesFilter = filter === 'all' || tags.includes(filter);
+                    const timeline = gsap.timeline();
+
+                    if (matchesFilter) {
+                        // 보여질 카드 애니메이션
+                        if (card.style.display === 'none') {
+                            gsap.set(card, { display: 'block', opacity: 0, scale: 0.8 });
+                            timeline.to(card, {
+                                opacity: 1,
+                                scale: 1,
+                                duration: 0.4,
+                                ease: 'back.out(1.7)'
+                            });
+                        }
+                    } else {
+                        // 숨겨질 카드 애니메이션
+                        timeline.to(card, {
+                            opacity: 0,
+                            scale: 0.8,
+                            duration: 0.3,
+                            ease: 'back.in(1.7)'
+                        }).set(card, { display: 'none' });
+                    }
+                });
+            });
+        });
+
+        // 페이지 로드 시 '전체' 필터 활성화
+        const allFilter = filters.querySelector('[data-filter="all"]');
+        if (allFilter) {
+            allFilter.click();
+        }
+    });
 }
 
 // 비디오 모달 기능
