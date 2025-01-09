@@ -223,45 +223,48 @@ function initializeCharts() {
 }
 
 // 프로젝트 필터링 기능
-document.querySelectorAll('.project-filters').forEach(filters => {
-    const projectGrid = filters.closest('.project-category').querySelector('.project-grid');
-    
-    filters.querySelectorAll('.filter-btn').forEach(btn => {
-        btn.addEventListener('click', () => {
-            // 활성 버튼 스타일 변경
-            filters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            
-            const selectedFilter = btn.getAttribute('data-filter');
-            const projectCards = projectGrid.querySelectorAll('.project-card');
-            
-            projectCards.forEach(card => {
-                const tags = Array.from(card.querySelectorAll('.tag'))
-                    .map(tag => tag.textContent.slice(1)); // '#' 제거
+function initializeProjectFilters() {
+    document.querySelectorAll('.project-filters').forEach(filters => {
+        const projectGrid = filters.nextElementSibling;
+        if (!projectGrid) return;
+
+        const filterButtons = filters.querySelectorAll('.filter-btn');
+        const projectCards = projectGrid.querySelectorAll('.project-card');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // 활성 버튼 변경
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
                 
-                if (selectedFilter === 'all' || tags.includes(selectedFilter)) {
-                    // GSAP로 카드 표시 애니메이션
-                    gsap.to(card, {
-                        opacity: 1,
-                        scale: 1,
-                        duration: 0.4,
-                        display: 'block',
-                        ease: 'back.out(1.7)'
-                    });
-                } else {
-                    // GSAP로 카드 숨김 애니메이션
-                    gsap.to(card, {
-                        opacity: 0,
-                        scale: 0.8,
-                        duration: 0.4,
-                        display: 'none',
-                        ease: 'back.in(1.7)'
-                    });
-                }
+                projectCards.forEach(card => {
+                    const tags = Array.from(card.querySelectorAll('.tag'))
+                        .map(tag => tag.textContent.trim().slice(1));
+
+                    if (filter === 'all' || tags.includes(filter)) {
+                        gsap.to(card, {
+                            opacity: 1,
+                            scale: 1,
+                            duration: 0.4,
+                            display: 'block',
+                            ease: 'back.out(1.7)'
+                        });
+                    } else {
+                        gsap.to(card, {
+                            opacity: 0,
+                            scale: 0.8,
+                            duration: 0.3,
+                            display: 'none',
+                            ease: 'back.in(1.7)'
+                        });
+                    }
+                });
             });
         });
     });
-});
+}
 
 // 비디오 모달 기능
 const videoModal = document.getElementById('videoModal');
@@ -466,5 +469,6 @@ document.addEventListener('DOMContentLoaded', () => {
     initializeSkills();
     initializeAnimations();
     initializeCharts();
+    initializeProjectFilters();
     window.addEventListener('scroll', handleScroll);
 });

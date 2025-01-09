@@ -410,27 +410,27 @@ section {
     transition: all 0.3s ease;
 }
 
-.filter-btn:hover {
-    background-color: var(--primary-color);
-    color: white;
-    transform: translateY(-2px);
-}
-
+.filter-btn:hover,
 .filter-btn.active {
     background-color: var(--primary-color);
     color: white;
+}
+
+.filter-btn.active {
     transform: scale(1.05);
     box-shadow: 0 4px 15px rgba(39, 115, 66, 0.2);
 }
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
+    justify-items: center;
 }
 
 .project-card {
+    width: 350px;
     background: var(--card-bg);
     border-radius: 15px;
     overflow: hidden;
@@ -439,13 +439,9 @@ section {
     transform-origin: center;
 }
 
-.project-card.hidden {
-    display: none;
-}
-
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
 .project-header {
