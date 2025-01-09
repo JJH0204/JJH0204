@@ -293,6 +293,78 @@ function initializeVideoModal() {
 // GSAP Animations
 gsap.registerPlugin(ScrollTrigger);
 
+// 섹션 타이틀 애니메이션
+document.querySelectorAll('.section-title').forEach((title) => {
+    gsap.from(title, {
+        scrollTrigger: {
+            trigger: title,
+            start: "top 80%",
+            end: "top 20%",
+            toggleActions: "play none none none"
+        },
+        opacity: 0,
+        y: 50,
+        duration: 1,
+        ease: "back.out(1.7)"
+    });
+});
+
+// Introduction 섹션 애니메이션
+gsap.from('#introduction .content', {
+    scrollTrigger: {
+        trigger: '#introduction',
+        start: "top 80%",
+        toggleActions: "play none none none"
+    },
+    opacity: 0,
+    y: 30,
+    duration: 1,
+    ease: "power2.out"
+});
+
+// About 섹션 애니메이션
+gsap.from('#about .content', {
+    scrollTrigger: {
+        trigger: '#about',
+        start: "top 80%",
+        toggleActions: "play none none none"
+    },
+    opacity: 0,
+    y: 30,
+    duration: 1,
+    ease: "power2.out"
+});
+
+// 스킬 섹션 애니메이션
+const skillItems = document.querySelectorAll('.skill-item');
+skillItems.forEach((item, index) => {
+    const progress = item.querySelector('.progress-bar');
+    const percentage = progress.getAttribute('data-progress');
+    
+    gsap.from(item, {
+        scrollTrigger: {
+            trigger: item,
+            start: "top 90%",
+            toggleActions: "play none none none"
+        },
+        opacity: 0,
+        x: index % 2 === 0 ? -50 : 50,
+        duration: 0.8,
+        delay: index * 0.1
+    });
+    
+    gsap.to(progress, {
+        scrollTrigger: {
+            trigger: item,
+            start: "top 80%",
+            toggleActions: "play none none none"
+        },
+        width: percentage + "%",
+        duration: 1.5,
+        ease: "power2.out"
+    });
+});
+
 // 타임라인 아이템 애니메이션
 const timelineItems = document.querySelectorAll('.timeline-item');
 timelineItems.forEach((item, index) => {
@@ -300,8 +372,7 @@ timelineItems.forEach((item, index) => {
         scrollTrigger: {
             trigger: item,
             start: "top 80%",
-            end: "top 20%",
-            toggleActions: "play none none reverse"
+            toggleActions: "play none none none"
         },
         opacity: 0,
         x: index % 2 === 0 ? -50 : 50,
@@ -310,96 +381,15 @@ timelineItems.forEach((item, index) => {
     });
 });
 
-// 프로젝트 카드 애니메이션
-const projectCards = document.querySelectorAll('.project-card');
-projectCards.forEach((card, index) => {
-    gsap.from(card, {
-        scrollTrigger: {
-            trigger: card,
-            start: "top 90%",
-            end: "top 60%",
-            toggleActions: "play none none reverse"
-        },
-        opacity: 0,
-        y: 50,
-        duration: 0.8,
-        delay: index * 0.2,
-        ease: "back.out(1.2)"
-    });
-});
-
-// 필터 버튼 애니메이션
-const filterButtons = document.querySelectorAll('.filter-btn');
-gsap.from(filterButtons, {
-    opacity: 0,
-    y: 20,
-    duration: 0.5,
-    stagger: 0.1,
-    ease: "power2.out",
-    scrollTrigger: {
-        trigger: '.project-filters',
-        start: "top 90%"
-    }
-});
-
-// 스킬 섹션 애니메이션
-const skillItems = document.querySelectorAll('.skill-item');
-skillItems.forEach((item) => {
-    const progress = item.querySelector('.progress-bar');
-    const percentage = progress.getAttribute('data-progress');
-    
-    gsap.from(progress, {
-        scrollTrigger: {
-            trigger: item,
-            start: "top 80%",
-            end: "top 20%",
-            toggleActions: "play none none reverse"
-        },
-        width: "0%",
-        duration: 1.5,
-        ease: "power2.out"
-    });
-    
-    gsap.to(progress, {
-        scrollTrigger: {
-            trigger: item,
-            start: "top 80%"
-        },
-        width: percentage + "%",
-        duration: 1.5,
-        ease: "power2.out"
-    });
-});
-
-// 태그 애니메이션
-const tags = document.querySelectorAll('.tag');
-tags.forEach((tag) => {
-    tag.addEventListener('mouseenter', () => {
-        gsap.to(tag, {
-            scale: 1.1,
-            duration: 0.3,
-            ease: "back.out(1.5)"
-        });
-    });
-    
-    tag.addEventListener('mouseleave', () => {
-        gsap.to(tag, {
-            scale: 1,
-            duration: 0.3,
-            ease: "power2.out"
-        });
-    });
-});
-
-// 프로젝트 섹션 제목 애니메이션
-const projectTitles = document.querySelectorAll('.project-category h2');
-projectTitles.forEach((title) => {
-    // 텍스트를 글자 단위로 분리
+// 프로젝트 섹션 애니메이션
+const projectCategories = document.querySelectorAll('.project-category');
+projectCategories.forEach((category) => {
+    // 카테고리 제목 애니메이션
+    const title = category.querySelector('h2');
     const text = title.textContent;
     const chars = text.split('');
     title.textContent = '';
     
-    // 각 글자를 span으로 감싸기
     chars.forEach((char) => {
         const span = document.createElement('span');
         span.textContent = char;
@@ -407,147 +397,91 @@ projectTitles.forEach((title) => {
         title.appendChild(span);
     });
 
-    // 글자별 애니메이션
     gsap.from(title.children, {
         scrollTrigger: {
             trigger: title,
             start: "top 80%",
-            end: "top 20%",
-            toggleActions: "play none none reverse"
+            toggleActions: "play none none none"
         },
         opacity: 0,
         scale: 0,
-        y: 100,
+        y: 50,
         rotateX: -90,
         stagger: 0.1,
         duration: 0.8,
-        ease: "back.out(2)",
+        ease: "back.out(2)"
     });
-});
 
-// 프로젝트 카드 애니메이션 강화
-projectCards.forEach((card, index) => {
-    gsap.from(card, {
-        scrollTrigger: {
-            trigger: card,
-            start: "top 90%",
-            end: "top 60%",
-            toggleActions: "play none none reverse"
-        },
-        opacity: 0,
-        scale: 0.8,
-        y: 100,
-        rotation: -5,
-        duration: 1,
-        delay: index * 0.2,
-        ease: "elastic.out(1, 0.5)"
-    });
-});
+    // 필터 버튼 애니메이션
+    const filters = category.querySelector('.project-filters');
+    if (filters) {
+        gsap.from(filters.children, {
+            scrollTrigger: {
+                trigger: filters,
+                start: "top 85%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 30,
+            stagger: 0.1,
+            duration: 0.8,
+            ease: "back.out(1.7)"
+        });
+    }
 
-// 필터 버튼 애니메이션 강화
-filterButtons.forEach((button) => {
-    gsap.from(button, {
-        opacity: 0,
-        scale: 0.5,
-        y: 50,
-        duration: 0.8,
-        stagger: 0.1,
-        ease: "back.out(2)",
-        scrollTrigger: {
-            trigger: '.project-filters',
-            start: "top 90%"
-        }
-    });
-});
-
-// 필터 버튼 호버 효과
-filterButtons.forEach((btn) => {
-    btn.addEventListener('mouseenter', () => {
-        gsap.to(btn, {
-            scale: 1.1,
-            backgroundColor: 'var(--primary-color)',
-            color: 'white',
-            duration: 0.3,
-            ease: "back.out(2)"
+    // 프로젝트 카드 애니메이션
+    const cards = category.querySelectorAll('.project-card');
+    cards.forEach((card, index) => {
+        gsap.from(card, {
+            scrollTrigger: {
+                trigger: card,
+                start: "top 85%",
+                toggleActions: "play none none none"
+            },
+            opacity: 0,
+            y: 50,
+            scale: 0.8,
+            duration: 0.8,
+            delay: index * 0.2,
+            ease: "back.out(1.7)"
         });
     });
-    
-    btn.addEventListener('mouseleave', () => {
-        if (!btn.classList.contains('active')) {
-            gsap.to(btn, {
+});
+
+// 필터 기능
+function filterProjects(category, container) {
+    const cards = container.querySelectorAll('.project-card');
+    cards.forEach(card => {
+        const tags = Array.from(card.querySelectorAll('.tag')).map(tag => tag.textContent.slice(1));
+        if (category === 'all' || tags.includes(category)) {
+            gsap.to(card, {
+                opacity: 1,
                 scale: 1,
-                backgroundColor: 'transparent',
-                color: 'var(--primary-color)',
-                duration: 0.3,
-                ease: "power2.out"
+                duration: 0.4,
+                display: 'block'
+            });
+        } else {
+            gsap.to(card, {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.4,
+                display: 'none'
             });
         }
     });
-});
+}
 
-// 태그 애니메이션 강화
-tags.forEach((tag) => {
-    tag.addEventListener('mouseenter', () => {
-        gsap.to(tag, {
-            scale: 1.2,
-            rotation: 5,
-            duration: 0.4,
-            ease: "back.out(2)"
-        });
-    });
-    
-    tag.addEventListener('mouseleave', () => {
-        gsap.to(tag, {
-            scale: 1,
-            rotation: 0,
-            duration: 0.4,
-            ease: "power2.out"
-        });
-    });
-});
-
-// 페이지 로드 애니메이션
-window.addEventListener('load', () => {
-    const tl = gsap.timeline();
-    
-    tl.from('nav', {
-        y: -100,
-        opacity: 0,
-        duration: 1,
-        ease: "power3.out"
-    })
-    .from('.section-title', {
-        opacity: 0,
-        y: 30,
-        duration: 0.8,
-        stagger: 0.2,
-        ease: "back.out(1.7)"
-    }, "-=0.5")
-    .from('.timeline-dot', {
-        scale: 0,
-        opacity: 0,
-        duration: 0.5,
-        stagger: 0.1,
-        ease: "back.out(1.7)"
-    }, "-=0.5");
-});
-
-// 비디오 버튼 호버 애니메이션
-const videoButtons = document.querySelectorAll('.video-btn');
-videoButtons.forEach((btn) => {
-    btn.addEventListener('mouseenter', () => {
-        gsap.to(btn, {
-            scale: 1.05,
-            duration: 0.3,
-            ease: "power2.out"
-        });
-    });
-    
-    btn.addEventListener('mouseleave', () => {
-        gsap.to(btn, {
-            scale: 1,
-            duration: 0.3,
-            ease: "power2.out"
+// 필터 버튼 이벤트
+document.querySelectorAll('.project-filters').forEach(filters => {
+    const projectGrid = filters.nextElementSibling;
+    filters.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            // 활성 버튼 스타일 변경
+            filters.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            
+            // 프로젝트 필터링
+            filterProjects(btn.dataset.filter, projectGrid);
         });
     });
 });
