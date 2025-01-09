@@ -224,46 +224,58 @@ function initializeCharts() {
 
 // 프로젝트 필터링 기능
 function initializeProjectFilters() {
-    document.querySelectorAll('.project-filters').forEach(filters => {
-        const projectGrid = filters.nextElementSibling;
-        if (!projectGrid) return;
+    const filters = document.querySelector('.project-filters');
+    if (!filters) return;
 
-        const filterButtons = filters.querySelectorAll('.filter-btn');
-        const projectCards = projectGrid.querySelectorAll('.project-card');
+    const projectGrid = document.querySelector('.project-grid');
+    if (!projectGrid) return;
 
-        filterButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                // 활성 버튼 변경
-                filterButtons.forEach(btn => btn.classList.remove('active'));
-                button.classList.add('active');
+    const filterButtons = filters.querySelectorAll('.filter-btn');
+    const projectCards = projectGrid.querySelectorAll('.project-card');
 
-                const filter = button.getAttribute('data-filter');
-                
-                projectCards.forEach(card => {
-                    const tags = Array.from(card.querySelectorAll('.tag'))
-                        .map(tag => tag.textContent.trim().slice(1));
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            console.log('Filter button clicked:', button.getAttribute('data-filter')); // 디버깅용
 
-                    if (filter === 'all' || tags.includes(filter)) {
-                        gsap.to(card, {
-                            opacity: 1,
-                            scale: 1,
-                            duration: 0.4,
-                            display: 'block',
-                            ease: 'back.out(1.7)'
-                        });
-                    } else {
-                        gsap.to(card, {
-                            opacity: 0,
-                            scale: 0.8,
-                            duration: 0.3,
-                            display: 'none',
-                            ease: 'back.in(1.7)'
-                        });
-                    }
-                });
+            // 활성 버튼 변경
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            const filter = button.getAttribute('data-filter');
+            
+            projectCards.forEach(card => {
+                const tags = Array.from(card.querySelectorAll('.tag'))
+                    .map(tag => tag.textContent.trim().slice(1));
+                console.log('Card tags:', tags); // 디버깅용
+
+                if (filter === 'all' || tags.includes(filter)) {
+                    card.style.display = 'block';
+                    gsap.to(card, {
+                        opacity: 1,
+                        scale: 1,
+                        duration: 0.4,
+                        ease: 'back.out(1.7)'
+                    });
+                } else {
+                    gsap.to(card, {
+                        opacity: 0,
+                        scale: 0.8,
+                        duration: 0.3,
+                        ease: 'back.in(1.7)',
+                        onComplete: () => {
+                            card.style.display = 'none';
+                        }
+                    });
+                }
             });
         });
     });
+
+    // 페이지 로드 시 '전체' 필터 활성화
+    const allFilter = filters.querySelector('[data-filter="all"]');
+    if (allFilter) {
+        allFilter.click();
+    }
 }
 
 // 비디오 모달 기능
@@ -465,7 +477,7 @@ projectCategories.forEach((category) => {
 
 // Initialize everything when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('DOM Content Loaded');
+    console.log('DOM Content Loaded - Initializing filters'); // 디버깅용
     initializeSkills();
     initializeAnimations();
     initializeCharts();
