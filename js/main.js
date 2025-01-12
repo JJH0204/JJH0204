@@ -302,6 +302,22 @@ document.addEventListener('keydown', (e) => {
     }
 });
 
+// PDF Modal Handler
+document.addEventListener('DOMContentLoaded', function() {
+    const pdfLinks = document.querySelectorAll('.pdf-link');
+    const pdfViewer = document.getElementById('pdfViewer');
+
+    pdfLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const pdfPath = this.getAttribute('data-pdf');
+            pdfViewer.src = pdfPath;
+            const pdfModal = new bootstrap.Modal(document.getElementById('pdfModal'));
+            pdfModal.show();
+        });
+    });
+});
+
 // GSAP Animations
 gsap.registerPlugin(ScrollTrigger);
 

@@ -10,6 +10,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.4/ScrollTrigger.min.js"></script>
     <script src="/JJH0204/js/main.js" defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav>
@@ -429,23 +431,22 @@
                     <h2>팀 프로젝트</h2>
                     <div class="project-filters">
                         <button class="filter-btn active" data-filter="all">전체</button>
-                        <button class="filter-btn" data-filter="게임기획">게임기획</button>
-                        <button class="filter-btn" data-filter="시스템">시스템</button>
-                        <button class="filter-btn" data-filter="콘텐츠">콘텐츠</button>
-                        <button class="filter-btn" data-filter="레벨디자인">레벨디자인</button>
-                        <button class="filter-btn" data-filter="RnD">RnD</button>
-                        <button class="filter-btn" data-filter="DevSecOps">DevSecOps</button>
+                        <button class="filter-btn" data-filter="PM">PM</button>
+                        <button class="filter-btn" data-filter="CI/CD">CI/CD</button>
+                        <button class="filter-btn" data-filter="서버">서버</button>
+                        <button class="filter-btn" data-filter="웹">웹</button>
                     </div>
                     <div class="project-grid">
                         <div class="project-card">
                             <div class="project-header">
-                                <h4>DevSecOps 구축</h4>
+                                <h4>DevSecOps 환경 구축</h4>
                                 <span class="project-date">2025</span>
                             </div>
                             <div class="project-content">
-                                <p class="project-description">프로젝트 디렉팅</p>
+                                <p class="project-description">CI/CD 파이프라인 구축</p>
+                                <p class="project-description">환경 구축 가이드 문서 작성 및 웹 페이지 구현</p>
                                 <div class="project-tags">
-                                    <span class="tag">#프로젝트 관리</span>
+                                    <span class="tag">#PM</span>
                                     <span class="tag">#DevSecOps</span>
                                     <span class="tag">#CI/CD</span>
                                 </div>
@@ -457,6 +458,71 @@
                                     <a href="https://github.com/jinyeong001/DevSecOps.Full-Project" class="project-link" target="_blank" rel="noopener noreferrer">
                                         <i class="fab fa-github"></i>
                                         DevSecOps 프로젝트 소스
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>Flame-Wargame 웹 사이트 구현</h4>
+                                <span class="project-date">2024</span>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">서버 구축 및 웹 사이트 구현</p>
+                                <p class="project-description">wargame 문제 출제</p>
+                                <p class="project-description">git-action을 활용한 Docker Image 배포 자동화</p>
+                                <div class="project-tags">
+                                    <span class="tag">#PM</span>
+                                    <span class="tag">#서버</span>
+                                    <span class="tag">#CI/CD</span>
+                                    <span class="tag">#웹</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/JJH0204/Flame" class="project-link" target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-github"></i>
+                                        프로젝트 flame 깃 소스 페이지
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>Ignite-CTF 구현</h4>
+                                <span class="project-date">2024</span>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">CTF 시놉시스 설계</p>
+                                <p class="project-description">서버 구축 및 취약점 설계</p>
+                                <p class="project-description">git-action을 활용한 Docker Image 배포 자동화</p>
+                                <div class="project-tags">
+                                    <span class="tag">#PM</span>
+                                    <span class="tag">#서버</span>
+                                    <span class="tag">#CI/CD</span>
+                                    <span class="tag">#웹</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/JJH0204/Ignite_CTF" class="project-link" target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-github"></i>
+                                        프로젝트 Ignite-CTF 깃 소스 페이지
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>넷카마 키우기</h4>
+                                <span class="project-date">2025</span>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">Unity 2D Idle 장르 게임 구현</p>
+                                <p class="project-description">25년 상반기 프로토타입 구현 (Unity) 예정</p>
+                                <div class="project-tags">
+                                    <span class="tag">#Devlopment</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/JJH0204/Unity_GrowthGame" class="project-link" target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-github"></i>
+                                        프로젝트 넷카마 키우기 깃 소스 페이지
                                     </a>
                                 </div>
                             </div>
@@ -477,33 +543,64 @@
                     <div class="project-grid">
                         <div class="project-card">
                             <div class="project-header">
-                                <h4>Coming Soon</h4>
-                                <span class="project-date"></span>
+                                <h4>네트워크 서버 구축</h4>
+                                <span class="project-date">2024</span>
                             </div>
                             <div class="project-content">
-                                <p class="project-description">개인 프로젝트 준비 중...</p>
+                                <p class="project-description">네트워크 서버 구축</p>
+                                <div class="project-tags">
+                                    <span class="tag">#engineering</span>
+                                </div>
+                                <div class="project-links">
+                                    <div class="dropdown">
+                                        <a href="#" class="project-link dropdown-toggle" id="pdfDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                            <i class="fas fa-file-pdf"></i>
+                                            PDF 파일
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="pdfDropdown">
+                                            <li><a class="dropdown-item pdf-link" href="#" data-pdf="/assets/pdf/네트워크보안_실습과제.pdf">네트워크보안 실습과제</a></li>
+                                            <li><a class="dropdown-item pdf-link" href="#" data-pdf="/assets/pdf/네트워크서버구축_실습과제.pdf">네트워크서버구축 실습과제</a></li>
+                                            <li><a class="dropdown-item pdf-link" href="#" data-pdf="/assets/pdf/데이터베이스보안_실습과제.pdf">데이터베이스보안 실습과제</a></li>
+                                            <li><a class="dropdown-item pdf-link" href="#" data-pdf="/assets/pdf/모의해킹결과보고서.pdf">모의해킹 결과보고서</a></li>
+                                            <li><a class="dropdown-item pdf-link" href="#" data-pdf="/assets/pdf/시스템보안_실습과제.pdf">시스템보안 실습과제</a></li>
+                                            <li><a class="dropdown-item pdf-link" href="#" data-pdf="/assets/pdf/클라우드보안시스템관리및구축_실습과제.pdf">클라우드보안시스템 관리및구축 실습과제</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <div class="project-card">
                             <div class="project-header">
-                                <h4>DevSecOps 구축</h4>
-                                <span class="project-date">2025</span>
+                                <h4>C++언어 가이드 깃</h4>
+                                <span class="project-date">2024</span>
                             </div>
                             <div class="project-content">
-                                <p class="project-description">프로젝트 디렉팅</p>
+                                <p class="project-description"></p>
                                 <div class="project-tags">
-                                    <span class="tag">#프로젝트 관리</span>
-                                    <span class="tag">#DevSecOps</span>
-                                    <span class="tag">#CI/CD</span>
+                                    <span class="tag">#Devlopment</span>
                                 </div>
                                 <div class="project-links">
-                                    <a href="https://jinyeong001.github.io/DevSecOps.Full-Project/" class="project-link" target="_blank" rel="noopener noreferrer">
+                                    <a href="https://github.com/JJH0204/CPPBasics" class="project-link" target="_blank" rel="noopener noreferrer">
                                         <i class="fab fa-github"></i>
-                                        DevSecOps 환경구축 가이드(웹)
+                                        C++언어 가이드 깃 소스 페이지
                                     </a>
-                                    <a href="https://github.com/jinyeong001/DevSecOps.Full-Project" class="project-link" target="_blank" rel="noopener noreferrer">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-card">
+                            <div class="project-header">
+                                <h4>C언어 가이드 깃</h4>
+                                <span class="project-date">2024</span>
+                            </div>
+                            <div class="project-content">
+                                <p class="project-description">C언어의 기본 문법 학습 및 자료구조, 알고리즘 학습 자료 제작</p>
+                                <div class="project-tags">
+                                    <span class="tag">#Devlopment</span>
+                                </div>
+                                <div class="project-links">
+                                    <a href="https://github.com/JJH0204/DevBasics" class="project-link" target="_blank" rel="noopener noreferrer">
                                         <i class="fab fa-github"></i>
-                                        DevSecOps 프로젝트 소스
+                                        C언어 가이드 깃 소스 페이지
                                     </a>
                                 </div>
                             </div>
@@ -560,6 +657,19 @@
             <span class="close-modal">&times;</span>
             <div class="video-container">
                 <iframe id="videoFrame" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="pdfModalLabel">PDF 문서 보기</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe id="pdfViewer" style="width: 100%; height: 80vh;" frameborder="0"></iframe>
+                </div>
             </div>
         </div>
     </div>
