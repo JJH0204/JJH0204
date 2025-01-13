@@ -843,23 +843,52 @@ section {
         margin-bottom: 20px;
     }
 
-    /* Timeline 모바일 최적화 */
+    /* Timeline mobile optimization */
+    .timeline {
+        padding: 20px 0;
+    }
+
+    .timeline::before {
+        left: 0;
+    }
+
     .timeline-item {
-        margin-bottom: 30px;
+        margin: 30px 0;
+    }
+
+    .timeline-dot {
+        left: -6px;
+        width: 12px;
+        height: 12px;
+        transform: none;
+        top: 28px;
     }
 
     .timeline-content {
-        margin-left: 20px;
+        width: calc(100% - 30px);
+        margin-left: 30px !important;
+        margin-right: 0 !important;
+        padding: 25px;
+    }
+
+    .timeline-content::before {
+        left: -10px !important;
+        right: auto !important;
+    }
+
+    .timeline-header {
+        flex-direction: column;
+        align-items: flex-start;
     }
 
     .timeline-header h3 {
         font-size: 18px;
+        margin-bottom: 5px;
     }
 
     .timeline-period {
         font-size: 14px;
         display: block;
-        margin-top: 5px;
     }
 
     .timeline-body h4 {
@@ -883,23 +912,6 @@ section {
         font-size: 12px;
         padding: 4px 8px;
         margin: 2px;
-    }
-
-    /* Timeline 라인 조정 */
-    .timeline::before {
-        left: 0;
-    }
-
-    .timeline-dot {
-        left: -6px;
-        width: 12px;
-        height: 12px;
-    }
-
-    /* 전체 타임라인 왼쪽 정렬 */
-    .timeline-content {
-        width: calc(100% - 30px);
-        margin-left: 30px;
     }
 }
 
