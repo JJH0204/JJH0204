@@ -1850,10 +1850,6 @@ button,
   display: -webkit-flex;
   display: -ms-flex;
   display: flex;
-  -moz-flex-direction: row-reverse;
-  -webkit-flex-direction: row-reverse;
-  -ms-flex-direction: row-reverse;
-  flex-direction: row-reverse;
   min-height: 100vh; }
 
 /* Main */
@@ -2296,4 +2292,79 @@ button,
 #sidebar nav > ul > li > a,
 #sidebar nav > ul > li > ul > li > a {
     font-family: "Noto Sans KR", sans-serif;
+}
+
+/* Post Navigation */
+.post-navigation {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2em;
+}
+
+.post-navigation .button {
+    max-width: 45%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Recent Posts */
+.recent-posts {
+    margin: 2em 0;
+}
+
+.recent-posts h2 {
+    margin-bottom: 1.5em;
+    color: #3d4449;
+}
+
+.posts {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5em;
+}
+
+.post {
+    background: #ffffff;
+    border: 1px solid #e6e6e6;
+    border-radius: 4px;
+    transition: all 0.2s ease;
+}
+
+.post:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.post-link {
+    display: block;
+    padding: 1.5em;
+    text-decoration: none;
+    color: inherit;
+}
+
+.post h3 {
+    margin: 0 0 0.5em 0;
+    color: #3d4449;
+    font-size: 1.2em;
+    font-weight: 600;
+}
+
+.post-meta {
+    font-size: 0.9em;
+    color: #7f888f;
+}
+
+.post-meta .date {
+    margin-right: 1em;
+}
+
+.post-meta .tags {
+    color: #f56a6a;
+}
+
+.post-meta .tags:before {
+    content: "•";
+    margin-right: 0.5em;
+    color: #7f888f;
 }

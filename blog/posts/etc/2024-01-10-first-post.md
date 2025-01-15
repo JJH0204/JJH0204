@@ -1,14 +1,4 @@
----
-layout: post
-title: "블로그를 시작하며"
-date: 2024-01-10
-categories: [Development]
-tags: [Blog, GitHub Pages]
-description: "GitHub Pages를 활용한 개인 블로그를 시작하게 된 계기와 앞으로의 계획에 대해 이야기합니다."
----
-
 # 블로그를 시작하며
-
 안녕하세요! 저는 게임 기획자에서 웹 개발자로 전향하게 된 정재호입니다.
 이 블로그는 제가 개발자로서 성장해나가는 과정을 기록하고, 배운 것들을 공유하기 위해 시작하게 되었습니다.
 
