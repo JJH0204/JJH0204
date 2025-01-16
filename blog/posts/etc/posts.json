@@ -1,39 +1,11 @@
 {
   "posts": [
     {
-      "id": "2024-01-10-first-post",
-      "title": "블로그를 시작하며",
-      "date": "2024-01-16",
-      "tags": ["Blog", "GitHub Pages"],
-      "file": "2024-01-10-first-post.md"
-    },
-    {
-      "id": "hello-world",
-      "title": "안녕하세요!",
-      "date": "2024-01-16",
-      "tags": ["introduction", "blog"],
-      "file": "hello-world.md"
-    },
-    {
-      "id": "my-coding-journey",
-      "title": "개발자가 되기까지의 여정",
-      "date": "2024-01-15",
-      "tags": ["personal", "career", "development"],
-      "file": "my-coding-journey.md"
-    },
-    {
-      "id": "favorite-books-2024",
-      "title": "2024년 첫 달, 인상 깊게 읽은 책들",
-      "date": "2024-01-14",
-      "tags": ["books", "review", "personal"],
-      "file": "favorite-books-2024.md"
-    },
-    {
-      "id": "new-year-goals",
-      "title": "2024년 목표와 다짐",
-      "date": "2024-01-13",
-      "tags": ["goals", "personal", "development"],
-      "file": "new-year-goals.md"
+      "id": "20250116",
+      "title": "2025년 첫 블로그 게시물",
+      "date": "2025-01-16",
+      "tags": ["Blog"],
+      "file": "20250116.md"
     }
   ]
 }
