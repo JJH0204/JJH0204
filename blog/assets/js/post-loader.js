@@ -102,7 +102,7 @@ function displayRecentPosts(posts) {
 
     return `
         <section class="recent-posts">
-            <h2>최근 게시물</h2>
+            <h2>게시물</h2>
             <div class="posts">
                 ${postsHtml}
             </div>
