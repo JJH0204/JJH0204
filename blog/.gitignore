@@ -28,3 +28,5 @@ Temporary Items
 # Obsidian specific files
 .obsidian
 .obsidian/workspace
+.space
+.makemd
