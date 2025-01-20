@@ -13,6 +13,13 @@
       "date": "2025-01-20",
       "tags": ["Blog"],
       "file": "20250120.md"
+    },
+    {
+      "id": "testPost",
+      "title": "테스트 포스트",
+      "date": "2025-01-20",
+      "tags": ["Blog"],
+      "file": "testPost.md"
     }
   ]
 }
