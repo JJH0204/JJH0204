@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="macOS-style Portfolio">
+    <title>Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/macos.css">
+    <link rel="stylesheet" href="styles/themes.css">
+    <link rel="stylesheet" href="styles/launchpad.css">
+</head>
+<body class="macos-theme">
+    <!-- 메뉴바 -->
+    <div id="menubar">
+        <div class="menu-left">
+            <div class="apple-menu">
+                <img src="assets/icons/apple-logo.png" alt="Apple">
+            </div>
+            <div class="app-menu">Portfolio</div>
+            <div class="menu-items">
+                <span>파일</span>
+                <span>편집</span>
+                <span>보기</span>
+                <span>창</span>
+                <span>도움말</span>
+            </div>
+        </div>
+        <div class="menu-right">
+            <div id="system-menu">
+                <div class="menu-item" id="search-icon" title="Spotlight 검색">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="menu-item" id="control-center" title="제어 센터">
+                    <i class="fas fa-sliders-h"></i>
+                </div>
+                <div class="menu-item" id="wifi-status" title="Wi-Fi">
+                    <i class="fas fa-wifi"></i>
+                </div>
+                <div class="menu-item" id="battery-status" title="배터리">
+                    <i class="fas fa-battery-full"></i>
+                </div>
+                <span id="clock"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- 데스크탑 영역 -->
+    <div id="desktop">
+        <!-- 윈도우 창들이 이곳에 생성됨 -->
+        <div id="windows-container">
+            <!-- 윈도우 창 템플릿 -->
+            <div class="window" hidden>
+                <div class="window-header">
+                    <div class="window-controls">
+                        <button class="close"></button>
+                        <button class="minimize"></button>
+                        <button class="maximize"></button>
+                    </div>
+                    <div class="window-title"></div>
+                </div>
+                <div class="window-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dock -->
+    <div id="dock">
+        <div class="dock-container">
+            <div class="dock-item" title="About">
+                <img src="assets/icons/finder.png" alt="About">
+            </div>
+            <div class="dock-divider"></div>
+            <div class="dock-item" title="Projects" id="launchpad-trigger">
+                <img src="assets/icons/projects.png" alt="Projects">
+            </div>
+            <div class="dock-item" title="Blog">
+                <img src="assets/icons/safari.png" alt="Blog">
+            </div>
+            <div class="dock-item" title="Contact">
+                <img src="assets/icons/contact.png" alt="Contact">
+            </div>
+        </div>
+    </div>
+
+    <!-- 런치패드 -->
+    <div id="launchpad" class="hidden">
+        <div class="launchpad-search">
+            <input type="text" placeholder="프로젝트 검색">
+        </div>
+        <div class="launchpad-grid">
+            <!-- 프로젝트 아이템들은 JavaScript로 동적 생성됨 -->
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/windowManager.js"></script>
+    <script src="js/dockManager.js"></script>
+    <script src="js/launchpad.js"></script>
+    <script src="js/browserWindow.js"></script>
+    <script src="js/systemMenu.js"></script>
+</body>
+</html>

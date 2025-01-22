@@ -1,0 +1,65 @@
+/* 전역 스타일 */
+:root {
+    --taskbar-height: 40px;
+    --window-border-color: #dfdfdf;
+    --window-header-height: 30px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
+}
+
+/* 바탕화면 */
+#desktop {
+    height: calc(100vh - var(--taskbar-height));
+    padding: 20px;
+    position: relative;
+}
+
+/* 작업 표시줄 */
+#taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: var(--taskbar-height);
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    box-shadow: 0 -1px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 시작 메뉴 버튼 */
+#start-menu-btn {
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 8px;
+}
+
+#start-menu-btn:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+/* 시스템 트레이 */
+#system-tray {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 0 10px;
+}

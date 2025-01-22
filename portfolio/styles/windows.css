@@ -1,0 +1,88 @@
+/* 윈도우 스타일 */
+.window {
+    background: white;
+    border: 1px solid var(--window-border-color);
+    border-radius: 6px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+}
+
+.window-header {
+    height: var(--window-header-height);
+    background: #f0f0f0;
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    cursor: move;
+    user-select: none;
+}
+
+.window-title {
+    flex-grow: 1;
+    font-size: 14px;
+}
+
+.window-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.window-controls button {
+    width: 24px;
+    height: 24px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+}
+
+.window-controls button:hover {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.window-controls .close:hover {
+    background: #e81123;
+    color: white;
+}
+
+.window-content {
+    padding: 20px;
+    height: calc(100% - var(--window-header-height));
+    overflow: auto;
+}
+
+/* 작업 표시줄 앱 아이콘 */
+.running-app {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+}
+
+.running-app:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.running-app img {
+    width: 20px;
+    height: 20px;
+}
+
+/* 시작 메뉴 */
+#start-menu {
+    position: fixed;
+    bottom: var(--taskbar-height);
+    left: 0;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 8px 8px 0 0;
+    box-shadow: 0 -2px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+}
