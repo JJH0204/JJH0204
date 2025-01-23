@@ -1,3 +1,3 @@
 # Table of contents
 
-* [Test Page](README.md)
+* [Blog](README.md)
