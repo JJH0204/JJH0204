@@ -31,38 +31,32 @@
 <div style="text-align: left;">
   <h2 style="border-bottom: 1px solid #d8dee4; color: #282d33;"> 🛠️ Tech Stacks </h2>
   <div style="margin: 0; text-align: left;">
-<!-- Programming & Scripting -->
-<div style="font-weight: 600; font-size: 13px; color: #282d33;"> 💻 Programming & Scripting </div>
+<!-- Programming Languages -->
+<div style="font-weight: 600; font-size: 13px; color: #282d33;"> 💻 Programming Languages </div>
 <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=Python&logoColor=white">
 <img src="https://img.shields.io/badge/C-A8B9CC?style=for-the-badge&logo=C&logoColor=white">
-<img src="https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=C%2B%2B&logoColor=white">
-<img src="https://img.shields.io/badge/C%23-239120?style=for-the-badge&logo=C%23&logoColor=white">
 <br/><br/>
-<!-- Data Analysis -->
-<div style="font-weight: 600; font-size: 13px; color: #282d33;"> 📊 Data Analysis </div>
-<img src="https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=NumPy&logoColor=white">
-<img src="https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=Pandas&logoColor=white">
-<br/><br/>
-<!-- Development Environments -->
-<div style="font-weight: 600; font-size: 13px; color: #282d33;"> 🔧 Development Environments </div>
-<img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white">
-<img src="https://img.shields.io/badge/Unity-000000?style=for-the-badge&logo=Unity&logoColor=white">
-<img src="https://img.shields.io/badge/MacOS-000000?style=for-the-badge&logo=Apple&logoColor=white">
-<img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=Linux&logoColor=white">
-<br/><br/>
-<!-- Version Control & DevOps -->
-<div style="font-weight: 600; font-size: 13px; color: #282d33;"> 🚀 Version Control & DevOps </div>
+
+<!-- DevOps & Cloud -->
+<div style="font-weight: 600; font-size: 13px; color: #282d33;"> 🚀 DevOps & Cloud </div>
 <img src="https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=Git&logoColor=white">
 <img src="https://img.shields.io/badge/Github-181717?style=for-the-badge&logo=Github&logoColor=white">
 <img src="https://img.shields.io/badge/Github Actions-2088FF?style=for-the-badge&logo=Github Actions&logoColor=white">
+<img src="https://img.shields.io/badge/Linux-FCC624?style=for-the-badge&logo=Linux&logoColor=white">
 <br/><br/>
-<!-- Productivity & AI -->
-<div style="font-weight: 600; font-size: 13px; color: #282d33;"> 🤖 Productivity & AI </div>
-<img src="https://img.shields.io/badge/Microsoft365-B7472A?style=for-the-badge&logo=Microsoft365&logoColor=blue">
-<img src="https://img.shields.io/badge/Obsidian-483699?style=for-the-badge&logo=Obsidian&logoColor=white">
+
+<!-- Development Tools -->
+<div style="font-weight: 600; font-size: 13px; color: #282d33;"> 🛠️ Development Tools </div>
+<img src="https://img.shields.io/badge/Visual Studio Code-007ACC?style=for-the-badge&logo=Visual Studio Code&logoColor=white">
+<img src="https://img.shields.io/badge/MacOS-000000?style=for-the-badge&logo=Apple&logoColor=white">
+<br/><br/>
+
+<!-- Other Tools -->
+<div style="font-weight: 600; font-size: 13px; color: #282d33;"> 🔧 Other Tools </div>
 <img src="https://img.shields.io/badge/Notion-000000?style=for-the-badge&logo=Notion&logoColor=white">
-<img src="https://img.shields.io/badge/ChatGPT-00A67E?style=for-the-badge&logo=OpenAI&logoColor=white">
 <img src="https://img.shields.io/badge/Discord-5865F2?style=for-the-badge&logo=Discord&logoColor=white">
+<img src="https://img.shields.io/badge/ChatGPT-00A67E?style=for-the-badge&logo=OpenAI&logoColor=white">
+
 
   </div>
 </div>
