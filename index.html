@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>정재호 · IT 인프라 / 업무 자동화 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+  :root{
+    --paper:#F5F7F8;
+    --surface:#FFFFFF;
+    --ink:#141C26;
+    --ink-soft:#2C3947;
+    --muted:#5C6875;
+    --faint:#8A95A1;
+    --line:#E3E7EC;
+    --line-strong:#D2D8DF;
+    --teal:#0C7A85;
+    --teal-bright:#12A3AE;
+    --teal-wash:#E8F4F5;
+    --good:#1FA46B;
+    --amber:#C77D22;
+    --radius:14px;
+    --mono:'JetBrains Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+    --disp:'Space Grotesk','Pretendard',sans-serif;
+    --body:'Pretendard','Space Grotesk',sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    font-family:var(--body);
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 28px}
+
+  /* eyebrow / mono labels */
+  .eyebrow{
+    font-family:var(--mono);
+    font-size:.72rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--teal);
+    font-weight:600;
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .eyebrow::before{
+    content:"";width:20px;height:1.5px;background:var(--teal);display:inline-block;
+  }
+
+  /* ---------- HERO ---------- */
+  header.hero{
+    position:relative;
+    padding:64px 0 46px;
+    border-bottom:1px solid var(--line);
+    background:
+      linear-gradient(180deg,rgba(18,163,174,.05),rgba(18,163,174,0) 60%),
+      radial-gradient(circle at 1px 1px,var(--line-strong) 1px,transparent 0);
+    background-size:auto,22px 22px;
+  }
+  .hero-inner{position:relative}
+  .hero .eyebrow{margin-bottom:20px}
+  .hero h1{
+    font-family:var(--disp);
+    font-weight:600;
+    font-size:clamp(2.5rem,7vw,3.6rem);
+    letter-spacing:-.02em;
+    line-height:1.02;
+    color:var(--ink);
+  }
+  .hero h1 .en{
+    display:block;
+    font-size:clamp(.95rem,2.4vw,1.1rem);
+    font-weight:500;
+    letter-spacing:.02em;
+    color:var(--faint);
+    margin-top:10px;
+    font-family:var(--mono);
+  }
+  .hero .role{
+    margin-top:22px;
+    font-family:var(--disp);
+    font-size:clamp(1.15rem,3.4vw,1.5rem);
+    font-weight:500;
+    color:var(--teal);
+    letter-spacing:-.01em;
+  }
+  .hero .thesis{
+    margin-top:14px;
+    max-width:640px;
+    font-size:1.03rem;
+    color:var(--ink-soft);
+  }
+  .statusbar{
+    margin-top:30px;
+    display:flex;flex-wrap:wrap;gap:10px 12px;
+    align-items:center;
+  }
+  .pill{
+    font-family:var(--mono);
+    font-size:.74rem;
+    letter-spacing:.02em;
+    padding:6px 11px 6px 10px;
+    border:1px solid var(--line-strong);
+    border-radius:999px;
+    background:var(--surface);
+    color:var(--ink-soft);
+    display:inline-flex;align-items:center;gap:7px;
+    white-space:nowrap;
+  }
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--good);display:inline-block;flex:none}
+  .pill.live .dot{position:relative}
+  .pill.live .dot::after{
+    content:"";position:absolute;inset:-4px;border-radius:50%;
+    background:var(--good);opacity:.35;animation:pulse 2s ease-out infinite;
+  }
+  @keyframes pulse{0%{transform:scale(.6);opacity:.5}100%{transform:scale(1.8);opacity:0}}
+  .contact{
+    margin-top:26px;
+    display:flex;flex-wrap:wrap;gap:8px 22px;
+    font-family:var(--mono);font-size:.82rem;
+  }
+  .contact a,.contact span{color:var(--ink-soft);text-decoration:none;display:inline-flex;gap:8px;align-items:center}
+  .contact a:hover{color:var(--teal)}
+  .contact .k{color:var(--faint)}
+
+  /* ---------- SECTION scaffolding ---------- */
+  section{padding:46px 0;border-bottom:1px solid var(--line)}
+  .sec-head{margin-bottom:26px}
+  .sec-head h2{
+    font-family:var(--disp);
+    font-size:1.55rem;font-weight:600;letter-spacing:-.02em;margin-top:12px;
+  }
+
+  /* ---------- capabilities ---------- */
+  .caps{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .cap{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:20px 20px 18px;
+    position:relative;
+  }
+  .cap .cid{font-family:var(--mono);font-size:.7rem;color:var(--faint);letter-spacing:.08em}
+  .cap h3{font-size:1.02rem;font-weight:600;margin:9px 0 6px;color:var(--ink)}
+  .cap p{font-size:.9rem;color:var(--muted);line-height:1.6}
+
+  /* ---------- projects / services ---------- */
+  .svc{
+    background:var(--surface);
+    border:1px solid var(--line);
+    border-radius:var(--radius);
+    padding:24px 24px 22px;
+    margin-bottom:16px;
+    position:relative;
+    overflow:hidden;
+  }
+  .svc::before{
+    content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--teal);
+  }
+  .svc.hero-svc::before{width:4px;background:linear-gradient(180deg,var(--teal-bright),var(--teal))}
+  .svc-top{
+    display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;
+    margin-bottom:6px;
+  }
+  .svc-id{font-family:var(--mono);font-size:.72rem;color:var(--faint);letter-spacing:.1em}
+  .svc h3{font-family:var(--disp);font-size:1.28rem;font-weight:600;letter-spacing:-.01em;margin:4px 0 2px;color:var(--ink)}
+  .svc .meta{font-size:.85rem;color:var(--muted)}
+  .status{
+    font-family:var(--mono);font-size:.72rem;font-weight:500;
+    padding:5px 10px;border-radius:999px;display:inline-flex;align-items:center;gap:7px;
+    border:1px solid var(--line-strong);background:var(--paper);color:var(--ink-soft);white-space:nowrap;
+  }
+  .status.op{color:#0d7a53;background:#EAF7F0;border-color:#BCE6D2}
+  .status.op .dot{background:var(--good)}
+  .status.done{color:#3d4b59;background:var(--paper)}
+  .status.done .dot{background:var(--faint)}
+  .stack{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 14px}
+  .chip{
+    font-family:var(--mono);font-size:.72rem;
+    padding:4px 9px;border-radius:6px;
+    background:var(--teal-wash);color:var(--teal);border:1px solid #CDE7E9;
+  }
+  .svc ul{list-style:none;display:grid;gap:8px}
+  .svc li{position:relative;padding-left:20px;font-size:.94rem;color:var(--ink-soft);line-height:1.58}
+  .svc li::before{
+    content:"▹";position:absolute;left:0;top:0;color:var(--teal);font-size:.9rem;
+  }
+  .svc li b{color:var(--ink);font-weight:600}
+
+  /* ---------- tech stack ---------- */
+  .tech{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .techrow{
+    background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px 18px;
+  }
+  .techrow .lbl{
+    font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--teal);
+    text-transform:uppercase;font-weight:600;margin-bottom:10px;
+  }
+  .techrow .items{display:flex;flex-wrap:wrap;gap:6px}
+  .techrow .items span{
+    font-size:.82rem;color:var(--ink-soft);background:var(--paper);
+    border:1px solid var(--line);border-radius:6px;padding:3px 9px;
+  }
+
+  /* ---------- summary / timeline ---------- */
+  .grid2{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+  .block h4{
+    font-family:var(--mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--faint);margin-bottom:14px;font-weight:600;
+  }
+  .item{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--line)}
+  .item:last-child{border-bottom:none}
+  .item .when{font-family:var(--mono);font-size:.74rem;color:var(--faint);flex:none;width:118px;padding-top:2px}
+  .item .what strong{display:block;font-size:.95rem;font-weight:600;color:var(--ink)}
+  .item .what span{font-size:.85rem;color:var(--muted)}
+
+  /* ---------- footer ---------- */
+  footer{padding:52px 0 60px;text-align:left}
+  footer .eyebrow{margin-bottom:16px}
+  footer h2{font-family:var(--disp);font-size:1.7rem;font-weight:600;letter-spacing:-.02em;margin-bottom:10px}
+  footer p{color:var(--muted);margin-bottom:22px}
+  .fcontact{display:flex;flex-wrap:wrap;gap:10px}
+  .fbtn{
+    font-family:var(--mono);font-size:.82rem;text-decoration:none;
+    padding:10px 16px;border-radius:8px;border:1px solid var(--line-strong);
+    color:var(--ink);background:var(--surface);display:inline-flex;gap:8px;align-items:center;
+    transition:.15s;
+  }
+  .fbtn.primary{background:var(--teal);color:#fff;border-color:var(--teal)}
+  .fbtn:hover{transform:translateY(-1px);border-color:var(--teal)}
+  .fbtn.primary:hover{background:var(--teal-bright)}
+  .colophon{margin-top:34px;font-family:var(--mono);font-size:.7rem;color:var(--faint);letter-spacing:.03em}
+
+  /* ---------- reveal (progressive; hidden only when JS active) ---------- */
+  html.js .reveal{opacity:0;transform:translateY(14px)}
+  html.js .reveal.in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}
+  @media (prefers-reduced-motion:reduce){
+    html.js .reveal{opacity:1!important;transform:none!important}
+    .pill.live .dot::after{animation:none}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:640px){
+    .caps,.tech,.grid2{grid-template-columns:1fr}
+    .item .when{width:96px}
+    .wrap{padding:0 20px}
+  }
+
+  /* ---------- print / PDF ---------- */
+  @page{size:A4;margin:14mm 12mm}
+  @media print{
+    html.js .reveal{opacity:1!important;transform:none!important}
+    body{background:#fff}
+    .hero,section{border-bottom:1px solid var(--line)}
+    header.hero{padding-top:6px;background:linear-gradient(180deg,rgba(18,163,174,.05),transparent 55%)}
+    .svc,.cap,.techrow,.fbtn{break-inside:avoid}
+    section{padding:26px 0;break-inside:avoid-page}
+    .pill.live .dot::after{animation:none}
+    a{color:var(--ink)!important;text-decoration:none}
+    .fbtn.primary{color:#fff!important}
+    footer{padding-bottom:10px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap hero-inner">
+    <span class="eyebrow">Portfolio · IT Infrastructure · 2026</span>
+    <h1>정재호<span class="en">JUNG JAEHO — INFRA &amp; AUTOMATION</span></h1>
+    <div class="role">IT 인프라 · 업무 자동화</div>
+    <p class="thesis">오픈소스와 AI로 사내 IT 인프라를 직접 세우고, 반복 업무를 자동화하는 인프라 담당자입니다. 팀 협업 시스템을 밑바닥부터 설계·구축·운영해 왔습니다.</p>
+
+    <div class="statusbar">
+      <span class="pill live"><span class="dot"></span>지원 포지션 : 엔엑스쓰리게임즈 IT 인프라 담당자</span>
+      <span class="pill"><span class="dot" style="background:var(--teal-bright)"></span>서울 근무 가능</span>
+      <span class="pill"><span class="dot" style="background:var(--amber)"></span>DevSecOps · 클라우드 보안 수료</span>
+    </div>
+
+    <div class="contact">
+      <a href="mailto:snowduck0204@gmail.com"><span class="k">EMAIL</span>snowduck0204@gmail.com</a>
+      <a href="https://github.com/" target="_blank" rel="noopener"><span class="k">GITHUB</span>github.com/&lt;your-id&gt;</a>
+      <span><span class="k">BASE</span>대구 → 수도권 이전 예정</span>
+    </div>
+  </div>
+</header>
+
+<section id="caps">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Core Capabilities</span>
+      <h2>핵심 역량</h2>
+    </div>
+    <div class="caps">
+      <div class="cap reveal">
+        <div class="cid">CAP·01</div>
+        <h3>AI · 오픈소스 업무 자동화</h3>
+        <p>Whisper 전사, 자체 봇, 생성형 AI 도구로 회의록 작성·알림·개발 업무를 자동화. 실제 팀 업무에 적용해 운영 중.</p>
+      </div>
+      <div class="cap reveal">
+        <div class="cid">CAP·02</div>
+        <h3>사내 협업 인프라 구축</h3>
+        <p>NAS·Gitea·Plane 등 오픈소스를 직접 셀프호스팅해 팀의 Git·프로젝트 관리·백업 인프라를 설계·운영.</p>
+      </div>
+      <div class="cap reveal">
+        <div class="cid">CAP·03</div>
+        <h3>클라우드 · 네트워크 · 보안</h3>
+        <p>AWS·GCP·Docker 환경 운영, VPN·방화벽·패킷 분석 실무. DevSecOps 교육으로 IT 보안 기반 보유.</p>
+      </div>
+      <div class="cap reveal">
+        <div class="cid">CAP·04</div>
+        <h3>게임사 · 개발 환경 이해</h3>
+        <p>게임사 라이브 서비스 운영과 인디 게임 개발(Unity·3D 파이프라인) 경험으로 개발팀 워크플로를 이해.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Deployed Projects</span>
+      <h2>주요 프로젝트</h2>
+    </div>
+
+    <!-- SVC 01 -->
+    <article class="svc hero-svc reveal">
+      <div class="svc-top">
+        <div>
+          <div class="svc-id">SVC·01 — 인프라 / 자동화 담당</div>
+          <h3>재조합 (블루이글루) 게임 개발</h3>
+          <div class="meta">인디 게임 개발 · 팀 협업 인프라 &amp; 업무 자동화 구축 · 2026.02 ~ 현재</div>
+        </div>
+        <span class="status op"><span class="dot"></span>운영 중</span>
+      </div>
+      <div class="stack">
+        <span class="chip">NAS</span><span class="chip">Gitea</span><span class="chip">Plane</span>
+        <span class="chip">Whisper</span><span class="chip">Zoom AI</span>
+        <span class="chip">Discord Bot</span><span class="chip">Claude Code</span>
+      </div>
+      <ul>
+        <li><b>오픈소스 기반 팀 협업 인프라 구축·운영</b> — 리소스 백업용 NAS, Gitea Git 서버, Plane(Notion 대체) 프로젝트 관리 시스템을 직접 설계·구축·운영.</li>
+        <li><b>AI 기반 업무 프로세스 자동화</b> — Whisper 전사 + Zoom AI를 결합한 회의록 자동 생성 파이프라인, 자체 봇으로 Notion·Discord 알림 자동화.</li>
+        <li><b>생성형 AI를 활용한 개발 도구화</b> — Claude Code로 레벨 디자인 툴·URP 셰이더 등 자체 개발 도구를 구현, AI를 실제 개발 업무에 적용.</li>
+      </ul>
+    </article>
+
+    <!-- SVC 02 -->
+    <article class="svc reveal">
+      <div class="svc-top">
+        <div>
+          <div class="svc-id">SVC·02 — 네트워크 / 보안</div>
+          <h3>매장 관리 통신 시스템</h3>
+          <div class="meta">개인 프로젝트 · 디바이스 간 실시간 통신 &amp; 통신 보안 · 2025.11 ~ 2026.02</div>
+        </div>
+        <span class="status done"><span class="dot"></span>배포 완료</span>
+      </div>
+      <div class="stack">
+        <span class="chip">Python</span><span class="chip">.NET</span><span class="chip">WebSocket</span>
+        <span class="chip">Tailscale VPN</span><span class="chip">Firewall</span><span class="chip">Packet Analysis</span>
+      </div>
+      <ul>
+        <li><b>패킷 분석 기반 기능 분석</b> — 손님 PC → 카운터 PC 주문 접수 과정을 패킷 단위로 분석.</li>
+        <li><b>프록시·웹소켓 서버 구축</b> — Python 프록시 + .NET 웹소켓 서버로 주문을 태블릿 등 연결 디바이스에 전달하고 작업 상황을 실시간 공유.</li>
+        <li><b>VPN 기반 통신 보안</b> — Tailscale VPN 라우팅으로 통신 토폴로지 구성, 패킷 암호화 및 Windows 방화벽 정책 강화로 감청 위험 개선.</li>
+      </ul>
+    </article>
+
+    <!-- SVC 03 -->
+    <article class="svc reveal">
+      <div class="svc-top">
+        <div>
+          <div class="svc-id">SVC·03 — 클라우드 인프라 / PM</div>
+          <h3>TPS 슈팅 게임</h3>
+          <div class="meta">팀 프로젝트 · 클라우드 협업 인프라 &amp; 개발 전 과정 · 2025.06 ~ 2026.05 (11개월)</div>
+        </div>
+        <span class="status done"><span class="dot"></span>배포 완료</span>
+      </div>
+      <div class="stack">
+        <span class="chip">AWS</span><span class="chip">SVN</span><span class="chip">Unity</span><span class="chip">Addressable</span>
+      </div>
+      <ul>
+        <li><b>클라우드 기반 협업 인프라 구축</b> — AWS에 SVN 서버를 직접 구축해 개발 환경을 조성, 형상관리·리소스 공유 프로세스를 표준화.</li>
+        <li><b>개발 전체 파이프라인 실무</b> — 기획 초기부터 최종 빌드·배포까지 전 과정을 주도적으로 수행.</li>
+        <li><b>PM 및 시스템 구현</b> — 팀 커뮤니케이션 가이드라인 제시, 몬스터 AI 로직·Addressable 기반 메모리 최적화 수행.</li>
+      </ul>
+    </article>
+  </div>
+</section>
+
+<section id="tech">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Tech Stack</span>
+      <h2>기술 스택</h2>
+    </div>
+    <div class="tech">
+      <div class="techrow reveal">
+        <div class="lbl">자동화 · AI</div>
+        <div class="items"><span>Whisper</span><span>Claude Code</span><span>ComfyUI</span><span>자체 봇</span><span>Selenium</span></div>
+      </div>
+      <div class="techrow reveal">
+        <div class="lbl">클라우드 · 가상화</div>
+        <div class="items"><span>AWS</span><span>GCP</span><span>Docker</span></div>
+      </div>
+      <div class="techrow reveal">
+        <div class="lbl">네트워크 · 보안</div>
+        <div class="items"><span>Tailscale VPN</span><span>방화벽</span><span>패킷 분석</span><span>IDS/IPS</span><span>모니터링</span></div>
+      </div>
+      <div class="techrow reveal">
+        <div class="lbl">협업 · 형상관리</div>
+        <div class="items"><span>Git</span><span>SVN</span><span>Gitea</span><span>Plane</span><span>NAS</span></div>
+      </div>
+      <div class="techrow reveal">
+        <div class="lbl">언어</div>
+        <div class="items"><span>Python</span><span>C</span><span>C++</span><span>C#</span></div>
+      </div>
+      <div class="techrow reveal">
+        <div class="lbl">문서화</div>
+        <div class="items"><span>MS Office</span><span>회의록 자동화</span><span>업무 히스토리 관리</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Background</span>
+      <h2>이력 요약</h2>
+    </div>
+    <div class="grid2">
+      <div class="block reveal">
+        <h4>경력 · 교육</h4>
+        <div class="item"><div class="when">2026.03 ~</div><div class="what"><strong>코리아 IT 아카데미 대구</strong><span>IT 인프라·보안 강의 및 학습 멘토링 (프리랜서)</span></div></div>
+        <div class="item"><div class="when">2020.08 ~ 2023.04</div><div class="what"><strong>라온엔터테인먼트</strong><span>테일즈런너 라이브 서비스 운영·기획</span></div></div>
+        <div class="item"><div class="when">2024.08 ~ 2025.02</div><div class="what"><strong>DevSecOps 클라우드 보안 전문가 과정</strong><span>872시간 · 코리아 IT 아카데미 (산대특)</span></div></div>
+      </div>
+      <div class="block reveal">
+        <h4>학력 · 자격</h4>
+        <div class="item"><div class="when">2025.01 ~</div><div class="what"><strong>학점은행제 컴퓨터공학사</strong><span>국가평생교육진흥원 · 재학 중 (94/140)</span></div></div>
+        <div class="item"><div class="when">2025.06</div><div class="what"><strong>정보처리산업기사</strong><span>한국산업인력공단</span></div></div>
+        <div class="item"><div class="when">2017 ~ 2019</div><div class="what"><strong>육군 병장 만기전역</strong><span>병역 필</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span class="eyebrow">Let's build</span>
+    <h2>사내 인프라, 제가 세팅하겠습니다.</h2>
+    <p>오픈소스와 AI로 업무를 자동화하고, IT 인프라를 안정적으로 운영하는 일에 함께하고 싶습니다.</p>
+    <div class="fcontact">
+      <a class="fbtn primary" href="mailto:snowduck0204@gmail.com">✉ snowduck0204@gmail.com</a>
+      <a class="fbtn" href="https://github.com/" target="_blank" rel="noopener">⌘ github.com/&lt;your-id&gt;</a>
+    </div>
+    <div class="colophon">JUNG JAEHO · IT INFRASTRUCTURE PORTFOLIO · 2026 · built &amp; deployed by the candidate</div>
+  </div>
+</footer>
+
+<script>
+  document.documentElement.classList.add('js');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach((el,i)=>{ el.style.transitionDelay=(i%4*40)+'ms'; io.observe(el); });
+</script>
+</body>
+</html>
