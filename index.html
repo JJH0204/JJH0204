@@ -194,6 +194,40 @@
   }
   .svc li b{color:var(--ink);font-weight:600}
 
+  /* ---------- expandable detail ---------- */
+  .svc li.expandable{padding-left:20px}
+  .svc li.expandable summary{cursor:pointer;list-style:none}
+  .svc li.expandable summary::-webkit-details-marker{display:none}
+  .svc li.expandable::before{transition:transform .18s ease}
+  .svc li.expandable:has(details[open])::before{transform:rotate(90deg)}
+  .svc li.expandable summary:hover b{color:var(--teal)}
+  .expand-body{
+    margin-top:10px;padding:12px 14px;background:var(--paper);border:1px solid var(--line);
+    border-radius:10px;font-size:.86rem;color:var(--ink-soft);line-height:1.6;
+  }
+
+  /* ---------- architecture diagram ---------- */
+  .diagram-cap{
+    font-family:var(--mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--teal);font-weight:600;margin:16px 0 10px;
+  }
+  .diagram{
+    background:var(--paper);border:1px solid var(--line);border-radius:12px;
+    padding:14px;margin-bottom:4px;overflow-x:auto;
+  }
+  .diagram svg{display:block;width:100%;height:auto;min-width:520px}
+
+  /* ---------- screenshot gallery ---------- */
+  .shots{
+    display:flex;gap:12px;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x proximity;
+  }
+  .shots img{
+    height:220px;width:auto;flex:none;border-radius:10px;border:1px solid var(--line);
+    scroll-snap-align:start;background:var(--surface);
+  }
+  .shots::-webkit-scrollbar{height:6px}
+  .shots::-webkit-scrollbar-thumb{background:var(--line-strong);border-radius:3px}
+
   /* ---------- tech stack ---------- */
   .tech{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
   .techrow{
@@ -260,7 +294,10 @@
     body{background:#fff}
     .hero,section{border-bottom:1px solid var(--line)}
     header.hero{padding-top:6px;background:linear-gradient(180deg,rgba(18,163,174,.05),transparent 55%)}
-    .svc,.cap,.techrow,.fbtn{break-inside:avoid}
+    .svc,.cap,.techrow,.fbtn,.diagram{break-inside:avoid}
+    .shots{overflow-x:visible;flex-wrap:wrap}
+    .svc details:not([open]) .expand-body{display:block}
+    .svc li.expandable summary{cursor:default}
     section{padding:26px 0;break-inside:avoid-page}
     .pill.live .dot::after{animation:none}
     a{color:var(--ink)!important;text-decoration:none}
@@ -276,18 +313,17 @@
     <span class="eyebrow">Portfolio · IT Infrastructure · 2026</span>
     <h1>정재호<span class="en">JUNG JAEHO — INFRA &amp; AUTOMATION</span></h1>
     <div class="role">IT 인프라 · 업무 자동화</div>
-    <p class="thesis">오픈소스와 AI로 사내 IT 인프라를 직접 세우고, 반복 업무를 자동화하는 인프라 담당자입니다. 팀 협업 시스템을 밑바닥부터 설계·구축·운영해 왔습니다.</p>
+    <p class="thesis">게임 라이브 서비스 운영 경험(2년 8개월)을 바탕으로, 오픈소스와 AI로 사내 IT 인프라를 직접 세우고 반복 업무를 자동화하는 인프라 담당자입니다. 팀 협업 시스템을 밑바닥부터 설계·구축·운영해 왔습니다.</p>
 
     <div class="statusbar">
-      <span class="pill live"><span class="dot"></span>지원 포지션 : 엔엑스쓰리게임즈 IT 인프라 담당자</span>
-      <span class="pill"><span class="dot" style="background:var(--teal-bright)"></span>서울 근무 가능</span>
+      <span class="pill live"><span class="dot"></span>지원 분야 : 게임사 IT 인프라 담당자</span>
+      <span class="pill"><span class="dot" style="background:var(--teal-bright)"></span>합격 시 서울 즉시 이전 가능</span>
       <span class="pill"><span class="dot" style="background:var(--amber)"></span>DevSecOps · 클라우드 보안 수료</span>
     </div>
 
     <div class="contact">
       <a href="mailto:snowduck0204@gmail.com"><span class="k">EMAIL</span>snowduck0204@gmail.com</a>
-      <a href="https://github.com/" target="_blank" rel="noopener"><span class="k">GITHUB</span>github.com/&lt;your-id&gt;</a>
-      <span><span class="k">BASE</span>대구 → 수도권 이전 예정</span>
+      <a href="https://github.com/jjh0204" target="_blank" rel="noopener"><span class="k">GITHUB</span>github.com/jjh0204</a>
     </div>
   </div>
 </header>
@@ -311,13 +347,13 @@
       </div>
       <div class="cap reveal">
         <div class="cid">CAP·03</div>
-        <h3>클라우드 · 네트워크 · 보안</h3>
-        <p>AWS·GCP·Docker 환경 운영, VPN·방화벽·패킷 분석 실무. DevSecOps 교육으로 IT 보안 기반 보유.</p>
+        <h3>클라우드 · 네트워크 · 트러블슈팅</h3>
+        <p>AWS·GCP·Docker 환경 운영, VPN·방화벽·패킷 분석 및 장애 진단·트러블슈팅 실무. DevSecOps 교육으로 IT 보안 기반 보유.</p>
       </div>
       <div class="cap reveal">
         <div class="cid">CAP·04</div>
         <h3>게임사 · 개발 환경 이해</h3>
-        <p>게임사 라이브 서비스 운영과 인디 게임 개발(Unity·3D 파이프라인) 경험으로 개발팀 워크플로를 이해.</p>
+        <p>게임사 라이브 서비스 운영(2년 8개월)과 인디 게임 개발(Unity·3D 파이프라인) 경험으로 개발팀 워크플로를 이해.</p>
       </div>
     </div>
   </div>
@@ -341,12 +377,79 @@
         <span class="status op"><span class="dot"></span>운영 중</span>
       </div>
       <div class="stack">
-        <span class="chip">NAS</span><span class="chip">Gitea</span><span class="chip">Plane</span>
-        <span class="chip">Whisper</span><span class="chip">Zoom AI</span>
+        <span class="chip">NAS</span><span class="chip">Docker</span><span class="chip">Gitea</span><span class="chip">Plane</span>
+        <span class="chip">Focalboard</span><span class="chip">Whisper</span><span class="chip">Zoom AI</span>
         <span class="chip">Discord Bot</span><span class="chip">Claude Code</span>
       </div>
       <ul>
-        <li><b>오픈소스 기반 팀 협업 인프라 구축·운영</b> — 리소스 백업용 NAS, Gitea Git 서버, Plane(Notion 대체) 프로젝트 관리 시스템을 직접 설계·구축·운영.</li>
+        <li class="expandable">
+          <details>
+            <summary><b>오픈소스 기반 팀 협업 인프라 구축·운영</b> — iptime NAS 서버 위에 Docker 컨테이너로 Gitea·Plane을 구동하고, Focalboard로 통합 대시보드를 구현해 팀원이 한 곳에서 효율적으로 접속·관리하도록 설계.</summary>
+            <div class="expand-body">iptime NAS의 Docker 환경에 각 서비스를 독립 컨테이너로 배포. Focalboard(:8080)를 팀 진입점 대시보드로 두고, Gitea(:3000)로 형상관리, Plane(:8888)으로 프로젝트·이슈 트래킹을 운영하며, NAS 자체 파일 스토리지(:9800)는 리소스 백업 및 대용량 에셋 공유에 사용. 각 서비스는 내부망에서 포트 포워딩으로 팀원 누구나 URL 접속만으로 이용할 수 있도록 구성.</div>
+            <div class="diagram-cap">Architecture — NAS 기반 Docker 배포 구조</div>
+            <div class="diagram">
+              <svg viewBox="0 0 760 480" role="img" aria-label="iptime NAS 서버 위에서 Docker 컨테이너로 Gitea(3000번 포트)와 Plane(8888번 포트)을 구동하고, Focalboard(8080번 포트) 대시보드를 진입점으로 삼아 팀원이 접속하며, NAS 자체 파일 스토리지는 9800번 포트로 별도 제공하는 구조도">
+                <defs>
+                  <marker id="arrow-teal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0,0 L10,5 L0,10 z" style="fill:var(--teal)" />
+                  </marker>
+                </defs>
+
+                <!-- user -->
+                <rect x="290" y="8" width="180" height="40" rx="8" style="fill:var(--surface);stroke:var(--line-strong)"/>
+                <text x="380" y="32" text-anchor="middle" style="font-family:var(--mono);font-size:12px;fill:var(--ink-soft)">사용자 (팀원) 브라우저</text>
+                <line x1="380" y1="48" x2="380" y2="146" style="stroke:var(--teal);stroke-width:1.6" marker-end="url(#arrow-teal)"/>
+                <text x="392" y="100" style="font-family:var(--mono);font-size:10px;fill:var(--faint)">웹 접속</text>
+
+                <!-- host -->
+                <rect x="40" y="76" width="680" height="388" rx="14" style="fill:var(--paper);stroke:var(--line-strong);stroke-width:1.2"/>
+                <text x="56" y="98" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--faint)">IPTIME NAS 서버 · 호스트</text>
+
+                <!-- docker engine -->
+                <rect x="64" y="114" width="632" height="248" rx="12" style="fill:var(--surface);stroke:var(--line)"/>
+                <text x="80" y="136" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--teal)">DOCKER ENGINE · 컨테이너</text>
+
+                <!-- focalboard hub -->
+                <rect x="290" y="148" width="180" height="74" rx="10" style="fill:var(--teal-wash);stroke:var(--teal-bright);stroke-width:1.6"/>
+                <text x="380" y="170" text-anchor="middle" style="font-family:var(--disp);font-size:14px;font-weight:600;fill:var(--ink)">Focalboard</text>
+                <text x="380" y="187" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--teal)">통합 대시보드 · 진입점</text>
+                <rect x="350" y="196" width="60" height="18" rx="9" style="fill:var(--teal)"/>
+                <text x="380" y="209" text-anchor="middle" style="font-family:var(--mono);font-size:10.5px;font-weight:600;fill:#fff">:8080</text>
+
+                <!-- gitea -->
+                <rect x="100" y="266" width="210" height="82" rx="10" style="fill:var(--surface);stroke:var(--line-strong)"/>
+                <text x="205" y="292" text-anchor="middle" style="font-family:var(--disp);font-size:13.5px;font-weight:600;fill:var(--ink)">Gitea</text>
+                <text x="205" y="309" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--muted)">Git 서버 · 형상관리</text>
+                <rect x="175" y="318" width="60" height="18" rx="9" style="fill:var(--teal-wash);stroke:var(--teal-bright)"/>
+                <text x="205" y="331" text-anchor="middle" style="font-family:var(--mono);font-size:10.5px;font-weight:600;fill:var(--teal)">:3000</text>
+
+                <!-- plane -->
+                <rect x="450" y="266" width="210" height="82" rx="10" style="fill:var(--surface);stroke:var(--line-strong)"/>
+                <text x="555" y="292" text-anchor="middle" style="font-family:var(--disp);font-size:13.5px;font-weight:600;fill:var(--ink)">Plane</text>
+                <text x="555" y="309" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--muted)">프로젝트 관리 · Notion 대체</text>
+                <rect x="525" y="318" width="60" height="18" rx="9" style="fill:var(--teal-wash);stroke:var(--teal-bright)"/>
+                <text x="555" y="331" text-anchor="middle" style="font-family:var(--mono);font-size:10.5px;font-weight:600;fill:var(--teal)">:8888</text>
+
+                <!-- links from dashboard to services -->
+                <path d="M310,222 Q260,246 205,266" style="fill:none;stroke:var(--teal);stroke-width:1.4" marker-end="url(#arrow-teal)"/>
+                <path d="M450,222 Q500,246 555,266" style="fill:none;stroke:var(--teal);stroke-width:1.4" marker-end="url(#arrow-teal)"/>
+
+                <!-- nas storage (host-native, outside docker) -->
+                <line x1="380" y1="362" x2="380" y2="376" style="stroke:var(--line-strong);stroke-width:1"/>
+                <rect x="280" y="376" width="200" height="74" rx="10" style="fill:var(--surface);stroke:var(--line-strong);stroke-dasharray:5 3"/>
+                <text x="380" y="400" text-anchor="middle" style="font-family:var(--disp);font-size:13.5px;font-weight:600;fill:var(--ink)">NAS 저장소</text>
+                <text x="380" y="417" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--muted)">파일 스토리지 · 호스트 네이티브</text>
+                <rect x="350" y="426" width="60" height="18" rx="9" style="fill:var(--paper);stroke:var(--line-strong)"/>
+                <text x="380" y="439" text-anchor="middle" style="font-family:var(--mono);font-size:10.5px;font-weight:600;fill:var(--ink-soft)">:9800</text>
+              </svg>
+            </div>
+
+            <div class="diagram-cap">Screenshots</div>
+            <div class="shots">
+              <!-- 스크린샷 추가 위치: <img src="..." alt="..."> 를 이 안에 나열하면 좌우 스크롤 갤러리로 표시됩니다 -->
+            </div>
+          </details>
+        </li>
         <li><b>AI 기반 업무 프로세스 자동화</b> — Whisper 전사 + Zoom AI를 결합한 회의록 자동 생성 파이프라인, 자체 봇으로 Notion·Discord 알림 자동화.</li>
         <li><b>생성형 AI를 활용한 개발 도구화</b> — Claude Code로 레벨 디자인 툴·URP 셰이더 등 자체 개발 도구를 구현, AI를 실제 개발 업무에 적용.</li>
       </ul>
@@ -368,7 +471,59 @@
       </div>
       <ul>
         <li><b>패킷 분석 기반 기능 분석</b> — 손님 PC → 카운터 PC 주문 접수 과정을 패킷 단위로 분석.</li>
-        <li><b>프록시·웹소켓 서버 구축</b> — Python 프록시 + .NET 웹소켓 서버로 주문을 태블릿 등 연결 디바이스에 전달하고 작업 상황을 실시간 공유.</li>
+        <li class="expandable">
+          <details>
+            <summary><b>프록시·웹소켓 서버 구축</b> — Python 프록시 + .NET 웹소켓 서버로 주문을 태블릿 등 연결 디바이스에 전달하고 작업 상황을 실시간 공유.</summary>
+            <div class="expand-body">카운터 PC의 Python 프록시가 패킷을 분석해 주문 데이터를 추출하고, .NET WebSocket 서버가 이를 태블릿 등 연결된 디바이스로 실시간 브로드캐스트. 전 구간은 Tailscale VPN으로 구성된 사내망 안에서만 통신하도록 격리.</div>
+            <div class="diagram-cap">Architecture — Tailscale VPN 기반 실시간 통신 구조</div>
+            <div class="diagram">
+              <svg viewBox="0 0 760 340" role="img" aria-label="손님 PC의 주문이 카운터 PC의 Python 프록시로 전달되어 패킷 분석을 거치고, Tailscale VPN 터널로 암호화된 내부망에서 .NET WebSocket 서버와 태블릿 디바이스로 실시간 중계되는 구조도">
+                <defs>
+                  <marker id="arrow-teal-2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0,0 L10,5 L0,10 z" style="fill:var(--teal)" />
+                  </marker>
+                </defs>
+
+                <!-- 손님 PC -->
+                <rect x="290" y="8" width="180" height="40" rx="8" style="fill:var(--surface);stroke:var(--line-strong)"/>
+                <text x="380" y="32" text-anchor="middle" style="font-family:var(--mono);font-size:12px;fill:var(--ink-soft)">손님 PC · 주문 입력</text>
+                <line x1="380" y1="48" x2="380" y2="146" style="stroke:var(--teal);stroke-width:1.6" marker-end="url(#arrow-teal-2)"/>
+                <text x="392" y="100" style="font-family:var(--mono);font-size:10px;fill:var(--faint)">주문 데이터</text>
+
+                <!-- 사내망 -->
+                <rect x="40" y="76" width="680" height="248" rx="14" style="fill:var(--paper);stroke:var(--line-strong);stroke-width:1.2"/>
+                <text x="56" y="98" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--faint)">사내 네트워크 · TAILSCALE VPN 터널</text>
+
+                <!-- 보안 계층 -->
+                <rect x="64" y="114" width="632" height="192" rx="12" style="fill:var(--surface);stroke:var(--line)"/>
+                <text x="80" y="136" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--teal)">통신 보안 계층 · 암호화 + 방화벽</text>
+
+                <!-- 프록시 hub -->
+                <rect x="290" y="148" width="180" height="58" rx="10" style="fill:var(--teal-wash);stroke:var(--teal-bright);stroke-width:1.6"/>
+                <text x="380" y="171" text-anchor="middle" style="font-family:var(--disp);font-size:14px;font-weight:600;fill:var(--ink)">카운터 PC</text>
+                <text x="380" y="189" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--teal)">Python 프록시 · 패킷 분석/중계</text>
+
+                <!-- websocket -->
+                <rect x="100" y="250" width="210" height="68" rx="10" style="fill:var(--surface);stroke:var(--line-strong)"/>
+                <text x="205" y="278" text-anchor="middle" style="font-family:var(--disp);font-size:13.5px;font-weight:600;fill:var(--ink)">.NET WebSocket 서버</text>
+                <text x="205" y="296" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--muted)">실시간 중계 서버</text>
+
+                <!-- 태블릿 -->
+                <rect x="450" y="250" width="210" height="68" rx="10" style="fill:var(--surface);stroke:var(--line-strong)"/>
+                <text x="555" y="278" text-anchor="middle" style="font-family:var(--disp);font-size:13.5px;font-weight:600;fill:var(--ink)">태블릿 디바이스 (N대)</text>
+                <text x="555" y="296" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--muted)">실시간 작업 상황 공유</text>
+
+                <path d="M310,206 Q260,230 205,250" style="fill:none;stroke:var(--teal);stroke-width:1.4" marker-end="url(#arrow-teal-2)"/>
+                <path d="M450,206 Q500,230 555,250" style="fill:none;stroke:var(--teal);stroke-width:1.4" marker-end="url(#arrow-teal-2)"/>
+              </svg>
+            </div>
+
+            <div class="diagram-cap">Screenshots</div>
+            <div class="shots">
+              <!-- 스크린샷 추가 위치: <img src="..." alt="..."> 를 이 안에 나열하면 좌우 스크롤 갤러리로 표시됩니다 -->
+            </div>
+          </details>
+        </li>
         <li><b>VPN 기반 통신 보안</b> — Tailscale VPN 라우팅으로 통신 토폴로지 구성, 패킷 암호화 및 Windows 방화벽 정책 강화로 감청 위험 개선.</li>
       </ul>
     </article>
@@ -387,7 +542,59 @@
         <span class="chip">AWS</span><span class="chip">SVN</span><span class="chip">Unity</span><span class="chip">Addressable</span>
       </div>
       <ul>
-        <li><b>클라우드 기반 협업 인프라 구축</b> — AWS에 SVN 서버를 직접 구축해 개발 환경을 조성, 형상관리·리소스 공유 프로세스를 표준화.</li>
+        <li class="expandable">
+          <details>
+            <summary><b>클라우드 기반 협업 인프라 구축</b> — AWS에 SVN 서버를 직접 구축해 개발 환경을 조성, 형상관리·리소스 공유 프로세스를 표준화.</summary>
+            <div class="expand-body">AWS EC2에 SVN 서버를 직접 구축해 팀 전체의 형상관리 허브로 사용. 여기서 관리되는 리소스가 빌드 파이프라인과 Addressable 에셋 스토어로 이어져 최종 빌드·배포와 런타임 메모리 최적화까지 연결되는 구조.</div>
+            <div class="diagram-cap">Architecture — AWS 기반 형상관리·빌드 파이프라인</div>
+            <div class="diagram">
+              <svg viewBox="0 0 760 340" role="img" aria-label="팀원이 AWS EC2 위에 구축한 SVN 서버로 형상관리를 하고, 여기서 빌드 파이프라인과 Addressable 에셋 스토어로 이어지는 개발 인프라 구조도">
+                <defs>
+                  <marker id="arrow-teal-3" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                    <path d="M0,0 L10,5 L0,10 z" style="fill:var(--teal)" />
+                  </marker>
+                </defs>
+
+                <!-- 팀원 -->
+                <rect x="290" y="8" width="180" height="40" rx="8" style="fill:var(--surface);stroke:var(--line-strong)"/>
+                <text x="380" y="32" text-anchor="middle" style="font-family:var(--mono);font-size:12px;fill:var(--ink-soft)">팀원 (기획·그래픽·프로그램)</text>
+                <line x1="380" y1="48" x2="380" y2="146" style="stroke:var(--teal);stroke-width:1.6" marker-end="url(#arrow-teal-3)"/>
+                <text x="392" y="100" style="font-family:var(--mono);font-size:10px;fill:var(--faint)">커밋/체크아웃</text>
+
+                <!-- AWS -->
+                <rect x="40" y="76" width="680" height="248" rx="14" style="fill:var(--paper);stroke:var(--line-strong);stroke-width:1.2"/>
+                <text x="56" y="98" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--faint)">AWS 클라우드</text>
+
+                <!-- EC2 -->
+                <rect x="64" y="114" width="632" height="192" rx="12" style="fill:var(--surface);stroke:var(--line)"/>
+                <text x="80" y="136" style="font-family:var(--mono);font-size:10.5px;letter-spacing:.06em;fill:var(--teal)">EC2 인스턴스</text>
+
+                <!-- SVN hub -->
+                <rect x="290" y="148" width="180" height="58" rx="10" style="fill:var(--teal-wash);stroke:var(--teal-bright);stroke-width:1.6"/>
+                <text x="380" y="171" text-anchor="middle" style="font-family:var(--disp);font-size:14px;font-weight:600;fill:var(--ink)">SVN 서버</text>
+                <text x="380" y="189" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--teal)">형상관리 · 리소스 저장소</text>
+
+                <!-- 빌드 파이프라인 -->
+                <rect x="100" y="250" width="210" height="68" rx="10" style="fill:var(--surface);stroke:var(--line-strong)"/>
+                <text x="205" y="278" text-anchor="middle" style="font-family:var(--disp);font-size:13.5px;font-weight:600;fill:var(--ink)">빌드 파이프라인</text>
+                <text x="205" y="296" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--muted)">기획 → 최종 빌드·배포</text>
+
+                <!-- Addressable -->
+                <rect x="450" y="250" width="210" height="68" rx="10" style="fill:var(--surface);stroke:var(--line-strong)"/>
+                <text x="555" y="278" text-anchor="middle" style="font-family:var(--disp);font-size:13.5px;font-weight:600;fill:var(--ink)">Addressable 에셋</text>
+                <text x="555" y="296" text-anchor="middle" style="font-family:var(--mono);font-size:10px;fill:var(--muted)">동적 로딩 · 메모리 최적화</text>
+
+                <path d="M310,206 Q260,230 205,250" style="fill:none;stroke:var(--teal);stroke-width:1.4" marker-end="url(#arrow-teal-3)"/>
+                <path d="M450,206 Q500,230 555,250" style="fill:none;stroke:var(--teal);stroke-width:1.4" marker-end="url(#arrow-teal-3)"/>
+              </svg>
+            </div>
+
+            <div class="diagram-cap">Screenshots</div>
+            <div class="shots">
+              <!-- 스크린샷 추가 위치: <img src="..." alt="..."> 를 이 안에 나열하면 좌우 스크롤 갤러리로 표시됩니다 -->
+            </div>
+          </details>
+        </li>
         <li><b>개발 전체 파이프라인 실무</b> — 기획 초기부터 최종 빌드·배포까지 전 과정을 주도적으로 수행.</li>
         <li><b>PM 및 시스템 구현</b> — 팀 커뮤니케이션 가이드라인 제시, 몬스터 AI 로직·Addressable 기반 메모리 최적화 수행.</li>
       </ul>
@@ -456,11 +663,11 @@
 <footer>
   <div class="wrap">
     <span class="eyebrow">Let's build</span>
-    <h2>사내 인프라, 제가 세팅하겠습니다.</h2>
-    <p>오픈소스와 AI로 업무를 자동화하고, IT 인프라를 안정적으로 운영하는 일에 함께하고 싶습니다.</p>
+    <h2>인프라를 만들고, 운영까지 맡고 싶습니다.</h2>
+    <p>오픈소스와 AI로 자동화하는 IT 인프라 담당자가 필요하시다면, 편하게 연락 주세요.</p>
     <div class="fcontact">
       <a class="fbtn primary" href="mailto:snowduck0204@gmail.com">✉ snowduck0204@gmail.com</a>
-      <a class="fbtn" href="https://github.com/" target="_blank" rel="noopener">⌘ github.com/&lt;your-id&gt;</a>
+      <a class="fbtn" href="https://github.com/jjh0204" target="_blank" rel="noopener">⌘ github.com/jjh0204</a>
     </div>
     <div class="colophon">JUNG JAEHO · IT INFRASTRUCTURE PORTFOLIO · 2026 · built &amp; deployed by the candidate</div>
   </div>
