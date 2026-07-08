@@ -248,6 +248,22 @@
   .fbtn.primary:hover{background:var(--teal-bright)}
   .colophon{margin-top:34px;font-family:var(--mono);font-size:.7rem;color:var(--faint);letter-spacing:.03em}
 
+  /* ---------- learning archive ---------- */
+  .archive{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .arccard{
+    display:flex;flex-direction:column;gap:8px;
+    background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+    padding:18px 18px 16px;text-decoration:none;color:inherit;
+    transition:transform .15s,border-color .15s;position:relative;
+  }
+  .arccard:hover{transform:translateY(-2px);border-color:var(--teal-bright)}
+  .arccard .atag{font-family:var(--mono);font-size:.7rem;color:var(--faint);letter-spacing:.08em}
+  .arccard h3{font-size:1rem;font-weight:600;color:var(--ink);display:flex;align-items:center;gap:6px}
+  .arccard h3 .ext{font-family:var(--mono);font-size:.72rem;color:var(--teal);font-weight:500}
+  .arccard p{font-size:.85rem;color:var(--muted);line-height:1.55}
+  .arccard .repo{margin-top:auto;font-family:var(--mono);font-size:.72rem;color:var(--faint)}
+  .arccard:hover .repo{color:var(--teal)}
+
   /* ---------- reveal (progressive; hidden only when JS active) ---------- */
   html.js .reveal{opacity:0;transform:translateY(14px)}
   html.js .reveal.in{opacity:1;transform:none;transition:opacity .6s ease,transform .6s ease}
@@ -258,7 +274,7 @@
 
   /* ---------- responsive ---------- */
   @media (max-width:640px){
-    .caps,.tech,.grid2{grid-template-columns:1fr}
+    .caps,.tech,.grid2,.archive{grid-template-columns:1fr}
     .item .when{width:96px}
     .wrap{padding:0 20px}
   }
@@ -352,7 +368,7 @@
       <div class="stack">
         <span class="chip">NAS</span><span class="chip">Docker</span><span class="chip">Gitea</span><span class="chip">Plane</span>
         <span class="chip">Focalboard</span><span class="chip">Whisper</span><span class="chip">Zoom AI</span>
-        <span class="chip">Discord Bot</span><span class="chip">Claude Code</span>
+        <span class="chip">Discord Bot</span><span class="chip">Claude Code</span><span class="chip">Unity</span>
       </div>
       <ul>
         <li>
@@ -360,7 +376,14 @@
           <div><a class="detail-btn" href="https://github.com/JJH0204/JJH0204/blob/main/docs/svc-01-nas-infra.md" target="_blank" rel="noopener">자세히 보기</a></div>
         </li>
         <li><b>AI 기반 업무 프로세스 자동화</b> — Whisper 전사 + Zoom AI를 결합한 회의록 자동 생성 파이프라인, 자체 봇으로 Notion·Discord 알림 자동화.</li>
-        <li><b>생성형 AI를 활용한 개발 도구화</b> — Claude Code로 레벨 디자인 툴·URP 셰이더 등 자체 개발 도구를 구현, AI를 실제 개발 업무에 적용.</li>
+        <li>
+          <b>레벨 디자인 자동화 에디터 구현</b> — AI를 활용해 노이즈 기반 절차적 레벨 생성 Unity 에디터 툴을 구현하고, 자동 검증(Validator) 시스템으로 실사용성을 연구.
+          <div><a class="detail-btn" href="https://github.com/JJH0204/JJH0204/blob/main/docs/svc-01-level-editor.md" target="_blank" rel="noopener">자세히 보기</a></div>
+        </li>
+        <li>
+          <b>생성형 AI를 활용한 개발 도구화</b> — Claude Code와 Codex로 lilToon·NiloCat·UTS3 등 기존 툰 셰이더를 코드 단위로 분석하고, 자체 URP 툰 셰이더 등 개발 도구를 구현해 AI를 실제 개발 업무에 적용.
+          <div><a class="detail-btn" href="https://github.com/JJH0204/JJH0204/blob/main/docs/svc-01-toon-shader.md" target="_blank" rel="noopener">자세히 보기</a></div>
+        </li>
       </ul>
     </article>
 
@@ -375,13 +398,13 @@
         <span class="status done"><span class="dot"></span>배포 완료</span>
       </div>
       <div class="stack">
-        <span class="chip">Python</span><span class="chip">.NET</span><span class="chip">WebSocket</span>
+        <span class="chip">Python</span><span class="chip">Scapy</span><span class="chip">Flutter</span><span class="chip">Dart</span>
         <span class="chip">Tailscale VPN</span><span class="chip">Firewall</span><span class="chip">Packet Analysis</span>
       </div>
       <ul>
-        <li><b>패킷 분석 기반 기능 분석</b> — 손님 PC → 카운터 PC 주문 접수 과정을 패킷 단위로 분석.</li>
+        <li><b>패킷 분석 기반 기능 분석</b> — 손님 PC → 카운터 PC 주문 접수 과정의 MySQL 트래픽을 패킷 단위로 분석.</li>
         <li>
-          <b>프록시·웹소켓 서버 구축</b> — Python 프록시 + .NET 웹소켓 서버로 주문을 태블릿 등 연결 디바이스에 전달하고 작업 상황을 실시간 공유.
+          <b>패킷 스니퍼·로컬 서버 구축</b> — Python(Scapy) 패킷 스니퍼로 주문 데이터를 추출하고, Dart(Shelf) 로컬 서버로 Flutter 기반 Windows/Android 클라이언트에 실시간 전달.
           <div><a class="detail-btn" href="https://github.com/JJH0204/JJH0204/blob/main/docs/svc-02-store-network.md" target="_blank" rel="noopener">자세히 보기</a></div>
         </li>
         <li><b>VPN 기반 통신 보안</b> — Tailscale VPN 라우팅으로 통신 토폴로지 구성, 패킷 암호화 및 Windows 방화벽 정책 강화로 감청 위험 개선.</li>
@@ -392,22 +415,26 @@
     <article class="svc reveal">
       <div class="svc-top">
         <div>
-          <div class="svc-id">SVC·03 — 클라우드 인프라 / PM</div>
+          <div class="svc-id">SVC·03 — 클라우드 인프라 / PM / 프로그래밍</div>
           <h3>TPS 슈팅 게임</h3>
           <div class="meta">팀 프로젝트 · 클라우드 협업 인프라 &amp; 개발 전 과정 · 2025.06 ~ 2026.05 (11개월)</div>
         </div>
         <span class="status done"><span class="dot"></span>배포 완료</span>
       </div>
       <div class="stack">
-        <span class="chip">AWS</span><span class="chip">SVN</span><span class="chip">Unity</span><span class="chip">Addressable</span>
+        <span class="chip">AWS</span><span class="chip">SVN</span><span class="chip">Unity</span><span class="chip">C#</span>
+        <span class="chip">Behavior Tree</span><span class="chip">Addressable</span>
       </div>
       <ul>
         <li>
           <b>클라우드 기반 협업 인프라 구축</b> — AWS에 SVN 서버를 직접 구축해 개발 환경을 조성, 형상관리·리소스 공유 프로세스를 표준화.
           <div><a class="detail-btn" href="https://github.com/JJH0204/JJH0204/blob/main/docs/svc-03-cloud-pipeline.md" target="_blank" rel="noopener">자세히 보기</a></div>
         </li>
-        <li><b>개발 전체 파이프라인 실무</b> — 기획 초기부터 최종 빌드·배포까지 전 과정을 주도적으로 수행.</li>
-        <li><b>PM 및 시스템 구현</b> — 팀 커뮤니케이션 가이드라인 제시, 몬스터 AI 로직·Addressable 기반 메모리 최적화 수행.</li>
+        <li><b>개발 전체 파이프라인 실무 · PM</b> — 기획 초기부터 최종 빌드·배포까지 전 과정을 주도적으로 수행, 팀 커뮤니케이션 가이드라인 제시.</li>
+        <li>
+          <b>프로그래머 기여</b> — 몬스터 AI(Behavior Tree 시스템·그래프 뷰 에디터)를 직접 구현하고, 팀 공용 개발 도구(GOS 비주얼 스크립팅·우선순위 큐)와 Addressable 기반 메모리 최적화를 수행.
+          <div><a class="detail-btn" href="https://github.com/JJH0204/JJH0204/blob/main/docs/svc-03-cloud-pipeline.md#프로그래머로서의-기여" target="_blank" rel="noopener">자세히 보기</a></div>
+        </li>
       </ul>
     </article>
   </div>
@@ -467,6 +494,88 @@
         <div class="item"><div class="when">2025.06</div><div class="what"><strong>정보처리산업기사</strong><span>한국산업인력공단</span></div></div>
         <div class="item"><div class="when">2017 ~ 2019</div><div class="what"><strong>육군 병장 만기전역</strong><span>병역 필</span></div></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<section id="archive">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Learning Archive</span>
+      <h2>학습 아카이브</h2>
+    </div>
+    <div class="archive">
+      <a class="arccard reveal" href="https://github.com/JJH0204/DevSecOps" target="_blank" rel="noopener">
+        <div class="atag">ARC·01 — 교육 과정</div>
+        <h3>DevSecOps <span class="ext">↗</span></h3>
+        <p>산대특 DevSecOps 클라우드 보안 전문가 양성과정 학습 자료. 시스템·네트워크·DB·클라우드 보안 과제평가, 모의해킹, GNS3·Packet Tracer 토폴로지, Wireshark·CTF 실습 아카이브.</p>
+        <div class="repo">github.com/JJH0204/DevSecOps</div>
+      </a>
+      <a class="arccard reveal" href="https://github.com/JJH0204/24DevSecOpsProject" target="_blank" rel="noopener">
+        <div class="atag">ARC·02 — 보안 · 팀 프로젝트</div>
+        <h3>24DevSecOpsProject <span class="ext">↗</span></h3>
+        <p>DevSecOps 팀 프로젝트. Kubernetes(kind)·Jenkins·SonarQube로 CI/CD를 구성한 Nova, 레드·블루·네트워크 팀이 협업한 통합 보안 프로젝트 SuperNova.</p>
+        <div class="repo">github.com/JJH0204/24DevSecOpsProject</div>
+      </a>
+      <a class="arccard reveal" href="https://github.com/JJH0204/Aurora" target="_blank" rel="noopener">
+        <div class="atag">ARC·03 — 보안 실습</div>
+        <h3>Aurora <span class="ext">↗</span></h3>
+        <p>사이버 보안 교육용 취약 웹 애플리케이션 플랫폼. Django·MariaDB 기반을 Docker로 컨테이너화한 두 팀(Firewalls·LED) 협업 프로젝트.</p>
+        <div class="repo">github.com/JJH0204/Aurora</div>
+      </a>
+      <a class="arccard reveal" href="https://github.com/JJH0204/Flame" target="_blank" rel="noopener">
+        <div class="atag">ARC·04 — 보안 워게임</div>
+        <h3>Flame WarGame <span class="ext">↗</span></h3>
+        <p>웹 보안 학습용 실전형 워게임 플랫폼. 40개 이상 단계별 웹 취약점 문제와 진도 추적·관리자 기능을 갖춘 팀 프로젝트.</p>
+        <div class="repo">github.com/JJH0204/Flame</div>
+      </a>
+      <a class="arccard reveal" href="https://github.com/JJH0204/Game_Planning" target="_blank" rel="noopener">
+        <div class="atag">ARC·05 — 게임 기획</div>
+        <h3>Game_Planning <span class="ext">↗</span></h3>
+        <p>게임 기획 학습 아카이브. 시장·장르 분석(RPG·로그라이크), 시스템·UI·스토리 기획, 몬스터 AI 플로우차트·DB 설계 등 기획 문서 모음.</p>
+        <div class="repo">github.com/JJH0204/Game_Planning</div>
+      </a>
+      <a class="arccard reveal" href="https://github.com/JJH0204/GitBook" target="_blank" rel="noopener">
+        <div class="atag">ARC·06 — 기술 블로그</div>
+        <h3>J:Log (GitBook) <span class="ext">↗</span></h3>
+        <p>“지식은 기억보다 기록에 남는다.” 개발 중 마주한 문제와 해결 과정을 체계적으로 정리하는 기술 기록 블로그.</p>
+        <div class="repo">github.com/JJH0204/GitBook</div>
+      </a>
+      <a class="arccard reveal" href="https://github.com/JJH0204/Notebook26" target="_blank" rel="noopener">
+        <div class="atag">ARC·07 — 학습 노트</div>
+        <h3>Notebook26 <span class="ext">↗</span></h3>
+        <p>2026년 학습 기록. 인프라·개발·AI 도구 등 새로 익힌 내용을 그때그때 정리한 노트 아카이브.</p>
+        <div class="repo">github.com/JJH0204/Notebook26</div>
+      </a>
+      <a class="arccard reveal" href="https://github.com/JJH0204/Notebook24-25" target="_blank" rel="noopener">
+        <div class="atag">ARC·08 — 학습 노트</div>
+        <h3>Notebook24-25 <span class="ext">↗</span></h3>
+        <p>2024~2025년 학습 기록. DevSecOps 과정과 개발 학습기를 담은 초기 노트 아카이브.</p>
+        <div class="repo">github.com/JJH0204/Notebook24-25</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="side">
+  <div class="wrap">
+    <div class="sec-head reveal">
+      <span class="eyebrow">Side Projects</span>
+      <h2>사이드 프로젝트</h2>
+    </div>
+    <div class="archive">
+      <a class="arccard reveal" href="https://github.com/JJH0204/LoL_Civil_War" target="_blank" rel="noopener">
+        <div class="atag">SIDE·01 — 웹 도구</div>
+        <h3>LoL Civil War <span class="ext">↗</span></h3>
+        <p>롤 내전 팀 밸런서. 순열 알고리즘(5!)으로 오토필을 최소화하고, 티어·컨디션·샷콜 보정을 반영한 MMR로 균형 잡힌 팀을 구성하는 실사용 웹 도구.</p>
+        <div class="repo">github.com/JJH0204/LoL_Civil_War</div>
+      </a>
+      <a class="arccard reveal" href="https://github.com/JJH0204/AppleFarm-MiniGame" target="_blank" rel="noopener">
+        <div class="atag">SIDE·02 — 게임 · Unity</div>
+        <h3>AppleFarm MiniGame <span class="ext">↗</span></h3>
+        <p>친구를 위해 만든 Unity 미니게임. 짧은 개발 사이클로 기획–구현–빌드까지 완성한 소규모 게임 프로젝트.</p>
+        <div class="repo">github.com/JJH0204/AppleFarm-MiniGame</div>
+      </a>
     </div>
   </div>
 </section>
