@@ -78,13 +78,6 @@
 - [**Aurora**](https://github.com/JJH0204/Aurora) · [**Flame**](https://github.com/JJH0204/Flame) — 보안 교육용 취약 웹앱 / 웹 해킹 워게임 플랫폼
 - [**J:Log**](https://github.com/JJH0204/GitBook) — 기술 학습 기록 블로그
 
-## 📊 GitHub
-
-<p align="center">
-  <img src="https://github-readme-stats.vercel.app/api?username=JJH0204&show_icons=true&hide_border=true&title_color=0C7A85&icon_color=12A3AE&count_private=true" alt="GitHub Stats" height="165"/>
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=JJH0204&layout=compact&hide_border=true&title_color=0C7A85&langs_count=8" alt="Top Languages" height="165"/>
-</p>
-
 ---
 
 <p align="center">
