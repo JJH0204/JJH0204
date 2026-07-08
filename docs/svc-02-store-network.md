@@ -32,4 +32,4 @@ flowchart TB
 _추가 예정_
 
 ---
-[← 포트폴리오로 돌아가기](../index.html)
+[← 포트폴리오로 돌아가기](https://jjh0204.github.io/JJH0204/)

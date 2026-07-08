@@ -45,4 +45,4 @@ flowchart TB
 ![스크린샷 5](../images/Screenshot%202026-07-07%20at%2009.18.32.png)
 
 ---
-[← 포트폴리오로 돌아가기](../index.html)
+[← 포트폴리오로 돌아가기](https://jjh0204.github.io/JJH0204/)
