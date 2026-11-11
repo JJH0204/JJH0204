@@ -1,6 +1,6 @@
 # 패킷 스니퍼·로컬 서버 구축
 
-**프로젝트**: 매장 관리 통신 시스템 · 개인 프로젝트 · 2025.11 ~ 2026.02
+프로젝트: 매장 관리 통신 시스템 · 개인 프로젝트 · 2026.01 ~ 2026.06
 
 ## 개요
 
@@ -33,9 +33,9 @@ flowchart TB
 
 주문·주방 관리를 실제로 사용하는 클라이언트는 Flutter로 구현해, 하나의 코드베이스로 Windows(카운터·주방용 Admin Console)와 Android(주문 접수용 모바일 앱)를 동시에 대응했습니다.
 
-- **android_app** — 주문 접수용 모바일 앱
-- **admin_console** — 주방/카운터에서 사용하는 Windows 데스크톱 앱 (Flutter Desktop)
-- **Inno Setup**으로 Windows 설치 프로그램을 패키징해 배포
+- android_app: 주문 접수용 모바일 앱
+- admin_console: 주방/카운터에서 사용하는 Windows 데스크톱 앱 (Flutter Desktop)
+- Inno Setup으로 Windows 설치 프로그램을 패키징해 배포
 
 레포지토리: [github.com/JJH0204/AllbenKitchenManager](https://github.com/JJH0204/AllbenKitchenManager)
 
@@ -53,9 +53,5 @@ flowchart TB
 | 2026.02.04 | 주방 관리 앱의 핵심 UI, 데이터 모델, 상태관리(Provider) 구현 |
 | 2026.06.13 | 메뉴 조리시간(cookTime) 로직 및 관련 UI 업데이트 (운영 중 유지보수) |
 
-## 스크린샷
-
-_추가 예정_
-
 ---
-[← 포트폴리오로 돌아가기](https://jjh0204.github.io/JJH0204/)
+[포트폴리오로 돌아가기](https://jjh0204.github.io/JJH0204/)
