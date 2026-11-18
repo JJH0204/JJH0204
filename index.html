@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>정재호 · IT 인프라 / 업무 자동화 포트폴리오</title>
+<title>정재호 · 게임 개발 인프라 / 업무 자동화 포트폴리오</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -300,13 +300,11 @@
 <header class="hero">
   <div class="wrap hero-inner">
     <span class="eyebrow">Portfolio · IT Infrastructure · 2026</span>
-    <h1>정재호<span class="en">JUNG JAEHO — INFRA &amp; AUTOMATION</span></h1>
-    <div class="role">IT 인프라 · 업무 자동화</div>
-    <p class="thesis">게임 라이브 서비스 운영 경험(2년 8개월)을 바탕으로, 오픈소스와 AI로 사내 IT 인프라를 직접 세우고 반복 업무를 자동화하는 인프라 담당자입니다. 팀 협업 시스템을 밑바닥부터 설계·구축·운영해 왔습니다.</p>
+    <h1>정재호<span class="en">JUNG JAEHO · INFRA &amp; AUTOMATION</span></h1>
+    <div class="role">게임 개발 인프라 · 업무 자동화</div>
+    <p class="thesis">테일즈런너 라이브 서비스 기획을 2년 8개월 했고(2020.08~2023.04), 지금은 인디 게임 팀 메이든 도르미레브에서 PD·기획을 맡으며 빌드·배포 파이프라인과 팀 서버를 운영합니다. Gitea, Plane, 빌드 러너를 직접 호스팅하고 회의록 작성을 자동화했습니다.</p>
 
     <div class="statusbar">
-      <span class="pill live"><span class="dot"></span>지원 분야 : 게임사 IT 인프라 담당자</span>
-      <span class="pill"><span class="dot" style="background:var(--teal-bright)"></span>합격 시 서울 즉시 이전 가능</span>
       <span class="pill"><span class="dot" style="background:var(--amber)"></span>DevSecOps · 클라우드 보안 수료</span>
     </div>
 
@@ -327,22 +325,22 @@
       <div class="cap reveal">
         <div class="cid">CAP·01</div>
         <h3>AI · 오픈소스 업무 자동화</h3>
-        <p>Whisper 전사, 자체 봇, 생성형 AI 도구로 회의록 작성·알림·개발 업무를 자동화. 실제 팀 업무에 적용해 운영 중.</p>
+        <p>Zoom 녹화를 Whisper로 전사하고 Claude로 회의록을 써서 Plane에 올립니다. 빌드 결과는 디스코드로 알립니다. 개발 도구는 Claude Code 등 AI 코딩 에이전트와 함께 만들고 설계와 검증은 직접 합니다.</p>
       </div>
       <div class="cap reveal">
         <div class="cid">CAP·02</div>
         <h3>사내 협업 인프라 구축</h3>
-        <p>NAS·Gitea·Plane 등 오픈소스를 직접 셀프호스팅해 팀의 Git·프로젝트 관리·백업 인프라를 설계·운영.</p>
+        <p>Gitea, Plane, 빌드 러너를 직접 호스팅하고 restic으로 백업합니다. 처음에는 ipTIME NAS에서, 2026년 8월부터 데스크톱 서버에서 운영하고 접속은 Tailscale 안으로 한정했습니다.</p>
       </div>
       <div class="cap reveal">
         <div class="cid">CAP·03</div>
         <h3>클라우드 · 네트워크 · 트러블슈팅</h3>
-        <p>GCP·Docker 환경 운영, VPN·방화벽·패킷 분석 및 장애 진단·트러블슈팅 실무. DevSecOps 교육으로 IT 보안 기반 보유.</p>
+        <p>Docker로 서버를 운영하고, 이스트캠프 워게임 현황 웹을 GitHub Actions로 GCP VM에 배포했습니다. 매장 시스템에서 Tailscale VPN, Windows 방화벽, Scapy 패킷 분석을 썼습니다. 10GB 저장소 풀 클론으로 NAS가 멈춘 장애는 원인을 찾아 메모리 상한을 걸고 forge로 옮겼습니다. DevSecOps 과정 872시간을 수료했습니다.</p>
       </div>
       <div class="cap reveal">
         <div class="cid">CAP·04</div>
         <h3>게임사 · 개발 환경 이해</h3>
-        <p>게임사 라이브 서비스 운영(2년 8개월)과 인디 게임 개발(Unity·3D 파이프라인) 경험으로 개발팀 워크플로를 이해.</p>
+        <p>테일즈런너 라이브 서비스 기획 2년 8개월, 인디 게임 팀 PD·기획(Unity, Steam 업로드).</p>
       </div>
     </div>
   </div>
@@ -359,29 +357,34 @@
     <article class="svc hero-svc reveal">
       <div class="svc-top">
         <div>
-          <div class="svc-id">SVC·01 — 인프라 / 자동화 담당</div>
-          <h3>재조합 (블루이글루) 게임 개발</h3>
-          <div class="meta">인디 게임 개발 · 팀 협업 인프라 &amp; 업무 자동화 구축 · 2026.02 ~ 현재</div>
+          <div class="svc-id">SVC·01 · PD·기획, 빌드·배포 파이프라인</div>
+          <h3>메이든 도르미레브 (재조합 · 블루이글루)</h3>
+          <div class="meta">인디 게임 · 10~12명 · 2026.01 ~ 진행 중 · Steam 데모 2026-12-15, 정식 출시 2027년 2분기 목표</div>
         </div>
-        <span class="status op"><span class="dot"></span>운영 중</span>
+        <span class="status op"><span class="dot"></span>진행 중</span>
       </div>
       <div class="stack">
         <span class="chip">NAS</span><span class="chip">Docker</span><span class="chip">Gitea</span><span class="chip">Plane</span>
         <span class="chip">Focalboard</span><span class="chip">Whisper</span><span class="chip">Zoom AI</span>
-        <span class="chip">Discord Bot</span><span class="chip">Claude Code</span><span class="chip">Unity</span>
+        <span class="chip">Discord</span><span class="chip">Claude Code</span><span class="chip">Unity</span>
+        <span class="chip">Gitea Actions</span><span class="chip">SteamPipe</span>
       </div>
       <ul>
         <li>
-          <b>오픈소스 기반 팀 협업 인프라 구축·운영</b> — iptime NAS 서버 위에 Docker 컨테이너로 Gitea·Plane을 구동하고, Focalboard로 통합 대시보드를 구현해 팀원이 한 곳에서 효율적으로 접속·관리하도록 설계.
+          <b>팀 협업 인프라 구축·운영</b>: ipTIME NAS의 Docker에서 Gitea·Plane을 돌리고 Focalboard 대시보드를 만들었습니다. 2026년 8월에 데스크톱 서버로 옮겨 Gitea, Plane, 빌드 러너를 Tailscale 안에서만 열었습니다.
           <div><a class="detail-btn" href="https://github.com/JJH0204/JJH0204/blob/main/docs/svc-01-nas-infra.md" target="_blank" rel="noopener">자세히 보기</a></div>
         </li>
-        <li><b>AI 기반 업무 프로세스 자동화</b> — Whisper 전사 + Zoom AI를 결합한 회의록 자동 생성 파이프라인, 자체 봇으로 Notion·Discord 알림 자동화.</li>
         <li>
-          <b>레벨 디자인 자동화 에디터 구현</b> — AI를 활용해 노이즈 기반 절차적 레벨 생성 Unity 에디터 툴을 구현하고, 자동 검증(Validator) 시스템으로 실사용성을 연구.
+          <b>빌드·배포 파이프라인</b>: Gitea Actions로 Windows 빌드, 설치 파일, Steam 비공개 브랜치와 데모 앱 업로드, 디스코드 알림을 자동화했습니다. 저장소 가드레일(LFS 규칙, .meta 누락, GUID 중복 검사)도 넣었습니다. 개발 저장소 PR 36건이 제 작업이고 35건이 병합됐습니다.
+        </li>
+        <li><b>회의록 자동화</b>: Zoom 녹화를 Whisper로 전사하고 Zoom AI 요약과 대조해 회의록을 쓴 뒤 Plane에 올립니다. 일일 보고는 Plane API로 집계해 디스코드로 보냅니다.</li>
+        <li><b>PD·기획</b>: 화요일 빌드, 수·목 사전 플레이 후 회의로 팀을 운영하고, 레벨 디자인, 데이터 투입과 밸런스 시뮬레이션, 퀘스트 데이터, 텀블벅·홍보를 맡았습니다.</li>
+        <li>
+          <b>레벨 디자인 자동화 에디터</b>: 노이즈 기반 절차적 레벨 생성 Unity 에디터 툴과 자동 검증기(Validator)를 만들었습니다. 요구사항 설계와 검증은 직접 하고 구현은 Claude Code와 함께 했습니다.
           <div><a class="detail-btn" href="https://github.com/JJH0204/JJH0204/blob/main/docs/svc-01-level-editor.md" target="_blank" rel="noopener">자세히 보기</a></div>
         </li>
         <li>
-          <b>생성형 AI를 활용한 개발 도구화</b> — Claude Code와 Codex로 lilToon·NiloCat·UTS3 등 기존 툰 셰이더를 코드 단위로 분석하고, 자체 URP 툰 셰이더 등 개발 도구를 구현해 AI를 실제 개발 업무에 적용.
+          <b>URP 툰 셰이더</b>: lilToon, NiloCat, UTS3 등 기존 툰 셰이더를 Claude Code와 Codex로 코드 단위 분석한 뒤 자체 셰이더(CharacterToon, SceneToon)를 만들었습니다. Claude Code가 조율하고 Codex가 구현하도록 작업 지시서를 쓰고 결과를 검증했습니다.
           <div><a class="detail-btn" href="https://github.com/JJH0204/JJH0204/blob/main/docs/svc-01-toon-shader.md" target="_blank" rel="noopener">자세히 보기</a></div>
         </li>
       </ul>
@@ -391,9 +394,9 @@
     <article class="svc reveal">
       <div class="svc-top">
         <div>
-          <div class="svc-id">SVC·02 — 네트워크 / 보안</div>
+          <div class="svc-id">SVC·02 · 네트워크 / 보안</div>
           <h3>매장 관리 통신 시스템</h3>
-          <div class="meta">개인 프로젝트 · 디바이스 간 실시간 통신 &amp; 통신 보안 · 2025.11 ~ 2026.02</div>
+          <div class="meta">개인 프로젝트 · 디바이스 간 실시간 통신 &amp; 통신 보안 · 2026.01 ~ 2026.06</div>
         </div>
         <span class="status done"><span class="dot"></span>배포 완료</span>
       </div>
@@ -402,12 +405,12 @@
         <span class="chip">Tailscale VPN</span><span class="chip">Firewall</span><span class="chip">Packet Analysis</span>
       </div>
       <ul>
-        <li><b>패킷 분석 기반 기능 분석</b> — 손님 PC → 카운터 PC 주문 접수 과정의 MySQL 트래픽을 패킷 단위로 분석.</li>
+        <li><b>패킷 분석 기반 기능 분석</b>: 손님 PC → 카운터 PC 주문 접수 과정의 MySQL 트래픽을 패킷 단위로 분석.</li>
         <li>
-          <b>패킷 스니퍼·로컬 서버 구축</b> — Python(Scapy) 패킷 스니퍼로 주문 데이터를 추출하고, Dart(Shelf) 로컬 서버로 Flutter 기반 Windows/Android 클라이언트에 실시간 전달.
+          <b>패킷 스니퍼·로컬 서버 구축</b>: Python(Scapy) 패킷 스니퍼로 주문 데이터를 추출하고, Dart(Shelf) 로컬 서버로 Flutter 기반 Windows/Android 클라이언트에 실시간 전달.
           <div><a class="detail-btn" href="https://github.com/JJH0204/JJH0204/blob/main/docs/svc-02-store-network.md" target="_blank" rel="noopener">자세히 보기</a></div>
         </li>
-        <li><b>VPN 기반 통신 보안</b> — Tailscale VPN 라우팅으로 통신 토폴로지 구성, 패킷 암호화 및 Windows 방화벽 정책 강화로 감청 위험 개선.</li>
+        <li><b>VPN 기반 통신 보안</b>: Tailscale VPN 라우팅과 Windows 방화벽 정책으로 사내망 안에서만 통신하도록 구성.</li>
       </ul>
     </article>
 
@@ -415,9 +418,9 @@
     <article class="svc reveal">
       <div class="svc-top">
         <div>
-          <div class="svc-id">SVC·03 — 빌드 인프라 / PM / 프로그래밍</div>
-          <h3>TPS 슈팅 게임</h3>
-          <div class="meta">팀 프로젝트 · 협업·빌드 인프라 &amp; 개발 전 과정 · 2025.06 ~ 2026.05 (11개월)</div>
+          <div class="svc-id">SVC·03 · 기획 / 개발 참여</div>
+          <h3>Phantom:Makina (TPS 슈팅 게임)</h3>
+          <div class="meta">팀 프로젝트 · 기획 1, 원화 2, 3D 모델러 3, 프로그래머 2 · 2025.06 ~ 2026.09</div>
         </div>
         <span class="status done"><span class="dot"></span>배포 완료</span>
       </div>
@@ -427,12 +430,12 @@
       </div>
       <ul>
         <li>
-          <b>협업·빌드 인프라</b> — SVN으로 형상관리·리소스 공유 프로세스를 표준화하고, GitHub로 옮긴 뒤 Windows·Android Unity 빌드 워크플로(GitHub Actions)와 안드로이드 빌드(APK·AAB)를 구성.
+          <b>협업·빌드 인프라</b>: 초기에는 SVN으로 형상관리와 리소스 공유를 했고, 2025년 12월부터 GitHub로 옮겨 Windows·Android Unity 빌드 워크플로(GitHub Actions)와 안드로이드 빌드(APK·AAB)를 구성.
           <div><a class="detail-btn" href="https://github.com/JJH0204/JJH0204/blob/main/docs/svc-03-cloud-pipeline.md" target="_blank" rel="noopener">자세히 보기</a></div>
         </li>
-        <li><b>개발 전체 파이프라인 실무 · PM</b> — 기획 초기부터 최종 빌드·배포까지 전 과정을 주도적으로 수행, 팀 커뮤니케이션 가이드라인 제시.</li>
+        <li><b>기획·개발 참여</b>: 던전·스테이지 매니저와 씬 로딩, 게임패드·모바일 터치 카메라, 보스 스킬(AmonLockdown, ChargingLaser)을 구현했습니다. 팀 저장소 본인 커밋은 62/252, 56/281이고 최다 커밋자는 다른 팀원입니다.</li>
         <li>
-          <b>프로그래머 기여</b> — 몬스터 AI(Behavior Tree 시스템·그래프 뷰 에디터)를 직접 구현하고, 팀 공용 개발 도구(GOS 비주얼 스크립팅·우선순위 큐)와 Addressable 기반 메모리 최적화를 수행.
+          <b>개인 제작 도구</b>: 몬스터 AI(Behavior Tree 시스템, 그래프 뷰 에디터)와 팀 공용 도구(GOS 비주얼 스크립팅, 우선순위 큐)를 만들고 Addressable 에셋 설정을 정리했습니다.
           <div><a class="detail-btn" href="https://github.com/JJH0204/JJH0204/blob/main/docs/svc-03-cloud-pipeline.md#프로그래머로서의-기여" target="_blank" rel="noopener">자세히 보기</a></div>
         </li>
       </ul>
@@ -449,15 +452,19 @@
     <div class="tech">
       <div class="techrow reveal">
         <div class="lbl">자동화 · AI</div>
-        <div class="items"><span>Whisper</span><span>Claude Code</span><span>ComfyUI</span><span>자체 봇</span><span>Selenium</span></div>
+        <div class="items"><span>Whisper</span><span>Claude Code</span><span>ComfyUI</span><span>디스코드 웹훅</span></div>
       </div>
       <div class="techrow reveal">
         <div class="lbl">클라우드 · 가상화</div>
-        <div class="items"><span>GCP</span><span>Docker</span></div>
+        <div class="items"><span>GCP</span><span>Docker</span><span>WSL2</span><span>restic</span></div>
       </div>
       <div class="techrow reveal">
         <div class="lbl">네트워크 · 보안</div>
-        <div class="items"><span>Tailscale VPN</span><span>방화벽</span><span>패킷 분석</span><span>IDS/IPS</span><span>모니터링</span></div>
+        <div class="items"><span>Tailscale VPN</span><span>방화벽</span><span>패킷 분석</span></div>
+      </div>
+      <div class="techrow reveal">
+        <div class="lbl">빌드 · 배포</div>
+        <div class="items"><span>Gitea Actions</span><span>GitHub Actions</span><span>PowerShell</span><span>Inno Setup</span><span>SteamPipe</span></div>
       </div>
       <div class="techrow reveal">
         <div class="lbl">협업 · 형상관리</div>
@@ -465,7 +472,7 @@
       </div>
       <div class="techrow reveal">
         <div class="lbl">언어</div>
-        <div class="items"><span>Python</span><span>C</span><span>C++</span><span>C#</span></div>
+        <div class="items"><span>Python</span><span>C</span><span>C++</span><span>C#</span><span>Dart</span></div>
       </div>
       <div class="techrow reveal">
         <div class="lbl">문서화</div>
@@ -484,15 +491,18 @@
     <div class="grid2">
       <div class="block reveal">
         <h4>경력 · 교육</h4>
-        <div class="item"><div class="when">2026.03 ~</div><div class="what"><strong>코리아 IT 아카데미 대구</strong><span>IT 인프라·보안 강의 및 학습 멘토링 (프리랜서)</span></div></div>
-        <div class="item"><div class="when">2020.08 ~ 2023.04</div><div class="what"><strong>라온엔터테인먼트</strong><span>테일즈런너 라이브 서비스 운영·기획</span></div></div>
+        <div class="item"><div class="when">2026.09 ~</div><div class="what"><strong>KT 클라우드 사이버 보안 과정</strong><span>조교</span></div></div>
+        <div class="item"><div class="when">2026.08 ~</div><div class="what"><strong>코리아IT아카데미 대구</strong><span>네트워크 1·2 강사 (주말반)</span></div></div>
+        <div class="item"><div class="when">2026.03 ~ 2026.08</div><div class="what"><strong>이스트소프트 이스트캠프 10기</strong><span>IT 인프라 보안 과정 학습튜터</span></div></div>
+        <div class="item"><div class="when">2026.01 ~</div><div class="what"><strong>메이든 도르미레브 (블루이글루)</strong><span>PD·기획, 빌드·배포 파이프라인과 서버 운영</span></div></div>
+        <div class="item"><div class="when">2020.08 ~ 2023.04</div><div class="what"><strong>㈜라온엔터테인먼트</strong><span>사원, 테일즈런너 라이브 서비스 콘텐츠·시스템 기획 (2년 8개월)</span></div></div>
         <div class="item"><div class="when">2024.08 ~ 2025.02</div><div class="what"><strong>DevSecOps 클라우드 보안 전문가 과정</strong><span>872시간 · 코리아 IT 아카데미 (산대특)</span></div></div>
       </div>
       <div class="block reveal">
         <h4>학력 · 자격</h4>
-        <div class="item"><div class="when">2025.01 ~</div><div class="what"><strong>학점은행제 컴퓨터공학사</strong><span>국가평생교육진흥원 · 재학 중 (94/140)</span></div></div>
+        <div class="item"><div class="when">2025.01 ~</div><div class="what"><strong>학점은행제 컴퓨터공학사</strong><span>국가평생교육진흥원 · 진행 중</span></div></div>
         <div class="item"><div class="when">2025.06</div><div class="what"><strong>정보처리산업기사</strong><span>한국산업인력공단</span></div></div>
-        <div class="item"><div class="when">2017 ~ 2019</div><div class="what"><strong>육군 병장 만기전역</strong><span>병역 필</span></div></div>
+        <div class="item"><div class="when">2017.10 ~ 2019.07</div><div class="what"><strong>육군 병장 만기전역</strong><span>병역 필</span></div></div>
       </div>
     </div>
   </div>
@@ -506,49 +516,49 @@
     </div>
     <div class="archive">
       <a class="arccard reveal" href="https://github.com/JJH0204/DevSecOps" target="_blank" rel="noopener">
-        <div class="atag">ARC·01 — 교육 과정</div>
+        <div class="atag">ARC·01 · 교육 과정</div>
         <h3>DevSecOps <span class="ext">↗</span></h3>
         <p>산대특 DevSecOps 클라우드 보안 전문가 양성과정 학습 자료. 시스템·네트워크·DB·클라우드 보안 과제평가, 모의해킹, GNS3·Packet Tracer 토폴로지, Wireshark·CTF 실습 아카이브.</p>
         <div class="repo">github.com/JJH0204/DevSecOps</div>
       </a>
       <a class="arccard reveal" href="https://github.com/JJH0204/24DevSecOpsProject" target="_blank" rel="noopener">
-        <div class="atag">ARC·02 — 보안 · 팀 프로젝트</div>
+        <div class="atag">ARC·02 · 보안 · 팀 프로젝트</div>
         <h3>24DevSecOpsProject <span class="ext">↗</span></h3>
         <p>DevSecOps 팀 프로젝트. Kubernetes(kind)·Jenkins·SonarQube로 CI/CD를 구성한 Nova, 레드·블루·네트워크 팀이 협업한 통합 보안 프로젝트 SuperNova.</p>
         <div class="repo">github.com/JJH0204/24DevSecOpsProject</div>
       </a>
       <a class="arccard reveal" href="https://github.com/JJH0204/Aurora" target="_blank" rel="noopener">
-        <div class="atag">ARC·03 — 보안 실습</div>
+        <div class="atag">ARC·03 · 보안 실습</div>
         <h3>Aurora <span class="ext">↗</span></h3>
         <p>사이버 보안 교육용 취약 웹 애플리케이션 플랫폼. Django·MariaDB 기반을 Docker로 컨테이너화한 두 팀(Firewalls·LED) 협업 프로젝트.</p>
         <div class="repo">github.com/JJH0204/Aurora</div>
       </a>
       <a class="arccard reveal" href="https://github.com/JJH0204/Flame" target="_blank" rel="noopener">
-        <div class="atag">ARC·04 — 보안 워게임</div>
+        <div class="atag">ARC·04 · 보안 워게임</div>
         <h3>Flame WarGame <span class="ext">↗</span></h3>
         <p>웹 보안 학습용 실전형 워게임 플랫폼. 40개 이상 단계별 웹 취약점 문제와 진도 추적·관리자 기능을 갖춘 팀 프로젝트.</p>
         <div class="repo">github.com/JJH0204/Flame</div>
       </a>
       <a class="arccard reveal" href="https://github.com/JJH0204/Game_Planning" target="_blank" rel="noopener">
-        <div class="atag">ARC·05 — 게임 기획</div>
+        <div class="atag">ARC·05 · 게임 기획</div>
         <h3>Game_Planning <span class="ext">↗</span></h3>
         <p>게임 기획 학습 아카이브. 시장·장르 분석(RPG·로그라이크), 시스템·UI·스토리 기획, 몬스터 AI 플로우차트·DB 설계 등 기획 문서 모음.</p>
         <div class="repo">github.com/JJH0204/Game_Planning</div>
       </a>
       <a class="arccard reveal" href="https://github.com/JJH0204/GitBook" target="_blank" rel="noopener">
-        <div class="atag">ARC·06 — 기술 블로그</div>
+        <div class="atag">ARC·06 · 기술 블로그</div>
         <h3>J:Log (GitBook) <span class="ext">↗</span></h3>
-        <p>“지식은 기억보다 기록에 남는다.” 개발 중 마주한 문제와 해결 과정을 체계적으로 정리하는 기술 기록 블로그.</p>
+        <p>“지식은 기억보다 기록에 남는다.” 개발 중 마주한 문제와 해결 과정을 정리하는 기술 기록 블로그.</p>
         <div class="repo">github.com/JJH0204/GitBook</div>
       </a>
       <a class="arccard reveal" href="https://github.com/JJH0204/Notebook26" target="_blank" rel="noopener">
-        <div class="atag">ARC·07 — 학습 노트</div>
+        <div class="atag">ARC·07 · 학습 노트</div>
         <h3>Notebook26 <span class="ext">↗</span></h3>
         <p>2026년 학습 기록. 인프라·개발·AI 도구 등 새로 익힌 내용을 그때그때 정리한 노트 아카이브.</p>
         <div class="repo">github.com/JJH0204/Notebook26</div>
       </a>
       <a class="arccard reveal" href="https://github.com/JJH0204/Notebook24-25" target="_blank" rel="noopener">
-        <div class="atag">ARC·08 — 학습 노트</div>
+        <div class="atag">ARC·08 · 학습 노트</div>
         <h3>Notebook24-25 <span class="ext">↗</span></h3>
         <p>2024~2025년 학습 기록. DevSecOps 과정과 개발 학습기를 담은 초기 노트 아카이브.</p>
         <div class="repo">github.com/JJH0204/Notebook24-25</div>
@@ -565,13 +575,13 @@
     </div>
     <div class="archive">
       <a class="arccard reveal" href="https://github.com/JJH0204/LoL_Civil_War" target="_blank" rel="noopener">
-        <div class="atag">SIDE·01 — 웹 도구</div>
+        <div class="atag">SIDE·01 · 웹 도구</div>
         <h3>LoL Civil War <span class="ext">↗</span></h3>
         <p>롤 내전 팀 밸런서. 순열 알고리즘(5!)으로 오토필을 최소화하고, 티어·컨디션·샷콜 보정을 반영한 MMR로 균형 잡힌 팀을 구성하는 실사용 웹 도구.</p>
         <div class="repo">github.com/JJH0204/LoL_Civil_War</div>
       </a>
       <a class="arccard reveal" href="https://github.com/JJH0204/AppleFarm-MiniGame" target="_blank" rel="noopener">
-        <div class="atag">SIDE·02 — 게임 · Unity</div>
+        <div class="atag">SIDE·02 · 게임 · Unity</div>
         <h3>AppleFarm MiniGame <span class="ext">↗</span></h3>
         <p>친구를 위해 만든 Unity 미니게임. 짧은 개발 사이클로 기획–구현–빌드까지 완성한 소규모 게임 프로젝트.</p>
         <div class="repo">github.com/JJH0204/AppleFarm-MiniGame</div>
@@ -583,13 +593,13 @@
 <footer>
   <div class="wrap">
     <span class="eyebrow">Let's build</span>
-    <h2>인프라를 만들고, 운영까지 맡고 싶습니다.</h2>
-    <p>오픈소스와 AI로 자동화하는 IT 인프라 담당자가 필요하시다면, 편하게 연락 주세요.</p>
+    <h2>연락처</h2>
+    <p>협업이나 채용 문의는 메일로 보내 주세요.</p>
     <div class="fcontact">
       <a class="fbtn primary" href="mailto:snowduck0204@gmail.com">✉ snowduck0204@gmail.com</a>
       <a class="fbtn" href="https://github.com/jjh0204" target="_blank" rel="noopener">⌘ github.com/jjh0204</a>
     </div>
-    <div class="colophon">JUNG JAEHO · IT INFRASTRUCTURE PORTFOLIO · 2026 · built &amp; deployed by the candidate</div>
+    <div class="colophon">JUNG JAEHO · PORTFOLIO · 2026</div>
   </div>
 </footer>
 
